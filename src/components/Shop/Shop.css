@@ -38,3 +38,19 @@
     padding: 10px;
     margin: 0px;
 }
+
+@media only screen and (max-width: 600px) {
+    .shopview--primary {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid white;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1020px) {
+    .shopview--primary {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid white;
+    }
+}

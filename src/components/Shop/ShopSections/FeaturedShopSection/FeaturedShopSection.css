@@ -6,3 +6,9 @@
     grid-gap: 10px;
     background-color: #64dfdf;
 }
+
+@media only screen and (max-width: 600px) {
+    .featureditemsection--primary {
+        grid-template-columns: 1fr 1fr;
+    }
+}

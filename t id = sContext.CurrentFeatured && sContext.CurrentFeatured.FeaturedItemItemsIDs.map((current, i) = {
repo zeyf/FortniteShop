@@ -1,0 +1,11 @@
+[33mcommit 0647982bc418dfe8edecb0246bdb31b75d9b0a45[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mFortniteShop/master[m[33m)[m
+Author: zeyf <zainy0012@gmail.com>
+Date:   Mon Jan 18 01:30:55 2021 -0500
+
+    Have created the item shop for the current day.
+
+[33mcommit 5d4690565aadc939f5af1edfeffaf7972cf7b7c2[m
+Author: zeyf <zainy0012@gmail.com>
+Date:   Fri Jan 15 19:07:24 2021 -0500
+
+    Initialize project using Create React App

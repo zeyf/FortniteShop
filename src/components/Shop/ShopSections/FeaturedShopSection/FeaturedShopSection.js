@@ -17,11 +17,19 @@ const FeaturedShopSection = () => {
                             const price = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemfinalPrices.map((current, i) => {
                                 return current;
                             });
+                            const id = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsIDs.map((current, i) => {
+                                if(current.length > 1) {
+
+                                    return current[0];
+                                } else {
+                                    return current;
+                                }
+                            });
 
                             if (item.length > 1) {
-                                return <ShopItemCard price={price[i]} image={item[0]} />
+                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} />
                             } else {
-                                return <ShopItemCard price={price[i]} image={item} />
+                                return <ShopItemCard price={price[i]} image={item} id={id[i]} />
                             }   
                         })}
                 </div>

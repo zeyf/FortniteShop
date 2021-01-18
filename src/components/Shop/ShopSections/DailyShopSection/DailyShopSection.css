@@ -6,3 +6,15 @@
     grid-gap: 10px;
     background-color: #64dfdf;
 }
+
+@media only screen and (max-width: 600px) {
+    .dailyitemsection--primary {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1020px) {
+    .dailyitemsection--primary {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

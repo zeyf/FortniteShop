@@ -15,7 +15,6 @@ import axios from 'axios';
 
 const ShopState = (props) => {
     
-
     const initialState = {
         loading: false,
         CurrentFeatured: null,
@@ -23,7 +22,6 @@ const ShopState = (props) => {
     }
 
     const [state, dispatch] = useReducer(ShopReducer, initialState);
-
 
     const SetLoading = () => {
         dispatch({type: SET_LOADING})
@@ -39,18 +37,17 @@ const ShopState = (props) => {
         const FeaturedItemfinalPrices = response.data.data.featured.entries.map((item, i) => {
             return item.finalPrice;
         });
-        const FeaturedItemBundleStatuses = response.data.data.featured.entries.map((item, i) => {
-            return item.bundle;
-        });
         const FeaturedItemItemsArr = response.data.data.featured.entries.map((item, i) => {
             return item.items;
         });
-        const FeaturedItemItemsDescriptions = FeaturedItemItemsArr.map((item, i) => {
-            const description = item.map((current, pos) => {
-                return current.description
+        const FeaturedItemItemsIDs = FeaturedItemItemsArr.map((item, i) => {
+        
+            const curr = item.map((current, i) => {
+                return current.id;
             })
-            return description;
+            return curr
         });
+
         const FeaturedItemItemsNames = FeaturedItemItemsArr.map((item, i) => {
             const name = item.map((current, pos) => {
                 return current.name
@@ -74,35 +71,13 @@ const ShopState = (props) => {
             })
             return rarity;
         });
-        const FeaturedItemItemsSet = FeaturedItemItemsArr.map((item, i) => {
-            const Set = item.map((current, pos) => {
-                return current
-            })
-            return Set;
-        });
-        const FeaturedItemItemsType = FeaturedItemItemsArr.map((item, i) => {
-            const type = item.map((current, pos) => {
-                return current.type.displayValue
-            })
-            return type;
-        });
-        const FeaturedItemItemsShopHistory = FeaturedItemItemsArr.map((item, i) => {
-            const history = item.map((current, pos) => {
-                return current.shopHistory
-            })
-            return history;
-        });
 
         const FeaturedItemsObj = {
             FeaturedItemfinalPrices,
-            FeaturedItemBundleStatuses,
-            FeaturedItemItemsDescriptions,
             FeaturedItemItemsNames,
             FeaturedItemItemsImages,
             FeaturedItemItemsRarity,
-            FeaturedItemItemsSet,
-            FeaturedItemItemsType,
-            FeaturedItemItemsShopHistory
+            FeaturedItemItemsIDs
         }
 
         // DAILY ITEM SPECIFIC DATA FOR DAILYITEMOBJ //
@@ -110,18 +85,16 @@ const ShopState = (props) => {
         const dailyItemfinalPrices = response.data.data.daily.entries.map((item, i) => {
             return item.finalPrice;
         });
-        const dailyItemBundleStatuses = response.data.data.daily.entries.map((item, i) => {
-            return item.bundle;
-        });
         const dailyItemItemsArr = response.data.data.daily.entries.map((item, i) => {
             return item.items;
         });
-        const dailyItemItemsDescriptions = dailyItemItemsArr.map((item, i) => {
-            const description = item.map((current, pos) => {
-                return current.description
+        const dailyItemItemsIDs = dailyItemItemsArr.map((item, i) => {
+            const curr = item.map((current, i) => {
+                return current.id;
             })
-            return description;
+            return curr
         });
+
         const dailyItemItemsNames = dailyItemItemsArr.map((item, i) => {
             const name = item.map((current, pos) => {
                 return current.name
@@ -145,37 +118,17 @@ const ShopState = (props) => {
             })
             return rarity;
         });
-        const dailyItemItemsSet = dailyItemItemsArr.map((item, i) => {
-            const set = item.map((current, pos) => {
-                return current
-            })
-            return set;
-        });
-        const dailyItemItemsType = dailyItemItemsArr.map((item, i) => {
-            const type = item.map((current, pos) => {
-                return current.type.displayValue
-            })
-            return type;
-        });
-        const dailyItemItemsShopHistory = dailyItemItemsArr.map((item, i) => {
-            const history = item.map((current, pos) => {
-                return current.shopHistory
-            })
-            return history;
-        });
+
         
         const DailyItemsObj = {
             dailyItemfinalPrices,
-            dailyItemBundleStatuses,
-            dailyItemItemsDescriptions,
             dailyItemItemsNames,
             dailyItemItemsImages,
             dailyItemItemsRarity,
-            dailyItemItemsSet,
-            dailyItemItemsType,
-            dailyItemItemsShopHistory
+            dailyItemItemsIDs
         }
 
+        console.log(FeaturedItemItemsIDs)
         dispatch({
             type: GET_CURRENT_SHOP
         }) // changes loading to confirm shop info acquired
@@ -189,18 +142,13 @@ const ShopState = (props) => {
         })
     }
 
-    
-    
-
     return <ShopContext.Provider value={{
         loading: state.loading,
         CurrentDaily: state.CurrentDaily, 
         CurrentFeatured: state.CurrentFeatured, 
         GetCurrentShop
-    }}>
-
-        {props.children}
-
+        }}>
+            {props.children}
     </ShopContext.Provider>;
 
 }
