@@ -1,0 +1,40 @@
+.shop--primary {
+    background-color: #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 25px 25px;
+    height: 100%;
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.shopview__head {
+    font-family: 'Fortnite', sans-serif;
+    color: white;
+    font-size: 3em;
+    margin: 10px;
+    padding: 0px;
+}
+
+.shopview--primary {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid white;
+}
+
+.featuredview--primary, .dailyview--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.viewhead {
+    font-family: 'Fortnite', sans-serif;
+    font-size: 2.5em;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+}

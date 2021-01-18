@@ -1,0 +1,35 @@
+.navbar--primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    background: #6930c3;
+}
+
+.navbarmenu--primary {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbarmenu__item {
+    color: white;
+    margin: 0px 20px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 700;
+}
+.navbarmenu__button {
+    color: #252525;
+    background-color: #64dfdf;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    padding: 5px 15px;
+    outline: none;
+    margin: 0px 20px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
