@@ -4,7 +4,6 @@
     grid-template-columns: 1fr 1fr 1fr;
     border: 4px solid white;
     grid-gap: 10px;
-    background-color: #64dfdf;
 }
 
 @media only screen and (max-width: 600px) {

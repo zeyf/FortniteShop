@@ -26,10 +26,29 @@ const FeaturedShopSection = () => {
                                 }
                             });
 
+                            const rarity = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsRarity.map((current, i) => {
+                            
+                                const raritytype = current[0];
+                                
+                                if(raritytype === 'Uncommon') {
+                                    return sContext.CardRarityStyles.uncommon;
+                                } else if (raritytype === 'Epic') {
+                                    return sContext.CardRarityStyles.epic;
+                                } else if (raritytype === 'Rare') {
+                                    return sContext.CardRarityStyles.rare;
+                                } else if (raritytype === 'Icon Series') {
+                                    return sContext.CardRarityStyles.iconseries;
+                                } else if (raritytype === 'DARK SERIES') {
+                                    return sContext.CardRarityStyles.dark;
+                                } else if (raritytype === 'Legendary') {
+                                    return sContext.CardRarityStyles.legendary;
+                                }
+                            });
+
                             if (item.length > 1) {
-                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} />
+                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} />
                             } else {
-                                return <ShopItemCard price={price[i]} image={item} id={id[i]} />
+                                return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} />
                             }   
                         })}
                 </div>

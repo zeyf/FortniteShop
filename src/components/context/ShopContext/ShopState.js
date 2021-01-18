@@ -5,9 +5,7 @@ import {
     SET_LOADING,
     GET_CURRENT_SHOP,
     SET_DAILY,
-    SET_FEATURED,
-    SET_DAILY_PRICES,
-    SET_FEATURED_PRICES
+    SET_FEATURED
 } from '../types';
 
 import axios from 'axios';
@@ -18,7 +16,33 @@ const ShopState = (props) => {
     const initialState = {
         loading: false,
         CurrentFeatured: null,
-        CurrentDaily: null
+        CurrentDaily: null,
+        CardRarityStyles: {
+            uncommon: {
+                background: 'radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))',
+                border: '3px solid rgb(135, 227, 57)'
+            },
+            epic: {
+                background: 'radial-gradient(rgb(195, 89, 255), rgb(75, 36, 131))',
+                border: '3px solid #e95eff'
+            },
+            rare: {
+                background: 'radial-gradient(rgb(44, 193, 255), rgb(20, 57, 119))',
+                border: '3px solid rgb(55, 209, 255)'
+            },
+            iconseries: {
+                background: 'radial-gradient(rgb(54, 183, 183), rgb(37, 107, 107))',
+                border: '3px solid rgb(82, 224, 224)'
+            },
+            dark: {
+                background: 'radial-gradient(rgb(251, 34, 223), rgb(82, 12, 111))',
+                border: '3px solid rgb(255, 66, 231)'
+            },
+            legendary: {
+                background: 'radial-gradient(rgb(234, 141, 35), rgb(120, 55, 29))',
+                border: '3px solid rgb(233, 141, 75)'
+            }
+        }
     }
 
     const [state, dispatch] = useReducer(ShopReducer, initialState);
@@ -60,7 +84,7 @@ const ShopState = (props) => {
                 if(current.images.featured) {
                     return current.images.featured
                 } else {
-                    return current.images.smallIcon
+                    return current.images.icon
                 }
             })
             return images;
@@ -107,7 +131,7 @@ const ShopState = (props) => {
                 if(current.images.featured) {
                     return current.images.featured
                 } else {
-                    return current.images.smallIcon
+                    return current.images.icon
                 }
             })
             return images;
@@ -128,7 +152,7 @@ const ShopState = (props) => {
             dailyItemItemsIDs
         }
 
-        console.log(FeaturedItemItemsIDs)
+        console.log(dailyItemItemsRarity, FeaturedItemItemsRarity)
         dispatch({
             type: GET_CURRENT_SHOP
         }) // changes loading to confirm shop info acquired
@@ -145,7 +169,8 @@ const ShopState = (props) => {
     return <ShopContext.Provider value={{
         loading: state.loading,
         CurrentDaily: state.CurrentDaily, 
-        CurrentFeatured: state.CurrentFeatured, 
+        CurrentFeatured: state.CurrentFeatured,
+        CardRarityStyles: state.CardRarityStyles,
         GetCurrentShop
         }}>
             {props.children}
