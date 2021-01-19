@@ -18,18 +18,17 @@ const FeaturedShopSection = () => {
                                 return current;
                             });
                             const id = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsIDs.map((current, i) => {
-                                if(current.length > 1) {
-
-                                    return current[0];
-                                } else {
-                                    return current;
+                                if (typeof(current[0]) === 'object')
+                                    return String(current[0]);
+                                else {
+                                    return current[0]
                                 }
                             });
 
                             const rarity = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsRarity.map((current, i) => {
-                            
-                                const raritytype = current[0];
                                 
+                                const raritytype = current[0];
+                                console.log(raritytype)
                                 if(raritytype === 'Uncommon') {
                                     return sContext.CardRarityStyles.uncommon;
                                 } else if (raritytype === 'Epic') {
@@ -38,6 +37,8 @@ const FeaturedShopSection = () => {
                                     return sContext.CardRarityStyles.rare;
                                 } else if (raritytype === 'Icon Series') {
                                     return sContext.CardRarityStyles.iconseries;
+                                } else if (raritytype === 'Slurp Series') {
+                                    return sContext.CardRarityStyles.slurpseries;
                                 } else if (raritytype === 'DARK SERIES') {
                                     return sContext.CardRarityStyles.dark;
                                 } else if (raritytype === 'Legendary') {
@@ -45,10 +46,14 @@ const FeaturedShopSection = () => {
                                 }
                             });
 
+                            const name = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsNames.map((current, i) => {
+                                return current[0];
+                            });
+
                             if (item.length > 1) {
-                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} />
+                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                             } else {
-                                return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} />
+                                return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} name={name[i]}  />
                             }   
                         })}
                 </div>

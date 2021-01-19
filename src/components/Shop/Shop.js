@@ -3,8 +3,7 @@ import ShopContext from '../context/ShopContext/ShopContext';
 import FeaturedShopSection from './ShopSections/FeaturedShopSection/FeaturedShopSection';
 import DailyShopSection from './ShopSections/DailyShopSection/DailyShopSection';
 import './Shop.css';
-import Spinner from '../../media/images/Spinner.svg';
-import Inf from '../../media/images/Infinity.svg';
+import Spinner from '../layout/spinner/Spinner';
 const Shop = (props) => {
     
     const sContext = useContext(ShopContext);
@@ -14,15 +13,19 @@ const Shop = (props) => {
         // eslint-disable-next-line
     }, [])
 
-    console.log(sContext.loading)
     
+
 
     return (
         <div className='shop shop--primary'>
             <h1 className='shopview__head'>Today's Shop</h1>
             <div className="shopview shopview--primary">
-                <DailyShopSection />
-                <FeaturedShopSection />
+                {sContext.loading ? <Spinner /> :
+                    <>    
+                        <DailyShopSection />
+                        <FeaturedShopSection />
+                    </>
+                }
             </div>
         </div>
     )

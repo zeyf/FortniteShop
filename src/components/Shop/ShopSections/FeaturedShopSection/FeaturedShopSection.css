@@ -1,19 +1,21 @@
 .featureditemsection--primary {
+    padding: 5px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    border: 4px solid white;
+    border-left: 1px solid rgba(206, 207, 207, 0.15);
     grid-gap: 10px;
 }
 
 @media only screen and (max-width: 600px) {
     .featureditemsection--primary {
         grid-template-columns: 1fr 1fr;
+        border-left: 1px solid transparent;
     }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1020px) {
     .featureditemsection--primary {
-        grid-template-columns: 1fr 1fr 1fr;
+        border-left: 1px solid transparent;
     }
 }

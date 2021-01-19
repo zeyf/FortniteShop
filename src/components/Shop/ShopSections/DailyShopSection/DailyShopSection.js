@@ -18,10 +18,10 @@ const DailyShopSection = () => {
                         });
                         
                         const id = sContext.CurrentDaily && sContext.CurrentDaily.dailyItemItemsIDs.map((current, i) => {
-                            if(current.length > 1) {
-                                return current[0];
-                            } else {
-                                return current;
+                            if (typeof(current[0]) === 'object')
+                                return String(current[0]);
+                            else {
+                                return current[0]
                             }
                         });
                         const rarity = sContext.CurrentDaily && sContext.CurrentDaily.dailyItemItemsRarity.map((current, i) => {
@@ -43,10 +43,14 @@ const DailyShopSection = () => {
                             }
                         });
 
+                        const name = sContext.CurrentDaily && sContext.CurrentDaily.dailyItemItemsNames.map((current, i) => {
+                            return current[0];
+                        });
+
                         if (item.length > 1) {
-                            return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} />
+                            return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                         } else {
-                            return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} />
+                            return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                         }   
                     })}
             </div>

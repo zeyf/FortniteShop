@@ -14,7 +14,7 @@ const App = () => {
           <Switch>
             <Route exact path='/' component={Shop} />
             <Route exact path='/shop' component={Shop} />
-            <Route exact path='/shop/item/:itemid' render={(props) => (
+            <Route exact path='/:itemtype/:itemid' render={(props) => (
               <>
               <Item {...props} />
               </>

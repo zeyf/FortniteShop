@@ -4,10 +4,42 @@
     align-items: center;
 }
 
+.shopitemcard__link {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
 
+.shopitemimage--primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+}
 
-.shopprice--primary {
-    background-color: rgba(150, 155, 155, 0.25);
+.shopiteminfo--primary {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(207, 206, 207, 0.15);
+    
+    align-items: center;
+}
+
+.shopiteminfo__name {
+    padding: 10px 0px 5px 0px;
+    margin: 0px;
+    font-family: 'Fortnite', sans-serif;
+    font-size: 1.5em;
+    color: white;
+    border-bottom: 1px solid rgba(206, 207, 207, 0.25);
+    border-top: 1px solid rgba(206, 207, 207, 0.25);
+    width: 100%;
+    text-align: center;
+}
+
+.shopitemprice--primary {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -15,16 +47,24 @@
     width: 100%;
 }
 
-.shopprice__image {
+.shopitemprice__image {
     height: 25px;
     width: 25px;
     margin: 0px 2.5px;
 }
-.shopprice__text {
+.shopitemprice__text {
     font-family: 'Fortnite', sans-serif;
     padding: 10px 0px 5px 0px;
     margin: 0px 2.5px;
     text-align: center;
     font-size: 2em;
     color: white;
+}
+
+.s {
+    border: none;
+    transition: 0.3s;
+}
+.s:hover {
+    border: 5px solid yellow;
 }
