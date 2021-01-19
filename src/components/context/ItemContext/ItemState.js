@@ -21,7 +21,21 @@ const ItemState = (props) => {
 
     const GetItem = async (name) => {
         SetLoading();
-        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${name}`);
+
+
+        const NameDashHandler = () => {
+            
+            const dashregex = /-/gi;
+
+            if (dashregex.test(name)) {
+                const NameDashResult = name.replaceAll(dashregex, ' ')
+                return NameDashResult
+            } else {
+                return name
+            }
+        }
+
+        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${NameDashHandler()}`);
         console.log(response.data.data);
         dispatch({
             type: GET_ITEM,

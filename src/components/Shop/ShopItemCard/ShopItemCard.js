@@ -37,10 +37,10 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
         const spaceregex = /\s/gi;
         
         if (spaceregex.test(name)) {
-            const SpaceReplaceResult = name.replaceAll(spaceregex, '-')
-            return SpaceReplaceResult 
+            const SpaceReplaceResult = name.replaceAll(spaceregex, '-').toLowerCase()
+            return SpaceReplaceResult;
         } else {
-            return name
+            return name.toLowerCase();
         }
     }
     
