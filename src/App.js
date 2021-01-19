@@ -9,18 +9,18 @@ import ItemState from './components/context/ItemContext/ItemState';
 const App = () => {
   return (
     <ShopState>
-      <ItemState>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Switch>
-              <Route exact path='/' component={Shop} />
-              <Route exact path='/shop' component={Shop} />
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path='/' component={Shop} />
+            <Route exact path='/shop' component={Shop} />
+            <ItemState>
               <Route exact path='/:itemtype/:itemid' component={Item} />
-            </Switch>
-          </div>
-        </Router>
-      </ItemState>
+            </ItemState>
+          </Switch>
+        </div>
+      </Router>
     </ShopState>
   );
 }

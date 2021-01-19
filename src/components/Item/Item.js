@@ -1,5 +1,8 @@
 import React, {useEffect, useContext} from 'react';
 import ItemContext from '../context/ItemContext/ItemContext'
+import Spinner from '../layout/spinner/Spinner';
+import ItemDetailsSection from '../Item/ItemDetailsSection/ItemDetailsSection'
+import './Item.css';
 
 const Item = ({match}) => {
 
@@ -12,7 +15,12 @@ const Item = ({match}) => {
 
     return (
         <div className='item item--primary'>
-            <p>{iContext.item && iContext.item.name}</p>
+
+            {iContext.loading ? <Spinner /> :
+                <>
+                    <ItemDetailsSection />
+                </>
+            }
         </div>
     )
 }
