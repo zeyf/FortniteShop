@@ -31,11 +31,23 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
             return sContext.ItemTypes.glider;
         }
     }
+
+    const NameSpaceHandler = () => {
+
+        const spaceregex = /\s/gi;
+        
+        if (spaceregex.test(name)) {
+            const SpaceReplaceResult = name.replaceAll(spaceregex, '-')
+            return SpaceReplaceResult 
+        } else {
+            return name
+        }
+    }
     
     return (
         <div className='s'>
             <div className='shopitemcard shopitemcard--primary' style={cardstyle} >
-                <Link to={`/${SetLinkByIDType()}/${name}`} className='shopitemcard__link'>
+                <Link to={`/${SetLinkByIDType()}/${NameSpaceHandler()}`} className='shopitemcard__link'>
                     <div className='shopitemimage shopitemimage--primary'>
                         <img src={image} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />
                     </div>
