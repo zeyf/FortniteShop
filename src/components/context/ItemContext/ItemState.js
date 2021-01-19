@@ -10,7 +10,37 @@ const ItemState = (props) => {
     
     const initialState = {
         item: null,
-        loading: false
+        loading: false,
+        CardRarityStyles: {
+            uncommon: {
+                background: 'radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))',
+                border: '3px solid rgb(135, 227, 57)'
+            },
+            epic: {
+                background: 'radial-gradient(rgb(195, 89, 255), rgb(75, 36, 131))',
+                border: '3px solid #e95eff'
+            },
+            rare: {
+                background: 'radial-gradient(rgb(44, 193, 255), rgb(20, 57, 119))',
+                border: '3px solid rgb(55, 209, 255)'
+            },
+            iconseries: {
+                background: 'radial-gradient(rgb(54, 183, 183), rgb(37, 107, 107))',
+                border: '3px solid rgb(82, 224, 224)'
+            },
+            slurpseries: {
+                background: 'radial-gradient(rgb(41, 241, 163), rgb(18, 169, 164))',
+                border: '3px solid #53f0ff'   
+            },
+            dark: {
+                background: 'radial-gradient(rgb(251, 34, 223), rgb(82, 12, 111))',
+                border: '3px solid rgb(255, 66, 231)'
+            },
+            legendary: {
+                background: 'radial-gradient(rgb(234, 141, 35), rgb(120, 55, 29))',
+                border: '3px solid rgb(233, 141, 75)'
+            }
+        }
     }
 
     const [state, dispatch] = useReducer(ItemReducer, initialState);

@@ -40,7 +40,7 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
         // In the get item function it replaces all -'s, but this one shouldnt
         // be replaced as it is the name.
         // these items with - in name will have - replaced by ~ and switched back for
-        // the api call. this is all for UI.
+        // the api call. this is all for User Experience.
 
         const dashregex = /-/gi;
         
@@ -55,7 +55,7 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
             return DashReplaceResult
 
         } else {
-            return name;
+            return name.toLowerCase();
         }
     }
     

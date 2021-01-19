@@ -46,12 +46,12 @@ const ShopState = (props) => {
             }
         },
         ItemTypes: {
-            skin: 'skin',
-            emote: 'emote',
-            musicpack: 'musicpack',
-            pickaxe: 'pickaxe',
-            wrap: 'wrap',
-            glider: 'glider'
+            skin: 'skins',
+            emote: 'emotes',
+            musicpack: 'musicpacks',
+            pickaxe: 'pickaxes',
+            wrap: 'wraps',
+            glider: 'gliders'
         }
     }
 
