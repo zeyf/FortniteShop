@@ -7,7 +7,7 @@ const ItemDetailsSection = () => {
 
     const iContext = useContext(ItemContext)
     return (
-        <div>
+        <div className='itemdetailssection itemdetailssection--primary'>
             <ItemShopHistory />
         </div>
     )

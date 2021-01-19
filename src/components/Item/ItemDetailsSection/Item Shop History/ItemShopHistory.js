@@ -20,19 +20,14 @@ const ItemShopHistory = () => {
     }
 
     return (
-        <div>
-            <table>
-                <th>
-                    <td>
-                        Date
-                    </td>
-                </th>
+        <div className="itemshophistory itemshophistory--primary">
+            <table className='historytable historytable--primary'>
                 <tbody>
                     {iContext.item && mutableShopHistory().reverse().map((appearance, i) => {
                         
                         const dateparsed = appearance.split('T')[0];
         
-                        return <tr><td>{dateparsed}</td></tr>
+                        return <tr className='historytable__row'><td className='historytable__data'>{dateparsed}</td></tr>
                     })}
                 </tbody>
             </table>

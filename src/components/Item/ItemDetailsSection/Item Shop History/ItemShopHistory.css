@@ -1,0 +1,37 @@
+.itemshophistory--primary {
+    border-radius: 20px;
+    width: 15%;
+    border: 1px solid white;
+}
+.historytable--primary {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.historytable__row {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    
+}
+.historytable__row:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.historytable__row:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.historytable__row:nth-child(even) {
+    background: rgb(207,206,207);
+}
+
+.historytable__data {
+    color: black;
+    font-size: 1.25em;
+}
+
