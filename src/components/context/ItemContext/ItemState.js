@@ -1,7 +1,7 @@
 import ItemContext from './ItemContext';
 import React, {useReducer} from 'react';
 import ItemReducer from './ItemReducer'
-import {GET_ITEM, SET_LOADING} from '../types';
+import {GET_ITEM, SET_ITEM_PRICE, SET_LOADING} from '../types';
 import axios from 'axios';
 
 
@@ -10,6 +10,7 @@ const ItemState = (props) => {
     
     const initialState = {
         item: null,
+        itemprice: null,
         loading: false,
         CardRarityStyles: {
             uncommon: {
@@ -80,11 +81,22 @@ const ItemState = (props) => {
         })
     }
 
+    const SetItemPrice = (price) => {
+        dispatch({
+            type: SET_ITEM_PRICE,
+            payload: price
+        })
+
+    }
+
     return <ItemContext.Provider value={{
         
         item: state.item,
         loading: state.loading,
-        GetItem
+        CardRarityStyles: state.CardRarityStyles,
+        itemprice: state.itemprice,
+        GetItem,
+        SetItemPrice
     }}>
 
                 {props.children}

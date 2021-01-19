@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ItemContext from '../../../context/ItemContext/ItemContext';
+import ItemContext from '../../../../context/ItemContext/ItemContext';
 import './ItemShopHistory.css';
 
 const ItemShopHistory = () => {
@@ -21,13 +21,31 @@ const ItemShopHistory = () => {
 
     return (
         <div className="itemshophistory itemshophistory--primary">
+
             <table className='historytable historytable--primary'>
+                <thead>
+                    <tr>
+                        <th scope='col'>
+                            Date
+                        </th>
+                        <th scope='col'>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                     {iContext.item && mutableShopHistory().reverse().map((appearance, i) => {
                         
                         const dateparsed = appearance.split('T')[0];
         
-                        return <tr className='historytable__row'><td className='historytable__data'>{dateparsed}</td></tr>
+                        return <tr className='historytable__row'>
+                                    <td className='historytable__data'>
+                                        {dateparsed}
+                                    </td>
+                                    <td className='historytable__data'>
+                                        dddddd
+                                    </td>
+                                </tr>
                     })}
                 </tbody>
             </table>

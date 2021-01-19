@@ -4,3 +4,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.itemdetailssection__namehead {
+    font-family: 'Fortnite', sans-serif;
+    font-size: 2em;
+    color: white;
+}

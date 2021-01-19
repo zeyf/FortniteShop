@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import ItemContext from '../../context/ItemContext/ItemContext';
-import ItemShopHistory from './Item Shop History/ItemShopHistory'
+import ItemShopHistory from './Item Details Components/Item Shop History/ItemShopHistory'
 import './ItemDetailsSection.css';
 
 const ItemDetailsSection = () => {

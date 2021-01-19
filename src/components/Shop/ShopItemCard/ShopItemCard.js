@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom'
 import {useContext} from 'react'
 import './ShopItemCard.css'
 import VBUCKS from '../../../media/images/VBUCKS.png';
+import ItemContext from '../../context/ItemContext/ItemContext';
 
 const ShopItemCard = ({price, image, id, cardstyle, name}) => {
 
     const sContext = useContext(ShopContext);
+    const iContext = useContext(ItemContext);
 
     // Get type by parsing by _ for first value in id.
     // set first param in link by item type
@@ -58,11 +60,16 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
             return name.toLowerCase();
         }
     }
-    
+
+    const SendPrice = () => {
+        iContext.SetItemPrice(price)
+    }
+
+
     return (
         <div className='s'>
             <div className='shopitemcard shopitemcard--primary' style={cardstyle} >
-                <Link to={`/${SetLinkByIDType()}/${NameSpaceHandler()}`} className='shopitemcard__link'>
+                <Link to={`/${SetLinkByIDType()}/${NameSpaceHandler()}`} className='shopitemcard__link' onClick={SendPrice}>
                     <div className='shopitemimage shopitemimage--primary'>
                         <img src={image} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />
                     </div>
