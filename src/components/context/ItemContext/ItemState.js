@@ -26,10 +26,17 @@ const ItemState = (props) => {
         const NameDashHandler = () => {
             
             const dashregex = /-/gi;
+            
+            // handles names with dashes (which are passed in with ~ instead)
+            const tilderegex = /~/gi;
+
 
             if (dashregex.test(name)) {
                 const NameDashResult = name.replaceAll(dashregex, ' ')
                 return NameDashResult
+            } else if (tilderegex.test(name)) {
+                const NameTildeResult = name.replaceAll(tilderegex, '-')
+                return NameTildeResult
             } else {
                 return name
             }

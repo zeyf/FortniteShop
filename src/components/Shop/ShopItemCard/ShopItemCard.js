@@ -35,12 +35,27 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
     const NameSpaceHandler = () => {
 
         const spaceregex = /\s/gi;
+
+        // this dash regex is added on this side for items with names like YEE-HAW!
+        // In the get item function it replaces all -'s, but this one shouldnt
+        // be replaced as it is the name.
+        // these items with - in name will have - replaced by ~ and switched back for
+        // the api call. this is all for UI.
+
+        const dashregex = /-/gi;
         
-        if (spaceregex.test(name)) {
+        if (spaceregex.test(name)) {   
+
             const SpaceReplaceResult = name.replaceAll(spaceregex, '-').toLowerCase()
             return SpaceReplaceResult;
+
+        } else if (dashregex.test(name)) { 
+
+            const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
+            return DashReplaceResult
+
         } else {
-            return name.toLowerCase();
+            return name;
         }
     }
     
