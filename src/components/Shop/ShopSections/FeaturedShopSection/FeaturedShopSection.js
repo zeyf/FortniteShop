@@ -28,7 +28,7 @@ const FeaturedShopSection = () => {
                             const rarity = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsRarity.map((current, i) => {
                                 
                                 const raritytype = current[0];
-                                console.log(raritytype)
+                                
                                 if(raritytype === 'Uncommon') {
                                     return sContext.CardRarityStyles.uncommon;
                                 } else if (raritytype === 'Epic') {

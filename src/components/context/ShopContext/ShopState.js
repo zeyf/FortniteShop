@@ -173,7 +173,7 @@ const ShopState = (props) => {
             type: SET_DAILY,
             payload: DailyItemsObj
         })
-    }
+    };
 
     return <ShopContext.Provider value={{
 
