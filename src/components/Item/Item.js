@@ -10,7 +10,7 @@ const Item = ({match}) => {
 
 
     useEffect(() => {
-        iContext.GetItem(match.params.itemid);
+        iContext.GetItem(match.params.itemname);
     }, []);
 
     return (

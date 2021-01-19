@@ -19,9 +19,9 @@ const ItemState = (props) => {
         dispatch({type: SET_LOADING})
     }
 
-    const GetItem = async (itemid) => {
+    const GetItem = async (name) => {
         SetLoading();
-        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/${itemid}`);
+        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${name}`);
         console.log(response.data.data);
         dispatch({
             type: GET_ITEM,
