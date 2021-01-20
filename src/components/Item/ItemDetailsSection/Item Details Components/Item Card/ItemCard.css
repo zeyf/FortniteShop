@@ -1,3 +1,17 @@
+.itemdetails--primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    padding: 25px;
+    border: 1px solid white;
+}
+
+.itemcarddetails--primary {
+    display: flex;
+    flex-direction: column;
+}
+
 .itemcard--primary {
     display: flex;
     flex-direction: column;
@@ -31,12 +45,13 @@
     padding: 10px 0px 5px 0px;
     margin: 0px;
     font-family: 'Fortnite', sans-serif;
-    font-size: 1.5em;
+    font-size: 2em;
     color: white;
     border-bottom: 1px solid rgba(206, 207, 207, 0.45);
     border-top: 1px solid rgba(206, 207, 207, 0.45);
     width: 100%;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .itemcardprice--primary {
@@ -59,4 +74,40 @@
     text-align: center;
     font-size: 2em;
     color: white;
+}
+
+.itemcardattributestable--primary {
+
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom-right-radius: 20px;
+
+}
+
+.itemcardattributestable__data {
+    border-bottom: 1px solid rgba(207,206,207, 0.45);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    text-align: center;
+    background-color: rgba(207, 206, 207, 0.25);
+} 
+
+.itemcardattributestable__datahead {
+    border-bottom: 1px solid rgba(207,206,207, 0.45);
+    border-right: 1px solid rgba(207,206,207, 0.45);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+    padding: 0px 5px 0px 5px;
+    width: 40%;
+    background-color: rgba(207, 206, 207, 0.25);
+
+} 
+
+
+
+.d {
+    display: flex;
+    flex-direction: column;
 }

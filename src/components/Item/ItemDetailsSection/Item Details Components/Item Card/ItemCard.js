@@ -8,110 +8,142 @@ const ItemCard = () => {
     const iContext = useContext(ItemContext);
     
     const ItemFunctions = {
-        
-        CardStyle: () => {
-            if (iContext.item) {
-                const itemrarity = iContext.item.rarity.displayValue;
-                
-                if(itemrarity === 'Uncommon') {
-                    return iContext.CardRarityStyles.uncommon;
-                } else if (itemrarity === 'Epic') {
-                    return iContext.CardRarityStyles.epic;
-                } else if (itemrarity === 'Rare') {
-                    return iContext.CardRarityStyles.rare;
-                } else if (itemrarity === 'Icon Series') {
-                    return iContext.CardRarityStyles.iconseries;
-                } else if (itemrarity === 'Slurp Series') {
-                    return iContext.CardRarityStyles.slurpseries;
-                } else if (itemrarity === 'DARK SERIES') {
-                    return iContext.CardRarityStyles.dark;
-                } else if (itemrarity === 'Legendary') {
-                    return iContext.CardRarityStyles.legendary;
+    
+        ItemInfo: {
+            
+            CardStyle: () => {
+                if (iContext.item) {
+                    const itemrarity = iContext.item.rarity.displayValue;
+                    
+                    if(itemrarity === 'Uncommon') {
+                        return iContext.CardRarityStyles.uncommon;
+                    } else if (itemrarity === 'Epic') {
+                        return iContext.CardRarityStyles.epic;
+                    } else if (itemrarity === 'Rare') {
+                        return iContext.CardRarityStyles.rare;
+                    } else if (itemrarity === 'Icon Series') {
+                        return iContext.CardRarityStyles.iconseries;
+                    } else if (itemrarity === 'Slurp Series') {
+                        return iContext.CardRarityStyles.slurpseries;
+                    } else if (itemrarity === 'DARK SERIES') {
+                        return iContext.CardRarityStyles.dark;
+                    } else if (itemrarity === 'Legendary') {
+                        return iContext.CardRarityStyles.legendary;
+                    }
+                }
+            },
+            ItemPrice: () => {
+                if (iContext.item) {
+                    const name = iContext.item.name.toUpperCase()
+                    const IndexOfNameKey = Object.keys(localStorage).indexOf(name);
+                    return Object.values(localStorage)[IndexOfNameKey]
+    
+                }
+            },
+            ItemImage: () => {
+                if (iContext.item) {
+                    if (iContext.item.images.featured) {
+                        return iContext.item.images.featured
+                    } else {
+                        return iContext.item.images.icon;
+                    }
+                }
+            },
+            ItemName: () => {
+                if (iContext.item) {
+                    return iContext.item.name.toUpperCase();
+                }
+            },
+            ItemDescription: () => {
+                if (iContext.item) {
+                    return `"${iContext.item.description}"`
                 }
             }
         },
-        ItemPrice: () => {
-            if (iContext.item) {
-
-                const name = iContext.item.name.toUpperCase()
-                
-                const IndexOfNameKey = Object.keys(localStorage).indexOf(name);
-
-                return Object.values(localStorage)[IndexOfNameKey]
-
-                
-            }
-        },
-        ItemImage: () => {
-            if (iContext.item) {
-                if (iContext.item.images.featured) {
-                    return iContext.item.images.featured
-                } else {
-                    return iContext.item.images.icon;
+        ItemDates: {
+            ReleaseDate: () => {
+                if (iContext.item) {
+                    return iContext.item.shopHistory[0].split(/T/gi)[0]
+                }
+            },
+            LastAppearanceDate: () => {
+                if (iContext.item) {
+                    return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
                 }
             }
         },
-        ItemName: () => {
-            if (iContext.item) {
-                return iContext.item.name.toUpperCase();
+        ItemIntroduction: {
+            Season: () => {
+                if (iContext.item) {
+                    return iContext.item.introduction.season;
+                }
+            },
+            Chapter: () => {
+                if (iContext.item) {
+                    return iContext.item.introduction.chapter;
+                }
+            },
+            Text: () => {
+                if (iContext.item) {
+                    return iContext.item.introduction.text;
+                }
             }
         },
-        ItemDescription: () => {
-            if (iContext.item) {
-                return iContext.item.description
-            }
-        },
-        ItemInitialReleaseDate: () => {
-            if (iContext.item) {
-                return iContext.item.shopHistory[0].split(/T/gi)[0]
-            }
-        },
-        ItemMostRecentReleaseDate: () => {
-            if (iContext.item) {
-                return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
+        ItemSet: {
+            Season: () => {
+                if (iContext.item) {
+                    return iContext.item.introduction.season;
+                }
             }
         }
     }
+
     return (
-        <div>
-            <div>
-                <div className='itemcard itemcard--primary' style={ItemFunctions.CardStyle()} >
+        <div className='itemdetails itemdetails--primary'>
+            <div className='itemcarddetails itemcarddetails--primary'>
+                <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
                         <div className='itemcardimage itemcardimage--primary'>
-                            <img src={ItemFunctions.ItemImage()} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />
+                            <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '250px', width: '250px', margin: '0px', padding: '0px'}} />
                         </div>
                         <div className="itemcardinfo itemcardinfo--primary">
-                            <p className='itemcardinfo__name'>{ItemFunctions.ItemName()}</p>
+                            <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
                             <div className='itemcardprice itemcardprice--primary'>
-                                <p className='itemcardprice__text'>{ItemFunctions.ItemPrice()}</p>
+                                <p className='itemcardprice__text'>{ItemFunctions.ItemInfo.ItemPrice()}</p>
                             </div>
                         </div>
                 </div>
-                <div>
-                    <table style={{color: 'white'}}>
+                <div className='itemcardattributes itemcardattributes--primary' style={ItemFunctions.ItemInfo.CardStyle()}>
+                    <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
                         <tbody>
-                        <tr>
-                            <th scope='row'>
-                            Last Seen:
-                            </th>
-                            <td>
-                                {ItemFunctions.ItemMostRecentReleaseDate()}
-                            </td>
+                        <tr className='itemcardattributestable__row'>
+                            <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
+                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.LastAppearanceDate()}</td>
                         </tr>
-                        <tr>
-                            <th scope='row'>
-                            Released on:
-                            </th>
-                            <td>
-                                {ItemFunctions.ItemInitialReleaseDate()}
-                            </td>
+                        <tr className='itemcardattributestable__row'>
+                            <th className='itemcardattributestable__datahead' scope='row'>Released</th>
+                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.ReleaseDate()}</td>
+                        </tr>
+                        <tr className='itemcardattributestable__row'>
+                            <th className='itemcardattributestable__datahead' scope='row'>Season</th>
+                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Season()}</td>
+                        </tr>
+                        <tr className='itemcardattributestable__row'>
+                            <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
+                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Chapter()}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div style={{color: 'white'}}>
-                <h2>Description</h2>
-                <p>{ItemFunctions.ItemDescription()}</p>
+            <div className='d'>
+                <div style={{color: 'white'}}>
+                    <h2>Description</h2>
+                    <p>{ItemFunctions.ItemInfo.ItemDescription()}</p>
+                </div>
+                <div style={{color: 'white'}}>
+                    <h2>Introduction</h2>
+                    <p>{ItemFunctions.ItemIntroduction.Text()}</p>
+                </div>
             </div>
         </div>
     )

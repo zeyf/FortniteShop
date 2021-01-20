@@ -11,3 +11,12 @@ body {
   font-family: Catamaran;
   src: url(./media/fonts/Catamaran-Regular.ttf);
 }
+
+@font-face {
+  font-family: Lato;
+  src: url(./media/fonts/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: Poppins;
+  src: url(./media/fonts/Poppins-Regular.ttf);
+}
