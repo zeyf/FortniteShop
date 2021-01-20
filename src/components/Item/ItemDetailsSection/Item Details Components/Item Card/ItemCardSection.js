@@ -1,9 +1,10 @@
 import React, {useContext} from 'react'
 import ItemContext from '../../../../context/ItemContext/ItemContext'
 import './ItemCard.css';
+import ShopHistory from '../Item Shop History/ItemShopHistory';
 
 
-const ItemCard = () => {
+const ItemCardSection = () => {
 
     const iContext = useContext(ItemContext);
     
@@ -104,7 +105,7 @@ const ItemCard = () => {
                 <div className='itemcarddetails itemcarddetails--primary'>
                     <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
                             <div className='itemcardimage itemcardimage--primary'>
-                                <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '250px', width: '250px', margin: '0px', padding: '0px'}} />
+                                <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
                             </div>
                             <div className="itemcardinfo itemcardinfo--primary">
                                 <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
@@ -146,9 +147,12 @@ const ItemCard = () => {
                         <p className='itemdescription__text'>{ItemFunctions.ItemIntroduction.Text()}</p>
                     </div>
                 </div>
+                <div className='shophis shophis--primary'>
+                    <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
+                </div>
             </div>
         </div>
     )
 }
 
-export default ItemCard
+export default ItemCardSection

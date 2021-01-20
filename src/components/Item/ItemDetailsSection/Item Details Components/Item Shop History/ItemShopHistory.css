@@ -1,37 +1,75 @@
 .itemshophistory--primary {
-    border-radius: 20px;
-    width: 15%;
-    border: 1px solid white;
+    width: 100%;
+    
 }
+
+.tablesummaryhead--primary {
+    color: white;
+    background: #6930c3;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 25px 3.5px 25px;
+    border-bottom: 1px solid rgba(207,206,207, 0.45);
+    font-size: 2em;
+    font-family: 'Fortnite', sans-serif;
+    letter-spacing: 1px;
+}
+
+.tablehead--primary {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.historytable__tcol {
+    color: white;
+    padding: 5px;
+    background-color: #6930c3;
+    font-size: 0.75em;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 600;
+}
+
+.historytable__span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.historytable__priceimage {
+    height: 15px;
+    width: 15px;
+    padding: 0px 3.5px;
+}
+
+.historytable__tcol:first-child {
+    width: 60%;
+}
+
+.historytablescroll--primary {
+    height: 250px;
+    overflow: scroll;
+}
+
 .historytable--primary {
     border-collapse: collapse;
     width: 100%;
 }
 
-.historytable__row {
+
+.historytable__headrow {
+    background: #6930c3;
+}
+
+
+.historytable__bodyrow {
     background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+.historytable__bodydata {
+    border-bottom: 1px solid rgba(207,206,207, 0.45);
+    background: #252525;
     padding: 10px;
-    
-}
-.historytable__row:last-child {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-.historytable__row:first-child {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.historytable__row:nth-child(even) {
-    background: rgb(207,206,207);
-}
-
-.historytable__data {
-    color: black;
-    font-size: 1.25em;
+    text-align: center;
+    color: white;
 }
 

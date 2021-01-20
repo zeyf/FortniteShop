@@ -124,6 +124,9 @@
     display: flex;
     width: 60%;
 }
+.shophis--primary {
+    margin-left: 352px;
+}
 
 @media only screen and (max-width: 600px) {
     .itemdetails--primary {
@@ -135,6 +138,9 @@
         display: flex;
         width: 100%;
         justify-content: center;
+    }
+    .shophis--primary {
+        margin-left: 0px;
     }
     
 }

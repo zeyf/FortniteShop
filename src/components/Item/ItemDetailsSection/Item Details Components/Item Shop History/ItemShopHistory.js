@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
 import ItemContext from '../../../../context/ItemContext/ItemContext';
 import './ItemShopHistory.css';
+import VBUCKS from '../../../../../media/images/VBUCKS.png'
 
-const ItemShopHistory = () => {
+const ItemShopHistory = ({price}) => {
 
     const iContext = useContext(ItemContext)
 
@@ -21,34 +22,36 @@ const ItemShopHistory = () => {
 
     return (
         <div className="itemshophistory itemshophistory--primary">
-
-            <table className='historytable historytable--primary'>
-                <thead>
+            <div className='tablesummaryhead tablesummaryhead--primary'>
+                SHOP HISTORY
+            </div>
+            <div className='historytablescroll historytablescroll--primary'>
+                <table className='historytable historytable--primary'>
+                    <thead>
                     <tr>
-                        <th scope='col'>
-                            Date
-                        </th>
-                        <th scope='col'>
-                            Price
-                        </th>
+                        <th className='historytable__tcol' scope='col'>DATE</th>
+                        <th className='historytable__tcol' scope='col'>PRICE</th>
                     </tr>
-                </thead>
-                <tbody>
-                    {iContext.item && mutableShopHistory().reverse().map((appearance, i) => {
-                        
-                        const dateparsed = appearance.split('T')[0];
-        
-                        return <tr className='historytable__row'>
-                                    <td className='historytable__data'>
-                                        {dateparsed}
+                    </thead>
+                    <tbody>
+                        {iContext.item && mutableShopHistory().reverse().map((item, i) => {
+
+                            const date = item.split(/T/gi)[0]
+
+                            return <tr className='historytable__bodyrow'>
+                                    <td className='historytable__bodydata'>{date}</td>
+                                    <td className='historytable__bodydata'>
+                                        <span className='historytable__span'>
+                                            <img className='historytable__priceimage' src={VBUCKS}/>
+                                        {price}
+                                        </span>
                                     </td>
-                                    <td className='historytable__data'>
-                                        dddddd
-                                    </td>
-                                </tr>
-                    })}
-                </tbody>
-            </table>
+                                   </tr>;
+                        })}
+                    </tbody>
+
+                </table>
+            </div>
         </div>
     )
 }
