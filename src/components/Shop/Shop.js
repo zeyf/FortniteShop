@@ -22,8 +22,8 @@ const Shop = (props) => {
             <div className="shopview shopview--primary">
                 {sContext.loading ? <Spinner /> :
                     <>    
-                        <DailyShopSection />
-                        <FeaturedShopSection />
+                        <DailyShopSection key='dailyshopsection' />
+                        <FeaturedShopSection key='featuredshopsection' />
                     </>
                 }
             </div>

@@ -1,0 +1,62 @@
+.itemcard--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemcard__link {
+    text-decoration: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+.itemcardimage--primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.itemcardinfo--primary {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(207, 206, 207, 0.25);
+    width: 100%;
+    align-items: center;
+}
+
+.itemcardinfo__name {
+    padding: 10px 0px 5px 0px;
+    margin: 0px;
+    font-family: 'Fortnite', sans-serif;
+    font-size: 1.5em;
+    color: white;
+    border-bottom: 1px solid rgba(206, 207, 207, 0.45);
+    border-top: 1px solid rgba(206, 207, 207, 0.45);
+    width: 100%;
+    text-align: center;
+}
+
+.itemcardprice--primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.itemcardprice__image {
+    height: 25px;
+    width: 25px;
+    margin: 0px 2.5px;
+}
+.itemcardprice__text {
+    font-family: 'Fortnite', sans-serif;
+    padding: 10px 0px 5px 0px;
+    margin: 0px 2.5px;
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}

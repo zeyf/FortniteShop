@@ -12,7 +12,7 @@ const Navbar = (props) => {
             <ul className='navbarmenu navbarmenu--primary'>
                 <li className="navbarmenu__item">
                     <button className='navbarmenu__button'>
-                        CHECK YOUR STATS
+                        SHOP
                         </button>
                 </li>
             </ul>

@@ -1,12 +1,18 @@
 import React from 'react';
 import ShopContext from '../../context/ShopContext/ShopContext';
 import {Link} from 'react-router-dom'
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import './ShopItemCard.css'
 import VBUCKS from '../../../media/images/VBUCKS.png';
 import ItemContext from '../../context/ItemContext/ItemContext';
 
 const ShopItemCard = ({price, image, id, cardstyle, name}) => {
+
+    useEffect(()=> {
+        // This will eliminate passing prices up on click and the issues that arise like
+        // price disappearing on refresh or loading 
+        localStorage.setItem(name.toUpperCase(), price)
+    }, []);
 
     const sContext = useContext(ShopContext);
     const iContext = useContext(ItemContext);

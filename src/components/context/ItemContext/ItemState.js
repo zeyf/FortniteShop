@@ -74,7 +74,6 @@ const ItemState = (props) => {
         }
 
         const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${NameDashHandler()}`);
-        console.log(response.data.data);
         dispatch({
             type: GET_ITEM,
             payload: response.data.data

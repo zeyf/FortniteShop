@@ -36,6 +36,8 @@ const DailyShopSection = () => {
                                 return sContext.CardRarityStyles.rare;
                             } else if (raritytype === 'Icon Series') {
                                 return sContext.CardRarityStyles.iconseries;
+                            } else if (raritytype === 'Slurp Series') {
+                                return sContext.CardRarityStyles.slurpseries;
                             } else if (raritytype === 'DARK SERIES') {
                                 return sContext.CardRarityStyles.dark;
                             } else if (raritytype === 'Legendary') {

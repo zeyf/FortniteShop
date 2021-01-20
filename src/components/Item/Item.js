@@ -11,6 +11,7 @@ const Item = ({match}) => {
 
     useEffect(() => {
         iContext.GetItem(match.params.itemname);
+        //eslint-disable-next-line
     }, []);
 
     return (
