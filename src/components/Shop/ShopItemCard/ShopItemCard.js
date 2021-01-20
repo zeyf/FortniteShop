@@ -10,12 +10,13 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
 
     useEffect(()=> {
         // This will eliminate passing prices up on click and the issues that arise like
-        // price disappearing on refresh or loading 
+        // price disappearing on refresh.
+        //using local storage to setitem for each shopitem name and it's respective price
+        // allows to not rely on onClick of shopitemcard for passing up price to a state context.
         localStorage.setItem(name.toUpperCase(), price)
     }, []);
 
     const sContext = useContext(ShopContext);
-    const iContext = useContext(ItemContext);
 
     // Get type by parsing by _ for first value in id.
     // set first param in link by item type
@@ -40,7 +41,7 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
         }
     }
 
-    const NameSpaceHandler = () => {
+    const NameCharacterHandler = () => {
 
         const spaceregex = /\s/gi;
 
@@ -67,15 +68,10 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
         }
     }
 
-    const SendPrice = () => {
-        iContext.SetItemPrice(price)
-    }
-
-
     return (
         <div className='s'>
             <div className='shopitemcard shopitemcard--primary' style={cardstyle} >
-                <Link to={`/${SetLinkByIDType()}/${NameSpaceHandler()}`} className='shopitemcard__link' onClick={SendPrice}>
+                <Link to={`/${SetLinkByIDType()}/${NameCharacterHandler()}`} className='shopitemcard__link'>
                     <div className='shopitemimage shopitemimage--primary'>
                         <img src={image} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />
                     </div>

@@ -31,8 +31,17 @@ const ItemCard = () => {
             }
         },
         ItemPrice: () => {
-            if (iContext.itemprice) {
-                return iContext.itemprice
+            if (iContext.item) {
+                
+                const localStg = localStorage;
+
+                const name = iContext.item.name.toUpperCase()
+                
+                const IndexOfNameKey = Object.keys(localStg).indexOf(name);
+
+                return Object.values(localStg)[IndexOfNameKey]
+
+                
             }
         },
         ItemImage: () => {
