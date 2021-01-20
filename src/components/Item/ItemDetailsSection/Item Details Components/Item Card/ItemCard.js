@@ -99,50 +99,52 @@ const ItemCard = () => {
     }
 
     return (
-        <div className='itemdetails itemdetails--primary'>
-            <div className='itemcarddetails itemcarddetails--primary'>
-                <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
-                        <div className='itemcardimage itemcardimage--primary'>
-                            <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '250px', width: '250px', margin: '0px', padding: '0px'}} />
-                        </div>
-                        <div className="itemcardinfo itemcardinfo--primary">
-                            <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
-                            <div className='itemcardprice itemcardprice--primary'>
-                                <p className='itemcardprice__text'>{ItemFunctions.ItemInfo.ItemPrice()}</p>
+        <div className='mainitemsection mainitemsection--primary'>
+            <div className='itemdetails itemdetails--primary'>
+                <div className='itemcarddetails itemcarddetails--primary'>
+                    <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
+                            <div className='itemcardimage itemcardimage--primary'>
+                                <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '250px', width: '250px', margin: '0px', padding: '0px'}} />
                             </div>
-                        </div>
+                            <div className="itemcardinfo itemcardinfo--primary">
+                                <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
+                                <div className='itemcardprice itemcardprice--primary'>
+                                    <p className='itemcardprice__text'>{ItemFunctions.ItemInfo.ItemPrice()}</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div className='itemcardattributes itemcardattributes--primary' style={ItemFunctions.ItemInfo.CardStyle()}>
+                        <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
+                            <tbody>
+                            <tr className='itemcardattributestable__row'>
+                                <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
+                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.LastAppearanceDate()}</td>
+                            </tr>
+                            <tr className='itemcardattributestable__row'>
+                                <th className='itemcardattributestable__datahead' scope='row'>Released</th>
+                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.ReleaseDate()}</td>
+                            </tr>
+                            <tr className='itemcardattributestable__row'>
+                                <th className='itemcardattributestable__datahead' scope='row'>Season</th>
+                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Season()}</td>
+                            </tr>
+                            <tr className='itemcardattributestable__row'>
+                                <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
+                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Chapter()}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div className='itemcardattributes itemcardattributes--primary' style={ItemFunctions.ItemInfo.CardStyle()}>
-                    <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
-                        <tbody>
-                        <tr className='itemcardattributestable__row'>
-                            <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
-                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.LastAppearanceDate()}</td>
-                        </tr>
-                        <tr className='itemcardattributestable__row'>
-                            <th className='itemcardattributestable__datahead' scope='row'>Released</th>
-                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.ReleaseDate()}</td>
-                        </tr>
-                        <tr className='itemcardattributestable__row'>
-                            <th className='itemcardattributestable__datahead' scope='row'>Season</th>
-                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Season()}</td>
-                        </tr>
-                        <tr className='itemcardattributestable__row'>
-                            <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
-                            <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Chapter()}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div className='d'>
-                <div style={{color: 'white'}}>
-                    <h2>Description</h2>
-                    <p>{ItemFunctions.ItemInfo.ItemDescription()}</p>
-                </div>
-                <div style={{color: 'white'}}>
-                    <h2>Introduction</h2>
-                    <p>{ItemFunctions.ItemIntroduction.Text()}</p>
+                <div className='itemtextdetails itemtextdetails--primary'>
+                    <div className='itemdescription itemdescription--primary'>
+                        <h2 className='itemdescription__head'>Description</h2>
+                        <p className='itemdescription__text'>{ItemFunctions.ItemInfo.ItemDescription()}</p>
+                    </div>
+                    <div className='itemintroduction itemintroduction--primary'>
+                        <h2 className='itemdescription__head'>Introduction</h2>
+                        <p className='itemdescription__text'>{ItemFunctions.ItemIntroduction.Text()}</p>
+                    </div>
                 </div>
             </div>
         </div>

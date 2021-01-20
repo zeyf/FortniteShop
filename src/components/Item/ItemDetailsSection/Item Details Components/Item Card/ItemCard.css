@@ -1,10 +1,10 @@
 .itemdetails--primary {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 60%;
+    justify-content: flex-start;
+    width: 100%;
     padding: 25px;
-    border: 1px solid white;
+    background: rgba(37, 37, 37, 0.50);
 }
 
 .itemcarddetails--primary {
@@ -102,12 +102,39 @@
     padding: 0px 5px 0px 5px;
     width: 40%;
     background-color: rgba(207, 206, 207, 0.25);
+    font-style: italic;
 
 } 
 
 
-
-.d {
+.itemtextdetails--primary {
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
+    padding: 0px 10px;
+    color: white;
+}
+
+.itemintroduction--primary, .itemdescription--primary {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainitemsection--primary {
+    display: flex;
+    width: 60%;
+}
+
+@media only screen and (max-width: 600px) {
+    .itemdetails--primary {
+        display: flex;
+        flex-direction: column;
+        background: rgba(37, 37, 37, 0.01);
+    }
+    .mainitemsection--primary {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    
 }
