@@ -1,7 +1,7 @@
 import ItemContext from './ItemContext';
 import React, {useReducer} from 'react';
 import ItemReducer from './ItemReducer'
-import {GET_ITEM, SET_ITEM_PRICE, SET_LOADING} from '../types';
+import {GET_ITEM, GET_ITEM_SET, SET_LOADING} from '../types';
 import axios from 'axios';
 
 
@@ -10,6 +10,7 @@ const ItemState = (props) => {
     
     const initialState = {
         item: null,
+        ItemsOfSameSet: null,
         loading: false,
         CardRarityStyles: {
             uncommon: {
@@ -73,11 +74,22 @@ const ItemState = (props) => {
         }
 
         const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${NameCharacterHandler()}`);
-        console.log(response.data.data)
+
         dispatch({
             type: GET_ITEM,
             payload: response.data.data
         })
+    }
+
+    const GetItemSet = async (set) => {
+
+        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search/all?set=${set}`)
+        dispatch({
+            type: GET_ITEM_SET,
+            payload: response.data.data
+        })
+
+        console.log(response.data.data)
     }
 
     return <ItemContext.Provider value={{
@@ -86,7 +98,9 @@ const ItemState = (props) => {
         loading: state.loading,
         CardRarityStyles: state.CardRarityStyles,
         itemprice: state.itemprice,
-        GetItem
+        ItemsOfSameSet: state.ItemsOfSameSet,
+        GetItem,
+        GetItemSet
     }}>
 
                 {props.children}

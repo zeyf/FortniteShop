@@ -1,0 +1,51 @@
+.itemvariantssection--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    background: rgba(37, 37, 37, 0.50);
+    padding: 25px;
+    margin: 10px 0px 0px 0px;
+    color:  white;
+    
+}
+
+.itemvariantssection__head {
+    margin: 0px;
+    padding: 0px;
+    font-size: 2.5em;
+    font-family: 'Fortnite', sans-serif;
+}
+
+.itemvariants--primary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+
+
+.variantcard--primary {
+    margin: 10px;
+    height: 155px;
+    transition: 0.5s;
+}
+
+.variantcard--primary:hover {
+    border: 5px solid yellow;
+}
+
+.variantcard__image {
+    height: 150px;
+    width: 150px;
+}
+
+@media only screen and (max-width: 600px) {
+    .itemvariants--primary {
+        flex-direction: column;
+    }
+
+    .itemvariantssection--primary {
+        width: 100%;
+    }
+}

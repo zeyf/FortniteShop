@@ -138,14 +138,11 @@ const ItemCardSection = () => {
                     </div>
                 </div>
                 <div className='itemtextdetails itemtextdetails--primary'>
-                    <div className='itemdescription itemdescription--primary'>
-                        <h2 className='itemdescription__head'>Description</h2>
+                    <div className='itemdescription itemdescription--primary' style={ItemFunctions.ItemInfo.CardStyle()}>
+                        <h2 className='itemdescription__head'>DESCRIPTION</h2>
                         <p className='itemdescription__text'>{ItemFunctions.ItemInfo.ItemDescription()}</p>
                     </div>
-                    <div className='itemintroduction itemintroduction--primary'>
-                        <h2 className='itemdescription__head'>Introduction</h2>
-                        <p className='itemdescription__text'>{ItemFunctions.ItemIntroduction.Text()}</p>
-                    </div>
+
                 </div>
             </div>
             <div className='shophis shophis--primary'>

@@ -1,4 +1,4 @@
-import {GET_ITEM, SET_ITEM_PRICE, SET_LOADING} from '../types';
+import {GET_ITEM, GET_ITEM_SET, SET_LOADING} from '../types';
 
 const ItemReducer = (state, action) => {
 
@@ -17,10 +17,10 @@ const ItemReducer = (state, action) => {
                 item: action.payload,
                 loading: false
             }
-        case SET_ITEM_PRICE:
+        case GET_ITEM_SET:
             return {
                 ...state,
-                itemprice: action.payload
+                ItemsOfSameSet: action.payload
             }
     }
 }
