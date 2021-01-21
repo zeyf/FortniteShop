@@ -1,7 +1,7 @@
 import ItemContext from './ItemContext';
 import React, {useReducer} from 'react';
 import ItemReducer from './ItemReducer'
-import {GET_ITEM, GET_ITEM_SET, SET_LOADING} from '../types';
+import {GET_ITEM, GET_ITEM_SET, SET_LOADING, RELOAD_COMPONENT} from '../types';
 import axios from 'axios';
 
 
@@ -12,6 +12,16 @@ const ItemState = (props) => {
         item: null,
         ItemsOfSameSet: null,
         loading: false,
+        reloadComp: null,
+        ItemTypes: {
+            skin: 'skins',
+            backbling: 'backblings',
+            emote: 'emotes',
+            musicpack: 'musicpacks',
+            pickaxe: 'pickaxes',
+            wrap: 'wraps',
+            glider: 'gliders'
+        },
         CardRarityStyles: {
             uncommon: {
                 background: 'radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))',
@@ -92,6 +102,16 @@ const ItemState = (props) => {
         console.log(response.data.data)
     }
 
+    const ReloadComponent = (value) => {
+
+        const num = value
+
+        dispatch({
+            type: RELOAD_COMPONENT,
+            payload: num
+        })
+    }
+
     return <ItemContext.Provider value={{
         
         item: state.item,
@@ -99,8 +119,11 @@ const ItemState = (props) => {
         CardRarityStyles: state.CardRarityStyles,
         itemprice: state.itemprice,
         ItemsOfSameSet: state.ItemsOfSameSet,
+        ItemTypes: state.ItemTypes,
+        reloadComp: state.reloadComp,
         GetItem,
-        GetItemSet
+        GetItemSet,
+        ReloadComponent
     }}>
 
                 {props.children}

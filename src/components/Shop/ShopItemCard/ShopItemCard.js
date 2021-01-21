@@ -38,6 +38,8 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
             return sContext.ItemTypes.wrap;
         } else if (itemtype === 'Glider') {
             return sContext.ItemTypes.glider;
+        } else if (itemtype === 'BID') {
+            return sContext.ItemTypes.backbling;
         }
     }
 

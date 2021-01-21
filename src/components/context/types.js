@@ -5,4 +5,4 @@ export const SET_FEATURED = 'SET_FEATURED';
 export const GET_ITEM = 'GET_ITEM';
 export const SET_ITEM_PRICE = 'SET_ITEM_PRICE';
 export const GET_ITEM_SET = 'GET_ITEM_SET';
-
+export const RELOAD_COMPONENT = 'RELOAD_COMPONENT';
