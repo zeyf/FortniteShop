@@ -37,6 +37,7 @@
     border-top: 1px solid rgba(206, 207, 207, 0.45);
     width: 100%;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 .shopitemprice--primary {
@@ -58,6 +59,7 @@
     margin: 0px 2.5px;
     text-align: center;
     font-size: 2em;
+    letter-spacing: 1px;
     color: white;
 }
 

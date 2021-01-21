@@ -3,8 +3,6 @@
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
-    padding: 25px;
-    background: rgba(37, 37, 37, 0.50);
 }
 
 .itemcarddetails--primary {
@@ -42,7 +40,7 @@
 }
 
 .itemcardinfo__name {
-    padding: 10px 0px 5px 0px;
+    padding: 10px 3px 5px 3px;
     margin: 0px;
     font-family: 'Fortnite', sans-serif;
     font-size: 2em;
@@ -100,7 +98,7 @@
     font-weight: 500;
     text-align: left;
     padding: 0px 5px 0px 5px;
-    width: 40%;
+    width: 50%;
     background-color: rgba(207, 206, 207, 0.25);
     font-style: italic;
 
@@ -123,9 +121,12 @@
 .mainitemsection--primary {
     display: flex;
     width: 60%;
+    background: rgba(37, 37, 37, 0.50);
+    padding: 25px;
 }
+
 .shophis--primary {
-    margin-left: 352px;
+    width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -137,10 +138,11 @@
     .mainitemsection--primary {
         display: flex;
         width: 100%;
-        justify-content: center;
+        flex-direction: column;
     }
+
     .shophis--primary {
-        margin-left: 0px;
+        width: 100%;
+        margin: 35px 0px;
     }
-    
 }

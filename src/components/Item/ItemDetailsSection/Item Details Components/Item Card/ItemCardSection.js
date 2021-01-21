@@ -147,9 +147,10 @@ const ItemCardSection = () => {
                         <p className='itemdescription__text'>{ItemFunctions.ItemIntroduction.Text()}</p>
                     </div>
                 </div>
-                <div className='shophis shophis--primary'>
-                    <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
-                </div>
+            </div>
+            <div className='shophis shophis--primary'>
+                <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
+                {console.log(window.screen)}
             </div>
         </div>
     )
