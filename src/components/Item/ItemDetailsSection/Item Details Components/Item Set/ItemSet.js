@@ -4,7 +4,7 @@ import {useEffect, useState, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import Item from '../../../Item';
 
-const ItemSet = ({key}) => {
+const ItemSet = () => {
 
     const iContext = useContext(ItemContext);
 
@@ -64,10 +64,11 @@ const ItemSet = ({key}) => {
                 }
             }
         },
-        forceUpdate: () => {
-            console.log(iContext.reloadComp)
-            iContext.ReloadComponent(1);
-            console.log(iContext.reloadComp)
+        forceupdate: (name) => {
+
+            console.log(iContext.item)
+            iContext.GetItem(name);
+            console.log(iContext.item)
         }
     }
 
@@ -186,9 +187,15 @@ const ItemSet = ({key}) => {
             <div className="itemset itemset--primary">
                 {iContext.ItemsOfSameSet && SetFunctions.SetInfo.SetImages().map((item, i) => {
 
+                    
                     if (i < 6) {
 
-                        return  <Link to={`/${BoilerPlate.SetLinkByIDType()[i]}/${SetFunctions.SetInfo.SetItemName()[i]}`} onClick={BoilerPlate.forceUpdate} >
+                        const CurrentItemNameParam = SetFunctions.SetInfo.SetItemName()[i];
+                        const PassClickedItemName = () => {
+                            BoilerPlate.forceupdate(CurrentItemNameParam);
+                        }
+
+                        return  <Link to={`/${BoilerPlate.SetLinkByIDType()[i]}/${SetFunctions.SetInfo.SetItemName()[i]}`} onClick={PassClickedItemName}>
                                     <div className='setitemcard setitemcard--primary'>
                                         <img src={item} className='setitemcard__image' style={SetFunctions.SetInfo.SetRarity()[i]} />
                                     </div>
