@@ -67,6 +67,8 @@ const ItemCardSection = () => {
                     if (iContext.item.shopHistory) {
 
                         return iContext.item.shopHistory[0].split(/T/gi)[0]
+                    } else {
+                        return `Battle Pass`
                     }
                 }
             },
@@ -75,6 +77,8 @@ const ItemCardSection = () => {
                     if (iContext.item.shopHistory) {
 
                         return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
+                    } else {
+                        return `-`
                     }
                 }
             }
@@ -102,6 +106,13 @@ const ItemCardSection = () => {
                     return iContext.item.introduction.season;
                 }
             }
+        },
+        ItemHistory: {
+            Length: () => {
+                if (iContext.item && iContext.item.shopHistory && iContext.item.shopHistory.length > 0) {
+                    return <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
+                }
+            }
         }
     }
 
@@ -111,7 +122,7 @@ const ItemCardSection = () => {
                 <div className='itemcarddetails itemcarddetails--primary'>
                     <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
                             <div className='itemcardimage itemcardimage--primary'>
-                                <img src={ItemFunctions.ItemInfo.ItemImage()} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
+                                <img src={ItemFunctions.ItemInfo.ItemImage()} alt={`${ItemFunctions.ItemInfo.ItemName()}'s ITEM CARD`} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
                             </div>
                             <div className="itemcardinfo itemcardinfo--primary">
                                 <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
@@ -152,8 +163,7 @@ const ItemCardSection = () => {
                 </div>
             </div>
             <div className='shophis shophis--primary'>
-                <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
-                {console.log(window.screen)}
+                {ItemFunctions.ItemHistory.Length()}
             </div>
         </div>
     )

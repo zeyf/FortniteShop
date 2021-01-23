@@ -1,8 +1,8 @@
 import ItemContext from '../../../../context/ItemContext/ItemContext'
 import './ItemSet.css'
-import {useEffect, useState, useContext} from 'react';
+import {useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
-import Item from '../../../Item';
+
 
 const ItemSet = () => {
 
@@ -58,6 +58,7 @@ const ItemSet = () => {
                             return iContext.ItemTypes.backbling
                         }
                     })
+                    //eslint-disable-next-line
 
                     return returntype;
 
@@ -138,6 +139,7 @@ const ItemSet = () => {
                             }
                             
                         })
+                        //eslint-disable-next-line
 
                         return Images
                     }
@@ -176,6 +178,7 @@ const ItemSet = () => {
 
     useEffect(() => {
         SetFunctions.GetSet();
+        //eslint-disable-next-line
     }, [])
 
     return (
@@ -196,7 +199,7 @@ const ItemSet = () => {
 
                         return  <Link to={`/${BoilerPlate.SetLinkByIDType()[i]}/${SetFunctions.SetInfo.SetItemName()[i]}`} onClick={PassClickedItemName}>
                                     <div className='setitemcard setitemcard--primary'>
-                                        <img src={item} className='setitemcard__image' style={SetFunctions.SetInfo.SetRarity()[i]} />
+                                        <img src={item} className='setitemcard__image' style={SetFunctions.SetInfo.SetRarity()[i]} alt={`${SetFunctions.SetInfo.SetItemName()[i].replaceAll(/-/gi, ' ').replaceAll(/~/gi, '-').toUpperCase()} FROM ITEM SET ${SetFunctions.SetInfo.SetName()}`} />
                                     </div>
                                 </Link>
                     }

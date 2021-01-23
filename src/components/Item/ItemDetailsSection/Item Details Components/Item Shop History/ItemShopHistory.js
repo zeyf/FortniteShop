@@ -27,6 +27,7 @@ const ItemShopHistory = ({price}) => {
     }
 
     return (
+        
         <div className="itemshophistory itemshophistory--primary">
             <div className='tablesummaryhead tablesummaryhead--primary'>
                 SHOP HISTORY
@@ -40,7 +41,7 @@ const ItemShopHistory = ({price}) => {
                     </tr>
                     </thead>
                     <tbody>
-                        {iContext.item ? mutableShopHistory().reverse().map((item, i) => {
+                        {iContext.item && iContext.item.shopHistory && iContext.item.shopHistory.length > 0 && mutableShopHistory().reverse().map((item, i) => {
 
                             const date = item.split(/T/gi)[0]
 
@@ -53,9 +54,7 @@ const ItemShopHistory = ({price}) => {
                                         </span>
                                     </td>
                                    </tr>;
-                        }) : <tr className='historytable__bodyrow'>
-                        <td className='historytable__bodydata'>
-                            <span className='historytable__span'>Battle Pass Item</span></td></tr>}
+                        })}
                     </tbody>
 
                 </table>
