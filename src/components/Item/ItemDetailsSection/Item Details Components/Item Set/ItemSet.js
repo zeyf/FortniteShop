@@ -65,10 +65,7 @@ const ItemSet = () => {
             }
         },
         forceupdate: (name) => {
-
-            console.log(iContext.item)
             iContext.GetItem(name);
-            console.log(iContext.item)
         }
     }
 
@@ -154,16 +151,19 @@ const ItemSet = () => {
                             const spaceregex = /\s/gi;
                             const dashregex = /-/gi;
 
-                            if (spaceregex.test(name)) {   
-                        
+                            if (spaceregex.test(name) === true && dashregex.test(name) === false) {
                                 const SpaceReplaceResult = name.replaceAll(spaceregex, '-').toLowerCase()
                                 return SpaceReplaceResult;
                     
-                            } else if (dashregex.test(name)) { 
-                    
+                            } else if (dashregex.test(name) === true && spaceregex.test(name) === false) { 
                                 const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
                                 return DashReplaceResult
                     
+                            } else if(dashregex.test(name) === true && spaceregex.test(name) === true) {
+                                const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
+                                const ReplaceSpacesToo = DashReplaceResult.replaceAll(spaceregex, '-')
+                                console.log(ReplaceSpacesToo)
+                                return ReplaceSpacesToo
                             } else {
                                 return name.toLowerCase();
                             }

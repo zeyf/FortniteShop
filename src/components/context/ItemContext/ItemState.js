@@ -72,12 +72,17 @@ const ItemState = (props) => {
             const tilderegex = /~/gi;
 
 
-            if (dashregex.test(name)) {
+            if (dashregex.test(name) === true && tilderegex.test(name) === false) {
                 const NameDashResult = name.replaceAll(dashregex, ' ')
                 return NameDashResult
-            } else if (tilderegex.test(name)) {
+            } else if (tilderegex.test(name) === true && dashregex.test(name) === false) {
                 const NameTildeResult = name.replaceAll(tilderegex, '-')
                 return NameTildeResult
+            } else if (tilderegex.test(name) === true && dashregex.test(name) === true) {
+                const replacedash = name.replaceAll(dashregex, ' ');
+                const replacetilde = replacedash.replaceAll(tilderegex, '-');
+                console.log(replacetilde)
+                return replacetilde
             } else {
                 return name
             }
