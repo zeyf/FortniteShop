@@ -107,12 +107,18 @@ const ShopState = (props) => {
             return rarity;
         });
 
+        const FeaturedItemBundleStatus = response.data.data.featured.entries.map((item, i) => {
+            return item.bundle
+        })
+        console.log(FeaturedItemBundleStatus)
+
         const FeaturedItemsObj = {
             FeaturedItemfinalPrices,
             FeaturedItemItemsNames,
             FeaturedItemItemsImages,
             FeaturedItemItemsRarity,
-            FeaturedItemItemsIDs
+            FeaturedItemItemsIDs,
+            FeaturedItemBundleStatus
         }
 
         // DAILY ITEM SPECIFIC DATA FOR DAILYITEMOBJ //
@@ -154,13 +160,18 @@ const ShopState = (props) => {
             return rarity;
         });
 
+        const dailyItemBundleStatus = response.data.data.daily.entries.map((item, i) => {
+            return item.bundle
+        })
+        
         
         const DailyItemsObj = {
             dailyItemfinalPrices,
             dailyItemItemsNames,
             dailyItemItemsImages,
             dailyItemItemsRarity,
-            dailyItemItemsIDs
+            dailyItemItemsIDs,
+            dailyItemBundleStatus
         }
 
         dispatch({

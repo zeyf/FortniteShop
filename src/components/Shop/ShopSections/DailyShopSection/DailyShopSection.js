@@ -13,6 +13,36 @@ const DailyShopSection = () => {
             <p className='dailyview__head viewhead'>DAILY</p>
             <div className='dailyitemsection dailyitemsection--primary'>
                 {sContext.CurrentDaily && sContext.CurrentDaily.dailyItemItemsImages.map((item, i) => {
+
+                        const BundleCheck = {
+                            BundleName: () => {
+                                if (sContext.CurrentDaily.dailyItemBundleStatus) {
+                                    const nameslist = sContext.CurrentDaily.dailyItemBundleStatus.map((current, pos) => {
+                                        
+                                        if (current) {
+                                            return current.name
+                                        } else {
+                                            return current
+                                        }
+                                    })
+                                    return nameslist
+                                }
+                            },
+                            BundleImage: () => {
+                                if (sContext.CurrentDaily.dailyItemBundleStatus) {
+                                    const imagelist = sContext.CurrentDaily.dailyItemBundleStatus.map((curr, pos) => {
+                                        if (curr) {
+                                            return curr.image
+                                        } else {
+                                            return curr
+                                        }
+                                    })
+                                    return imagelist
+                                }
+                            }
+                        }
+
+
                         const price = sContext.CurrentDaily && sContext.CurrentDaily.dailyItemfinalPrices.map((current, i) => {
                             return current;
                         });
@@ -50,9 +80,9 @@ const DailyShopSection = () => {
                         });
 
                         if (item.length > 1) {
-                            return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
+                            return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                         } else {
-                            return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
+                            return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                         }   
                     })}
             </div>

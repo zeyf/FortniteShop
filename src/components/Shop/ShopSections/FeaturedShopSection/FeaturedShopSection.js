@@ -7,6 +7,7 @@ import ShopItemCard from '../../ShopItemCard/ShopItemCard';
 const FeaturedShopSection = () => {
 
     const sContext = useContext(ShopContext);
+    console.log(sContext.CurrentFeatured)
 
     return (
         <div className='featuredview featuredview--primary'>
@@ -14,10 +15,40 @@ const FeaturedShopSection = () => {
             <div>
             <div className='featureditemsection featureditemsection--primary'>
                 {sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsImages.map((item, i) => {
-                            const price = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemfinalPrices.map((current, i) => {
+
+                            const BundleCheck = {
+                                BundleName: () => {
+                                    if (sContext.CurrentFeatured.FeaturedItemBundleStatus) {
+                                        const nameslist = sContext.CurrentFeatured.FeaturedItemBundleStatus.map((current, pos) => {
+                                            
+                                            if (current) {
+                                                return current.name
+                                            } else {
+                                                return current
+                                            }
+                                        })
+                                        return nameslist
+                                    }
+                                },
+                                BundleImage: () => {
+                                    if (sContext.CurrentFeatured.FeaturedItemBundleStatus) {
+                                        const imagelist = sContext.CurrentFeatured.FeaturedItemBundleStatus.map((curr, pos) => {
+                                            if (curr) {
+                                                return curr.image
+                                            } else {
+                                                return curr
+                                            }
+                                        })
+                                        return imagelist
+                                    }
+                                }
+                            }
+                            
+
+                            const price = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemfinalPrices.map((current, pos) => {
                                 return current;
                             });
-                            const id = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsIDs.map((current, i) => {
+                            const id = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsIDs.map((current, pos) => {
                                 if (typeof(current[0]) === 'object')
                                     return String(current[0]);
                                 else {
@@ -25,7 +56,7 @@ const FeaturedShopSection = () => {
                                 }
                             });
 
-                            const rarity = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsRarity.map((current, i) => {
+                            const rarity = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsRarity.map((current, pos) => {
                                 
                                 const raritytype = current[0];
                                 
@@ -46,14 +77,14 @@ const FeaturedShopSection = () => {
                                 }
                             });
 
-                            const name = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsNames.map((current, i) => {
+                            const name = sContext.CurrentFeatured && sContext.CurrentFeatured.FeaturedItemItemsNames.map((current, pos) => {
                                 return current[0];
                             });
 
                             if (item.length > 1) {
-                                return <ShopItemCard price={price[i]} image={item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
+                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
                             } else {
-                                return <ShopItemCard price={price[i]} image={item} id={id[i]} cardstyle={rarity[i]} name={name[i]}  />
+                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i]  : item} id={id[i]} cardstyle={rarity[i]} name={name[i]}  />
                             }   
                         })}
                 </div>
