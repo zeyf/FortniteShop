@@ -64,12 +64,18 @@ const ItemCardSection = () => {
         ItemDates: {
             ReleaseDate: () => {
                 if (iContext.item) {
-                    return iContext.item.shopHistory[0].split(/T/gi)[0]
+                    if (iContext.item.shopHistory) {
+
+                        return iContext.item.shopHistory[0].split(/T/gi)[0]
+                    }
                 }
             },
             LastAppearanceDate: () => {
                 if (iContext.item) {
-                    return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
+                    if (iContext.item.shopHistory) {
+
+                        return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
+                    }
                 }
             }
         },

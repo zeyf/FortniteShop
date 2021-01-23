@@ -12,7 +12,13 @@ const ItemShopHistory = ({price}) => {
 
             const {item} = iContext;
             const {shopHistory} = item;
-            return [...shopHistory]
+
+            if (shopHistory) {
+
+                return [...shopHistory]
+            } else {
+                return []
+            }
 
             // a practical use for the spread operator...
             // couldn't do array reverse (to have recent appearances first)
@@ -34,7 +40,7 @@ const ItemShopHistory = ({price}) => {
                     </tr>
                     </thead>
                     <tbody>
-                        {iContext.item && mutableShopHistory().reverse().map((item, i) => {
+                        {iContext.item ? mutableShopHistory().reverse().map((item, i) => {
 
                             const date = item.split(/T/gi)[0]
 
@@ -47,7 +53,9 @@ const ItemShopHistory = ({price}) => {
                                         </span>
                                     </td>
                                    </tr>;
-                        })}
+                        }) : <tr className='historytable__bodyrow'>
+                        <td className='historytable__bodydata'>
+                            <span className='historytable__span'>Battle Pass Item</span></td></tr>}
                     </tbody>
 
                 </table>

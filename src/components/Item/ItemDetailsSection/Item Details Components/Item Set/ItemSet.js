@@ -162,7 +162,6 @@ const ItemSet = () => {
                             } else if(dashregex.test(name) === true && spaceregex.test(name) === true) {
                                 const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
                                 const ReplaceSpacesToo = DashReplaceResult.replaceAll(spaceregex, '-')
-                                console.log(ReplaceSpacesToo)
                                 return ReplaceSpacesToo
                             } else {
                                 return name.toLowerCase();
