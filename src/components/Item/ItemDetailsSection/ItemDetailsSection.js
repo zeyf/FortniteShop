@@ -20,7 +20,7 @@ const ItemDetailsSection = () => {
     const CheckForSet = () => {
         if (iContext.item) {
             if (iContext.item.set) {
-                return <ItemSet />
+                return <ItemSet length={5} />
             }
         }
     }

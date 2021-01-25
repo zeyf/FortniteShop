@@ -4,7 +4,7 @@ import {useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 
 
-const ItemSet = () => {
+const ItemSet = ({length}) => {
 
     const iContext = useContext(ItemContext);
 
@@ -172,6 +172,22 @@ const ItemSet = () => {
                         return name
                     }
                 }
+            },
+            SetLink: () => {
+                const spaceregex = /\s/gi;
+                const dashregex = /-/gi;
+                if (spaceregex.test(SetFunctions.SetInfo.SetName()) === true && dashregex.test(SetFunctions.SetInfo.SetName()) === false) {
+                    return SetFunctions.SetInfo.SetName().replaceAll(spaceregex, '-').toLowerCase()
+                } else if (spaceregex.test(SetFunctions.SetInfo.SetName()) === false && dashregex.test(SetFunctions.SetInfo.SetName()) === true) {
+                    return SetFunctions.SetInfo.SetName().replaceAll(dashregex, '~')
+                } else if (spaceregex.test(SetFunctions.SetInfo.SetName()) === true && dashregex.test(SetFunctions.SetInfo.SetName()) === true) {
+                    const replacedashes = SetFunctions.SetInfo.SetName().replaceAll(dashregex, '~');
+                    const replacespaces = replacedashes.replaceAll(spaceregex, '-');
+                    return replacespaces;
+                }
+                 else if (spaceregex.test(SetFunctions.SetInfo.SetName()) === false && dashregex.test(SetFunctions.SetInfo.SetName()) === false) {
+                    return SetFunctions.SetInfo.SetName().toLowerCase()
+                }
             }
         }
     }
@@ -184,20 +200,20 @@ const ItemSet = () => {
     return (
         <div className='itemsetsection itemsetsection--primary'>
             <h2 className="itemsetsection__head">
-                PART OF THE <span style={{color: '#ffe227'}}>{SetFunctions.SetInfo.SetName()} SET</span> ({SetFunctions.SetInfo.SetLength()})
+                PART OF THE <Link to={`/sets/${SetFunctions.SetInfo.SetLink()}`} style={{textDecoration: 'none'}}><span style={{color: '#ffe227'}}>{SetFunctions.SetInfo.SetName()} SET</span></Link> ({SetFunctions.SetInfo.SetLength()})
             </h2>
             <div className="itemset itemset--primary">
                 {iContext.ItemsOfSameSet && SetFunctions.SetInfo.SetImages().map((item, i) => {
 
                     
-                    if (i < 6) {
+                    if (i < length) {
 
                         const CurrentItemNameParam = SetFunctions.SetInfo.SetItemName()[i];
                         const PassClickedItemName = () => {
                             BoilerPlate.forceupdate(CurrentItemNameParam);
                         }
 
-                        return  <Link to={`/${BoilerPlate.SetLinkByIDType()[i]}/${SetFunctions.SetInfo.SetItemName()[i]}`} onClick={PassClickedItemName}>
+                        return  <Link to={`/items/${BoilerPlate.SetLinkByIDType()[i]}/${SetFunctions.SetInfo.SetItemName()[i]}`} onClick={PassClickedItemName}>
                                     <div className='setitemcard setitemcard--primary'>
                                         <img src={item} className='setitemcard__image' style={SetFunctions.SetInfo.SetRarity()[i]} alt={`${SetFunctions.SetInfo.SetItemName()[i].replaceAll(/-/gi, ' ').replaceAll(/~/gi, '-').toUpperCase()} FROM ITEM SET ${SetFunctions.SetInfo.SetName()}`} />
                                     </div>

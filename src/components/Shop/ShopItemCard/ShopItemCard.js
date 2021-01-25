@@ -6,14 +6,14 @@ import './ShopItemCard.css'
 import VBUCKS from '../../../media/images/VBUCKS.png';
 import ItemContext from '../../context/ItemContext/ItemContext';
 
-const ShopItemCard = ({price, image, id, cardstyle, name}) => {
+const ShopItemCard = ({price, image, id, cardstyle, name, BundleName}) => {
 
     useEffect(()=> {
         // This will eliminate passing prices up on click and the issues that arise like
         // price disappearing on refresh.
         //using local storage to setitem for each shopitem name and it's respective price
         // allows to not rely on onClick of shopitemcard for passing up price to a state context.
-        localStorage.setItem(name.toUpperCase(), price)
+        localStorage.setItem(name.toUpperCase() || BundleName, price)
     }, []);
 
     const sContext = useContext(ShopContext);
@@ -76,7 +76,7 @@ const ShopItemCard = ({price, image, id, cardstyle, name}) => {
     return (
         <div className='s'>
             <div className='shopitemcard shopitemcard--primary' style={cardstyle} >
-                <Link to={`/${SetLinkByIDType()}/${NameCharacterHandler()}`} className='shopitemcard__link'>
+                <Link to={`/items/${SetLinkByIDType()}/${NameCharacterHandler()}`} className='shopitemcard__link'>
                     <div className='shopitemimage shopitemimage--primary'>
                         <img src={image} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />
                     </div>

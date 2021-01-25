@@ -1,25 +1,32 @@
-import {GET_ITEM, GET_ITEM_SET, SET_LOADING, RELOAD_COMPONENT} from '../types';
+import {SET_LOADING, GET_SET, SET_NAME} from '../types';
 
-const ItemReducer = (state, action) => {
+const SetReducer = (state, action) => {
+
+
+
+
     switch(action.type) {
         default:
-            return state
+            return state;
+        
         case SET_LOADING:
             return {
                 ...state,
                 loading: true
             }
-        case GET_ITEM:
+        case GET_SET:
             return {
                 ...state,
-                item: action.payload,
+                SetInfo: action.payload,
                 loading: false
             }
-        case GET_ITEM_SET:
+        case SET_NAME:
             return {
                 ...state,
-                ItemsOfSameSet: action.payload
+                SetName: action.payload
             }
+
     }
 }
-export default ItemReducer;
+
+export default SetReducer;

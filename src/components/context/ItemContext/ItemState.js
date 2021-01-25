@@ -1,7 +1,7 @@
 import ItemContext from './ItemContext';
 import React, {useReducer} from 'react';
 import ItemReducer from './ItemReducer'
-import {GET_ITEM, GET_ITEM_SET, SET_LOADING, RELOAD_COMPONENT} from '../types';
+import {GET_ITEM, GET_ITEM_SET, SET_LOADING} from '../types';
 import axios from 'axios';
 
 
@@ -12,7 +12,6 @@ const ItemState = (props) => {
         item: null,
         ItemsOfSameSet: null,
         loading: false,
-        reloadComp: null,
         ItemTypes: {
             skin: 'skins',
             backbling: 'backblings',
@@ -107,16 +106,6 @@ const ItemState = (props) => {
 
     }
 
-    const ReloadComponent = (value) => {
-
-        const num = value
-
-        dispatch({
-            type: RELOAD_COMPONENT,
-            payload: num
-        })
-    }
-
     return <ItemContext.Provider value={{
         
         item: state.item,
@@ -125,10 +114,8 @@ const ItemState = (props) => {
         itemprice: state.itemprice,
         ItemsOfSameSet: state.ItemsOfSameSet,
         ItemTypes: state.ItemTypes,
-        reloadComp: state.reloadComp,
         GetItem,
-        GetItemSet,
-        ReloadComponent
+        GetItemSet
     }}>
 
                 {props.children}

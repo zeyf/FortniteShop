@@ -82,9 +82,9 @@ const FeaturedShopSection = () => {
                             });
 
                             if (item.length > 1) {
-                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} />
+                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} cardstyle={rarity[i]} name={name[i]} BundleName={BundleCheck.BundleName()[i] && BundleCheck.BundleName()[i]} />
                             } else {
-                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i]  : item} id={id[i]} cardstyle={rarity[i]} name={name[i]}  />
+                                return <ShopItemCard price={price[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i]  : item} id={id[i]} cardstyle={rarity[i]} name={name[i]} BundleName={BundleCheck.BundleName()[i] && BundleCheck.BundleName()[i]} />
                             }   
                         })}
                 </div>
