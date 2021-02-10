@@ -5,7 +5,7 @@ import ItemDetailsSection from '../Item/ItemDetailsSection/ItemDetailsSection'
 import './Item.css';
 
 const Item = ({match}) => {
-    const {GetItem} = useContext(ItemContext);
+    const {GetItem, loading} = useContext(ItemContext);
     
     useEffect(() => {
         GetItem(match.params.itemname);
@@ -15,7 +15,7 @@ const Item = ({match}) => {
     return (
         <div className='item item--primary'>
 
-            {iContext.loading ? <Spinner /> :
+            {loading ? <Spinner /> :
                 <>
                     <ItemDetailsSection />
                 </>

@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom'
 import {useEffect} from 'react'
 import './ShopItemCard.css'
 import VBUCKS from '../../../media/images/VBUCKS.png';
-import FormatFunctions from '../../../AppWIdeFunctions/FormatFunctions'
+import FormatFunctions from '../../../App Wide Functions/FormatFunctions'
 
-const ShopItemCard = ({price, image, id, cardstyle, name, BundleName}) => {
+const ShopItemCard = ({price, image, id, rarity, name, BundleName}) => {
 
     useEffect(()=> {
         localStorage.setItem(name.toUpperCase() || BundleName, price)
@@ -15,7 +15,7 @@ const ShopItemCard = ({price, image, id, cardstyle, name, BundleName}) => {
 
     return (
         <div className='s'>
-            <div className='shopitemcard shopitemcard--primary' style={cardstyle} >
+            <div className='shopitemcard shopitemcard--primary' style={rarity} >
                 <Link to={`/items/${SetLinkByIDType(id)}/${NameCharacterHandler(name)}`} className='shopitemcard__link'>
                     <div className='shopitemimage shopitemimage--primary'>
                         <img src={image} style={{height: '150px', width: '150px', margin: '0px', padding: '0px'}} />

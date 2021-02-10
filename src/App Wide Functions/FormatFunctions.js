@@ -1,6 +1,6 @@
 
 
-export const FormatFunctions = {
+const FormatFunctions = {
 
     SetLinkByIDType: (id) => {
         const itemtype = id.split('_')[0];
@@ -42,8 +42,8 @@ export const FormatFunctions = {
 
         if (type === 'Uncommon') 
             return {
-                background: 'radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))',
-                border: '3px solid rgb(135, 227, 57)'
+                background: "radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))",
+                border: "3px solid rgb(135, 227, 57)"
             }
         if (type === 'Epic') 
             return {
@@ -75,8 +75,7 @@ export const FormatFunctions = {
                 background: 'radial-gradient(rgb(234, 141, 35), rgb(120, 55, 29))',
                 border: '3px solid rgb(233, 141, 75)'
             }
-    },
-
-    
-
+    }
 }
+
+export default FormatFunctions;
