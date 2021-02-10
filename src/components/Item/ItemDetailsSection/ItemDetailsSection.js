@@ -1,27 +1,25 @@
-import React, {useContext} from 'react';
-import ItemContext from '../../context/ItemContext/ItemContext';
-import './ItemDetailsSection.css';
+import {useContext} from 'react';
 import ItemCardSection from './Item Details Components/Item Card/ItemCardSection';
 import ItemVariants from './Item Details Components/Item Variants/ItemVariants';
 import ItemSet from './Item Details Components/Item Set/ItemSet';
+import ItemContext from '../../context/ItemContext/ItemContext';
+import './ItemDetailsSection.css';
 
 const ItemDetailsSection = () => {
 
-    const iContext = useContext(ItemContext)
+    const {item} = useContext(ItemContext)
 
     const CheckForVariants = () => {
-        if (iContext.item) {
-            if (iContext.item.variants) {
-                return <ItemVariants />
-            }
+        if (item) {
+            const {variants} = item;
+            if (variants) return <ItemVariants />
         }
     }
 
     const CheckForSet = () => {
-        if (iContext.item) {
-            if (iContext.item.set) {
-                return <ItemSet length={5} />
-            }
+        if (item) {
+            const {set} = item;
+            if (set) return <ItemSet length={5} />
         }
     }
 

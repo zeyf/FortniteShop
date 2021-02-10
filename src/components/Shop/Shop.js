@@ -6,21 +6,18 @@ import './Shop.css';
 import Spinner from '../layout/spinner/Spinner';
 const Shop = (props) => {
     
-    const sContext = useContext(ShopContext);
+    const {GetCurrentShop, loading} = useContext(ShopContext);
 
     useEffect(() => {
-        sContext.GetCurrentShop()
+        GetCurrentShop()
         // eslint-disable-next-line
     }, [])
-
-    
-
 
     return (
         <div className='shop shop--primary'>
             <h1 className='shopview__head'>Today's Shop</h1>
             <div className="shopview shopview--primary">
-                {sContext.loading ? <Spinner /> :
+                {loading ? <Spinner /> :
                     <>    
                         <DailyShopSection key='dailyshopsection' />
                         <FeaturedShopSection key='featuredshopsection' />

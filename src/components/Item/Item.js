@@ -5,12 +5,10 @@ import ItemDetailsSection from '../Item/ItemDetailsSection/ItemDetailsSection'
 import './Item.css';
 
 const Item = ({match}) => {
-
-    const iContext = useContext(ItemContext);
-
-
+    const {GetItem} = useContext(ItemContext);
+    
     useEffect(() => {
-        iContext.GetItem(match.params.itemname);
+        GetItem(match.params.itemname);
         //eslint-disable-next-line
     }, []);
 

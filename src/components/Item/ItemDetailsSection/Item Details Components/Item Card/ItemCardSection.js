@@ -2,132 +2,52 @@ import React, {useContext} from 'react'
 import ItemContext from '../../../../context/ItemContext/ItemContext'
 import './ItemCard.css';
 import ShopHistory from '../Item Shop History/ItemShopHistory';
-
+import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
+import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions';
+import ItemShopHistory from '../Item Shop History/ItemShopHistory';
 
 const ItemCardSection = () => {
 
-    const iContext = useContext(ItemContext);
-    
-    const ItemFunctions = {
-    
-        ItemInfo: {
-            
-            CardStyle: () => {
-                if (iContext.item) {
-                    const itemrarity = iContext.item.rarity.displayValue;
-                    
-                    if(itemrarity === 'Uncommon') {
-                        return iContext.CardRarityStyles.uncommon;
-                    } else if (itemrarity === 'Epic') {
-                        return iContext.CardRarityStyles.epic;
-                    } else if (itemrarity === 'Rare') {
-                        return iContext.CardRarityStyles.rare;
-                    } else if (itemrarity === 'Icon Series') {
-                        return iContext.CardRarityStyles.iconseries;
-                    } else if (itemrarity === 'Slurp Series') {
-                        return iContext.CardRarityStyles.slurpseries;
-                    } else if (itemrarity === 'DARK SERIES') {
-                        return iContext.CardRarityStyles.dark;
-                    } else if (itemrarity === 'Legendary') {
-                        return iContext.CardRarityStyles.legendary;
-                    }
-                }
-            },
-            ItemPrice: () => {
-                if (iContext.item) {
-                    const name = iContext.item.name.toUpperCase()
-                    const IndexOfNameKey = Object.keys(localStorage).indexOf(name);
-                    return Object.values(localStorage)[IndexOfNameKey]
-    
-                }
-            },
-            ItemImage: () => {
-                if (iContext.item) {
-                    if (iContext.item.images.featured) {
-                        return iContext.item.images.featured
-                    } else {
-                        return iContext.item.images.icon;
-                    }
-                }
-            },
-            ItemName: () => {
-                if (iContext.item) {
-                    return iContext.item.name.toUpperCase();
-                }
-            },
-            ItemDescription: () => {
-                if (iContext.item) {
-                    return `"${iContext.item.description}"`
-                }
-            }
-        },
-        ItemDates: {
-            ReleaseDate: () => {
-                if (iContext.item) {
-                    if (iContext.item.shopHistory) {
+    const {item} = useContext(ItemContext);
 
-                        return iContext.item.shopHistory[0].split(/T/gi)[0]
-                    } else {
-                        return `Battle Pass`
-                    }
-                }
-            },
-            LastAppearanceDate: () => {
-                if (iContext.item) {
-                    if (iContext.item.shopHistory) {
-
-                        return iContext.item.shopHistory[iContext.item.shopHistory.length - 1].split(/T/gi)[0]
-                    } else {
-                        return `-`
-                    }
-                }
-            }
-        },
-        ItemIntroduction: {
-            Season: () => {
-                if (iContext.item) {
-                    return iContext.item.introduction.season;
-                }
-            },
-            Chapter: () => {
-                if (iContext.item) {
-                    return iContext.item.introduction.chapter;
-                }
-            },
-            Text: () => {
-                if (iContext.item) {
-                    return iContext.item.introduction.text;
-                }
-            }
-        },
-        ItemSet: {
-            Season: () => {
-                if (iContext.item) {
-                    return iContext.item.introduction.season;
-                }
-            }
-        },
-        ItemHistory: {
-            Length: () => {
-                if (iContext.item && iContext.item.shopHistory && iContext.item.shopHistory.length > 0) {
-                    return <ShopHistory price={ItemFunctions.ItemInfo.ItemPrice()}/>
-                }
-            }
-        }
+    const ReturnItem = (item) => {
+        if (item) return item
     }
 
+    const {
+        name,
+        description,
+        images,
+        rarity,
+        shopHistory,
+        introduction
+    } = ReturnItem(item);
+
+    const {
+        ItemName, 
+        ItemDescription, 
+        ItemImage, 
+        ItemPrice, 
+        ItemReleaseDate,
+        ItemLastSeenDate,
+        ItemIntroduction,
+        ItemShopHistoryTable
+    } = ItemFunctions;
+
+    const {setCardRarityStyle} = FormatFunctions;
+    
     return (
         <div className='mainitemsection mainitemsection--primary'>
             <div className='itemdetails itemdetails--primary'>
                 <div className='itemcarddetails itemcarddetails--primary'>
-                    <div className='itemcard itemcard--primary' style={ItemFunctions.ItemInfo.CardStyle()} >
+                    <div className='itemcard itemcard--primary' style={setCardRarityStyle(rarity.displayValue)} >
                             <div className='itemcardimage itemcardimage--primary'>
-                                <img src={ItemFunctions.ItemInfo.ItemImage()} alt={`${ItemFunctions.ItemInfo.ItemName()}'s ITEM CARD`} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
+                                <img src={ItemImage(images)} alt={`${ItemName(name)}'s ITEM CARD`} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
                             </div>
                             <div className="itemcardinfo itemcardinfo--primary">
-                                <p className='itemcardinfo__name'>{ItemFunctions.ItemInfo.ItemName()}</p>
+                                <p className='itemcardinfo__name'>{ItemName(name)}</p>
                                 <div className='itemcardprice itemcardprice--primary'>
-                                    <p className='itemcardprice__text'>{ItemFunctions.ItemInfo.ItemPrice()}</p>
+                                    <p className='itemcardprice__text'>{ItemPrice(name)}</p>
                                 </div>
                             </div>
                     </div>
@@ -136,19 +56,19 @@ const ItemCardSection = () => {
                             <tbody>
                             <tr className='itemcardattributestable__row'>
                                 <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
-                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.LastAppearanceDate()}</td>
+                                <td className='itemcardattributestable__data'>{ItemLastSeenDate(shopHistory)}</td>
                             </tr>
                             <tr className='itemcardattributestable__row'>
                                 <th className='itemcardattributestable__datahead' scope='row'>Released</th>
-                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemDates.ReleaseDate()}</td>
+                                <td className='itemcardattributestable__data'>{ItemReleaseDate(shopHistory)}</td>
                             </tr>
                             <tr className='itemcardattributestable__row'>
                                 <th className='itemcardattributestable__datahead' scope='row'>Season</th>
-                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Season()}</td>
+                                <td className='itemcardattributestable__data'>{ItemIntroduction(introduction, 'season')}</td>
                             </tr>
                             <tr className='itemcardattributestable__row'>
                                 <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
-                                <td className='itemcardattributestable__data'>{ItemFunctions.ItemIntroduction.Chapter()}</td>
+                                <td className='itemcardattributestable__data'>{ItemIntroduction(introduction, 'chapter')}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -157,13 +77,13 @@ const ItemCardSection = () => {
                 <div className='itemtextdetails itemtextdetails--primary'>
                     <div className='itemdescription itemdescription--primary' style={ItemFunctions.ItemInfo.CardStyle()}>
                         <h2 className='itemdescription__head'>DESCRIPTION</h2>
-                        <p className='itemdescription__text'>{ItemFunctions.ItemInfo.ItemDescription()}</p>
+                        <p className='itemdescription__text'>{ItemDescription(description)}</p>
                     </div>
 
                 </div>
             </div>
             <div className='shophis shophis--primary'>
-                {ItemFunctions.ItemHistory.Length()}
+                {ItemShopHistoryTable(shopHistory, ItemPrice(name))}
             </div>
         </div>
     )
