@@ -71,7 +71,6 @@ const ShopState = (props) => {
         const FeaturedItemBundleStatus = response.data.data.featured.entries.map((item, i) => {
             return item.bundle
         })
-        console.log(FeaturedItemBundleStatus)
 
         const FeaturedItemsObj = {
             FeaturedItemfinalPrices,

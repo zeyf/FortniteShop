@@ -1,0 +1,48 @@
+
+
+
+.platformbuttons--primary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.platformbuttons__epic, .platformbuttons__psn, .platformbuttons__xbox {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0px 15px;
+}
+.platformbuttons__psn {
+    padding: 10px 37.5px;
+    background: #006FCD;
+}
+
+.xboxicon {
+    height: 30px;
+    width: 30px;    
+}
+
+.psnicon {
+    height: 25px;
+    width: 25px;
+}
+
+.epicicon {
+    height: 30px;
+    width: 30px;
+}
+
+.platformbuttons__xbox {
+    padding: 7.5px 32.5px;
+    background: #4eba94;
+}
+
+.platformbuttons__epic {
+    background: #5f5f5f;
+    padding: 7.5px 32.5px;
+}

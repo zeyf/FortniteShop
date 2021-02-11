@@ -1,0 +1,67 @@
+.playerstats--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 1px solid white;
+}
+
+.overallstatscont--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.overallstats__text {
+    color: white;
+}
+
+.overallstats--primary {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.killdeathssection--primary {
+    border: 1px solid white;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #333333;
+    padding: 15px;
+    width: 75%;
+    border: 1px solid;
+}
+
+
+.headanddata--primary {
+    width: 20%;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #6930c3;
+}
+
+.headandata__head {
+    color: white;
+    font-family: 'Fortnite';
+}
+
+@media only screen and (max-width: 700px) {
+    .overallstatscont--primary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .killdeathssection--primary {
+
+    }
+}

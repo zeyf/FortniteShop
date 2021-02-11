@@ -7,23 +7,31 @@ import Item from './components/Item/Item';
 import ItemState from './components/context/ItemContext/ItemState';
 import Set from './components/Set/Set'
 import SetState from './components/context/SetContext/SetState'
+import Stats from './components/Stats/Stats'
+import StatsState from './components/context/Stats Context/StatsState'
+import PlayerStats from './components/Stats/Stat/PlayerStats';
 
 const App = () => {
   return (
     <ShopState>
       <ItemState>
-      <SetState>
-          <Router>
-            <div className="App">
-              <Navbar />
-              <Switch>
-                  <Route exact path='/' component={Shop} />
-                  <Route exact path='/shop' component={Shop} />
-                  <Route exact path='/items/:itemtype/:itemname' component={Item} />
-                  <Route exact path='/sets/:setname' component={Set} />
-              </Switch>
-            </div>
-          </Router>
+        <SetState>
+          <StatsState>
+            <Router>
+              <div className="App">
+                <Navbar />
+                <Switch>
+                    <Route exact path='/' component={Shop} />
+                    <Route exact path='/shop' component={Shop} />
+                    <Route exact path='/items/:itemtype/:itemname' component={Item} />
+                    <Route exact path='/sets/:setname' component={Set} />
+                    <Route exact path='/stats' component={Stats} />
+                    <Route exact path='/stats' component={Stats} />
+                    <Route exact path='/stats/:platform/:username' component={PlayerStats} />
+                </Switch>
+              </div>
+            </Router>
+          </StatsState>
         </SetState>
       </ItemState>
     </ShopState>

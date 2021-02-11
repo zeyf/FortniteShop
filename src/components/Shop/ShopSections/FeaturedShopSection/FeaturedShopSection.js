@@ -50,7 +50,6 @@ const FeaturedShopSection = () => {
                                 return current[0];
                             });
 
-                            console.log(rarity[i])
                             if (item.length > 1) {
                                 return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleCheck.BundleName()[i] && BundleCheck.BundleName()[i]} />
                             } else {

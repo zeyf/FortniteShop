@@ -7,3 +7,6 @@ export const SET_ITEM_PRICE = 'SET_ITEM_PRICE';
 export const GET_ITEM_SET = 'GET_ITEM_SET';
 export const GET_SET = 'GET_SET';
 export const SET_NAME = 'SET_NAME';
+export const GET_STATS = 'GET_STATS';
+export const SET_ACCOUNT_NAME = 'SET_ACCOUNT_NAME';
+export const SET_TIME_WINDOW = 'SET_TIME_WINDOW';
