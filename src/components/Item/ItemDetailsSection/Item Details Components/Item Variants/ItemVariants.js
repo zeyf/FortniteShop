@@ -1,65 +1,31 @@
 import React, {useContext} from 'react'
+import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions';
+import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 import ItemContext from '../../../../context/ItemContext/ItemContext';
 import './ItemVariants.css';
 
 
 const ItemVariants = () => {
 
-    const iContext = useContext(ItemContext);
-
-    const VariantFunctions = {
-
-        GetVariantImages: () => {
-            if (iContext.item) {
-                if (iContext.item.variants) {
-                    const allvariants = iContext.item.variants.map((item, i) => {
-                        const varianttypeimages = item.options.map((current, pos) => {
-
-                            return current.image;
-                        })
-                        return varianttypeimages;
-                    })
-                    return allvariants
-
-                }
-            }
-        },
-        CardStyle: () => {
-            if (iContext.item) {
-                const itemrarity = iContext.item.rarity.displayValue;
-                
-                if(itemrarity === 'Uncommon') {
-                    return iContext.CardRarityStyles.uncommon;
-                } else if (itemrarity === 'Epic') {
-                    return iContext.CardRarityStyles.epic;
-                } else if (itemrarity === 'Rare') {
-                    return iContext.CardRarityStyles.rare;
-                } else if (itemrarity === 'Icon Series') {
-                    return iContext.CardRarityStyles.iconseries;
-                } else if (itemrarity === 'Slurp Series') {
-                    return iContext.CardRarityStyles.slurpseries;
-                } else if (itemrarity === 'DARK SERIES') {
-                    return iContext.CardRarityStyles.dark;
-                } else if (itemrarity === 'Legendary') {
-                    return iContext.CardRarityStyles.legendary;
-                }
-            }
-        }
-    }
+    const {item} = useContext(ItemContext);
+    const {setCardRarityStyle} = FormatFunctions;
 
     return (
         <div className='itemvariantssection itemvariantssection--primary'>
             <h2 className="itemvariantssection__head">
-                VARIANTS
+                VARIANTS {item.variants && `(${item.variants[0].options.length})`}
             </h2>
             <div className="itemvariants itemvariants--primary">
-                    {VariantFunctions.GetVariantImages().map((item, i) => {
-                        const image = item.map((current, i) => {
+                    {item.variants && item.variants.map((variant, i) => {
+                        const {id, rarity} = item;
+                        const {displayValue} = rarity;
+                        const {options} = variant
+                        return options.map((option, i) => {
+                            const {image} = option;
                             return  <div className='variantcard variantcard--primary'>
-                                        <img src={current} className='variantcard__image' style={VariantFunctions.CardStyle()} />
+                                        <img src={image} className='variantcard__image' style={setCardRarityStyle(displayValue)} />
                                     </div>
                         })
-                        return image;
                     })}
             </div>
         </div>

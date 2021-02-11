@@ -4,7 +4,9 @@ import FeaturedShopSection from './ShopSections/FeaturedShopSection/FeaturedShop
 import DailyShopSection from './ShopSections/DailyShopSection/DailyShopSection';
 import './Shop.css';
 import Spinner from '../layout/spinner/Spinner';
-const Shop = (props) => {
+import {Helmet} from 'react-helmet';
+
+const Shop = () => {
     
     const {GetCurrentShop, loading} = useContext(ShopContext);
 
@@ -15,15 +17,14 @@ const Shop = (props) => {
 
     return (
         <div className='shop shop--primary'>
+        <Helmet><title>{loading && `FortniteBR: Item Shop, Item Data, and much more!`}</title></Helmet>
             <h1 className='shopview__head'>Today's Shop</h1>
-            <div className="shopview shopview--primary">
                 {loading ? <Spinner /> :
-                    <>    
-                        <DailyShopSection key='dailyshopsection' />
+                    <div className="shopview shopview--primary">
                         <FeaturedShopSection key='featuredshopsection' />
-                    </>
+                        <DailyShopSection key='dailyshopsection' />
+                    </div>
                 }
-            </div>
         </div>
     )
 }

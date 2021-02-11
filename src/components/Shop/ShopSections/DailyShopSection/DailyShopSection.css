@@ -2,21 +2,18 @@
     padding: 5px;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-right: 1px solid rgba(206, 207, 207, 0.15);
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
 }
 
 @media only screen and (max-width: 600px) {
     .dailyitemsection--primary {
         grid-template-columns: 1fr 1fr;
-        border-right: 1px solid transparent;
     }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1020px) {
     .dailyitemsection--primary {
         grid-template-columns: 1fr 1fr 1fr;
-        border-right: 1px solid transparent;
     }
 }

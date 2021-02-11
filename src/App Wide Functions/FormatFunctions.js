@@ -3,16 +3,19 @@
 const FormatFunctions = {
 
     SetLinkByIDType: (id) => {
-        const itemtype = id.split('_')[0];
+        if (id) {
 
-        if (itemtype === 'CID') return 'skins';
-        if (itemtype === 'EID') return 'emotes';
-        if (itemtype === 'MusicPack') return 'musicpacks'; 
-        if (itemtype === 'Pickaxe') return 'pickaxes' 
-        if (itemtype === 'Wrap') return 'wraps' 
-        if (itemtype === 'Glider') return 'gliders';
-        if (itemtype === 'BID') return 'backblings';
-        if (itemtype === 'KID') return 'katanas'
+            const itemtype = id.split('_')[0];
+            
+            if (itemtype === 'CID') return 'skins';
+            if (itemtype === 'EID') return 'emotes';
+            if (itemtype === 'MusicPack') return 'musicpacks'; 
+            if (itemtype === 'Pickaxe') return 'pickaxes' 
+            if (itemtype === 'Wrap') return 'wraps' 
+            if (itemtype === 'Glider') return 'gliders';
+            if (itemtype === 'BID') return 'backblings';
+            if (itemtype === 'KID') return 'katanas'
+        }
     },
     NameCharacterHandler: (name) => {
 

@@ -20,7 +20,9 @@
 
 .shopview--primary {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    border: 1px solid white;
+    width: 75%;
     /* border: 1px solid white; */
 }
 
@@ -43,6 +45,7 @@
     .shopview--primary {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
     .shop--primary {

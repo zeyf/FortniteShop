@@ -5,24 +5,13 @@ import VBUCKS from '../../../../../media/images/VBUCKS.png'
 
 const ItemShopHistory = ({price}) => {
 
-    const iContext = useContext(ItemContext)
+    const {loading, item} = useContext(ItemContext)
 
     const mutableShopHistory = () => {
-        if (iContext.loading === false) {
-
-            const {item} = iContext;
+        if (loading === false) {
             const {shopHistory} = item;
-
-            if (shopHistory) {
-
-                return [...shopHistory]
-            } else {
-                return []
-            }
-
-            // a practical use for the spread operator...
-            // couldn't do array reverse (to have recent appearances first)
-            // on shophistory from iContext directly as it references state (which is immutable)
+            if (shopHistory) return [...shopHistory]
+            if (!shopHistory) return []
         }
     }
 
@@ -41,7 +30,7 @@ const ItemShopHistory = ({price}) => {
                     </tr>
                     </thead>
                     <tbody>
-                        {iContext.item && iContext.item.shopHistory && iContext.item.shopHistory.length > 0 && mutableShopHistory().reverse().map((item, i) => {
+                        {item && item.shopHistory && item.shopHistory.length > 0 && mutableShopHistory().reverse().map((item, i) => {
 
                             const date = item.split(/T/gi)[0]
 

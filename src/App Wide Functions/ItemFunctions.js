@@ -1,34 +1,123 @@
 import ShopHistory from '../components/Item/ItemDetailsSection/Item Details Components/Item Shop History/ItemShopHistory'
 
 export const ItemFunctions = {
-    ItemName: (name) => {
-        return name.toUpperCase();
+    ItemName: (item, type) => {
+        if (item && type === 'title') {const {name} = item; return name;}
+        if (item && type === 'card') {const {name} = item; return name.toUpperCase();}
     },
-    ItemDescription: (description) => {
-        return `"${description}"`
+    ItemRarity: (item) => {
+        if (item) {const {rarity} = item; const {displayValue} = rarity; return displayValue;}
     },
-    ItemImage: (images) => {
-        if (images.icon) return images.icon
-        if (!images.icon) return images.featured;
+    ItemDescription: (item) => {
+        if (item) {const {description} = item; return description;}
     },
-    ItemPrice: (name) => {
-        const IndexOfNameKey = Object.keys(localStorage).indexOf(name.toUpperCase());
-        return Object.values(localStorage)[IndexOfNameKey]
+    ItemImage: (item) => {
+        if (item) {
+            const {images} = item;
+            const {featured, icon} = images;
+            if (icon) return icon
+            if (!icon) return featured
+        }
     },
-    ItemReleaseDate: (shopHistory, season) => {
-        if (shopHistory) return shopHistory[0].split(/T/gi)[0] 
-        if (!shopHistory) return `Battle Pass`
+    ItemPrice: (item) => {
+        if (item) {
+            const {name} = item;
+            const IndexOfNameKey = Object.keys(localStorage).indexOf(name.toUpperCase());
+            return Object.values(localStorage)[IndexOfNameKey]
+        }
     },
-    ItemLastSeenDate: (shopHistory) => {
-        if (shopHistory) return shopHistory[shopHistory.length - 1].split(/T/gi)[0]
-        if (!shopHistory) return `-`
+    ItemReleaseDate: (item) => {
+        if (item) {
+            const {shopHistory} = item;
+            if (shopHistory) return shopHistory[0].split(/T/gi)[0] 
+            if (!shopHistory) return `Battle Pass`
+        }
     },
-    ItemIntroduction: (introduction, type) => {
-        if (type === 'season') return introduction.season;
-        if (type === 'chapter') return introduction.chapter;
+    ItemLastSeenDate: (item) => {
+        if (item) {
+            const {shopHistory} = item;
+            if (shopHistory) return shopHistory[shopHistory.length - 1].split(/T/gi)[0]
+            if (!shopHistory) return `-`
+        }
     },
-    ItemShopHistoryTable: (shopHistory, LocalStgPrice) => {
-        if (shopHistory.length > 0) return <ShopHistory price={LocalStgPrice}/>
+    ItemIntroduction: (item, type) => {
+        if (item) {   
+            const {introduction} = item;
+            if (type === 'season') return introduction.season;
+            if (type === 'chapter') return introduction.chapter;
+        }
+    },
+    ItemShopHistoryTable: (item, LocalStgPrice) => {
+        if (item) {
+            const {shopHistory} = item;
+            if (shopHistory && shopHistory.length > 0) return <ShopHistory price={LocalStgPrice}/>
+        }
+    },
+    GetSet: (item, GetItemSet) => {
+        if (item) {
+            const {set} = item;
+            if (set) GetItemSet(set.value)
+        }
+    },
+    SetName: (item) => {
+        if (item) {
+            const {set} = item;
+            if (set) {
+                const {value} = set;
+                return value.toUpperCase()
+            } 
+        }
+    },
+    SetItemSetLink: (setname) => {
+            const spaceregex = /\s/gi;
+            const dashregex = /-/gi;
+            if (spaceregex.test(setname) && !dashregex.test(setname)) return setname.replaceAll(spaceregex, '-').toLowerCase()
+            if (!spaceregex.test(setname) && dashregex.test(setname)) return setname.replaceAll(dashregex, '~')
+            if (!spaceregex.test(setname) && !dashregex.test(setname)) return setname.toLowerCase()
+            if (spaceregex.test(setname) && dashregex.test(setname)) {
+                const replacedashes = setname.replaceAll(dashregex, '~');
+                const replacespaces = replacedashes.replaceAll(spaceregex, '-');
+                return replacespaces;
+            }
+    },
+    SetItemSetLength: (ItemsOfSameSet) => {
+        if (ItemsOfSameSet) return ItemsOfSameSet.length
+    },
+    SetItemName: (ItemsOfSameSet) => {
+        if (ItemsOfSameSet) {
+            const name = ItemsOfSameSet.map((item, i) => {
+                const {name} = item;
+                const spaceregex = /\s/gi;
+                const dashregex = /-/gi;
+
+                if (spaceregex.test(name) && !dashregex.test(name)) {
+                    const SpaceReplaceResult = name.replaceAll(spaceregex, '-').toLowerCase()
+                    return SpaceReplaceResult;
+        
+                } else if (dashregex.test(name) && !spaceregex.test(name)) { 
+                    const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
+                    return DashReplaceResult
+        
+                } else if(dashregex.test(name) && spaceregex.test(name)) {
+                    const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
+                    const ReplaceSpacesToo = DashReplaceResult.replaceAll(spaceregex, '-')
+                    return ReplaceSpacesToo
+                } else if (!dashregex.test(name) && !spaceregex.test(name)){
+                    return name.toLowerCase();
+                }
+            })
+            return name
+        }
+    },
+    SetItemSetImages: (ItemsOfSameSet) => {
+        if (ItemsOfSameSet) {
+            return ItemsOfSameSet.map((item, i) => {
+                const {images} = item;
+                const {featured, icon} = images;
+                if (icon) return icon
+                if (!icon) return featured
+            })
+        }
     },
     ReturnDaily: (data, type) => {
         if (data) {

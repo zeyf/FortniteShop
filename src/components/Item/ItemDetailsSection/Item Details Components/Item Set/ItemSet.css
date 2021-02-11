@@ -28,12 +28,16 @@
 
 .setitemcard--primary {
     margin: 10px;
-    height: 155px;
+    height: 150px;
     transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-tap-highlight-color: transparent;
 }
-
 .setitemcard--primary:hover {
-    border: 5px solid yellow;
+    opacity: 0.625;
 }
 
 .setitemcard__image {

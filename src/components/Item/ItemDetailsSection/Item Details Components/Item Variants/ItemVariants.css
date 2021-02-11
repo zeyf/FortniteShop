@@ -32,7 +32,7 @@
 }
 
 .variantcard--primary:hover {
-    border: 5px solid yellow;
+    opacity: 0.625;
 }
 
 .variantcard__image {
