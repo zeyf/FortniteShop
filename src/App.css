@@ -20,3 +20,21 @@ body {
   font-family: Poppins;
   src: url(./media/fonts/Poppins-Regular.ttf);
 }
+
+@font-face {
+  font-family: UbuntuR;
+  src: url(./media/fonts/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: UbuntuM;
+  src: url(./media/fonts/Ubuntu-Medium.ttf);
+}
+@font-face {
+  font-family: UbuntuB;
+  src: url(./media/fonts/Ubuntu-Bold.ttf);
+}
+
+@font-face {
+  font-family: Bold;
+  src: url(./media/fonts/theboldfont.ttf);
+}

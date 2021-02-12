@@ -2,7 +2,9 @@ import {
     SET_LOADING, 
     GET_STATS, 
     SET_ACCOUNT_NAME,
-    SET_TIME_WINDOW
+    SET_TIME_WINDOW,
+    SET_PLAYER_STATS,
+    SET_ACCOUNT_TYPE
 } from '../types';
 
 const StatsReducer = (state, action) => {
@@ -29,6 +31,16 @@ const StatsReducer = (state, action) => {
             return {
                 ...state,
                 TIMEWINDOW: action.payload
+            }
+        case SET_PLAYER_STATS:
+            return {
+                ...state,
+                PLAYERSTATS: null
+            }
+        case SET_ACCOUNT_TYPE:
+            return {
+                ...state,
+                ACCOUNTTYPE: action.payload
             }
     }
 }

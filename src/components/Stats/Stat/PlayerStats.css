@@ -6,62 +6,68 @@
     border: 1px solid white;
 }
 
-.overallstatscont--primary {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+
+
+.playerstats__username {
+    font-family: 'Fortnite';
+    color: white;
+    letter-spacing: 1px;
 }
 
+.statssection--primary {
+    width: 75%;
+
+}
 .overallstats__text {
     color: white;
 }
 
 .overallstats--primary {
-    width: 100%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.killdeathssection--primary {
-    border: 1px solid white;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: #333333;
-    padding: 15px;
-    width: 75%;
     border: 1px solid;
 }
 
+.overallstatsheadsection {
+    background: #ee6f57;
+    width: 100%;
+    border: 1px solid white;
+}
 
-.headanddata--primary {
-    width: 20%;
-    border-radius: 10px;
-    border: none;
+.statssection--primary {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #6930c3;
+    width: 100%;
 }
 
-.headandata__head {
-    color: white;
-    font-family: 'Fortnite';
+.statcards--primary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 75%;
 }
+
+/*                                                   */
+
+
 
 @media only screen and (max-width: 700px) {
-    .overallstatscont--primary {
+    .statssection--primary {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
-
-    .killdeathssection--primary {
-
+     
+    .statcards--primary {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 100%;
     }
 }

@@ -6,7 +6,9 @@ import {
     GET_STATS,
     SET_LOADING,
     SET_ACCOUNT_NAME,
-    SET_TIME_WINDOW
+    SET_TIME_WINDOW,
+    SET_PLAYER_STATS,
+    SET_ACCOUNT_TYPE
 } from '../types'
 
 const StatsState = ({children}) => {
@@ -15,7 +17,7 @@ const StatsState = ({children}) => {
         PLAYERSTATS: null,
         LOADING: false,
         ACCOUNTNAME: null,
-        TIMEWINDOW: 'season',
+        TIMEWINDOW: 'lifetime',
         ACCOUNTTYPE: null
     };
     
@@ -27,30 +29,37 @@ const StatsState = ({children}) => {
 
     const GetPlayerStats = async (AccountName, Platform, TimeWindow) => {
         SetLoading();
-        const response = await axios.get(`https://fortnite-api.com/v1/stats/br/v2/?name=${AccountName}&accountType=${Platform}&timeWindow=${TimeWindow}`)
-        const Data = response.data.data;
-        const {
-            account,
-            battlePass,
-            image,
-            stats
-        } = Data;
 
-        const {id, name} = account
-        const {level, progress} = battlePass
-        const {all} = stats;
-        const {duo, ltm, overall, solo, squad, trio} = all
-        
-        const DestructuredResponse = {
-            id, name, level, progress,
-            duo, ltm, overall, solo,
-            squad, trio, image
+        if (AccountName && Platform && TimeWindow) {
+
+                const response = await axios.get(`https://fortnite-api.com/v1/stats/br/v2/?name=${AccountName}&accountType=${Platform}&timeWindow=${TimeWindow}`)
+                const Data = response.data.data;
+                const {
+                    account,
+                    battlePass,
+                    image,
+                    stats
+                } = Data;
+                
+                const {id, name} = account
+                const {level, progress} = battlePass
+                const {all} = stats;
+                const {duo, ltm, overall, solo, squad, trio} = all
+                
+                
+                const DestructuredResponse = {
+                    id, name, level, progress,
+                duo, ltm, overall, solo,
+                squad, trio, image
+            }
+
+            dispatch({
+                type: GET_STATS,
+                payload: DestructuredResponse
+            })
         }
-        dispatch({
-            type: GET_STATS,
-            payload: DestructuredResponse
-        })
     }
+
     const setAccountName = (input) => {
         dispatch({
             type: SET_ACCOUNT_NAME,
@@ -64,14 +73,27 @@ const StatsState = ({children}) => {
         })
     }
 
+    const setPlayerStats = () => {
+        dispatch({
+            type: SET_PLAYER_STATS
+        })
+    }
+
+    const setAccountType = (input) => {
+        dispatch({type: SET_ACCOUNT_TYPE, payload: input})
+    }
+
     return  <StatsContext.Provider value={{
                 LOADING: state.LOADING,
                 PLAYERSTATS: state.PLAYERSTATS,
                 ACCOUNTNAME: state.ACCOUNTNAME,
                 TIMEWINDOW: state.TIMEWINDOW,
+                ACCOUNTTYPE: state.ACCOUNTTYPE,
                 GetPlayerStats,
                 setAccountName,
-                setTimeWindow
+                setTimeWindow,
+                setPlayerStats,
+                setAccountType
             }}>
                 {children}
             </StatsContext.Provider>;
