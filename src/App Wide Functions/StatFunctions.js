@@ -42,8 +42,11 @@ const StatFunctions = {
         if (type === 'TRIOS') return {background: '#f0a500'}
         if (type === 'SQUADS') return {background: '#00bcd4'}
     },
-    NumberFormatter: (number) => {
-        if (number) return (number).toLocaleString('en')
+    NumberFormatter: (number, type) => {
+        if (number) {
+            if (type) return Number(number).toFixed(2).toLocaleString('en')
+            if (!type) return Number(number).toLocaleString('en')
+        }
         if (!number) return '-'
     },
     FormatDaysPlayed: (minutes) => {
@@ -68,6 +71,9 @@ const StatFunctions = {
         } else if (String(AVGMinutes)[0] !== '0' && String(AVGMinutes) !== 'NaN') {
             return `${AVGSeconds}S`
         }
+    },
+    setBackgroundType: (windowSelected, TIMEWINDOW) => {
+        if (TIMEWINDOW === windowSelected) return {background: '#fdb827' ,transition: '1.25s'}
     }
 }
 

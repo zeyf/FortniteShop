@@ -9,9 +9,19 @@
     align-items: center;
 }
 
+
+.stats__head {
+    color: white;
+    font-family: 'Fortnite';
+    padding: 10px 0px 0px 0px;
+    font-size: 2.5em;
+    border: 1px solid white;
+}
+
 .stats__text {
     color: red;
     font-family: UbuntuR;
+    text-align: center;
 }
 
 .stats__form {
@@ -54,7 +64,7 @@
 .timewindowbuttons__button {
     width: 50%;
     padding: 15px 0px;
-    border-radius: 10px;
+    border-radius: 0px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -62,19 +72,26 @@
     font-family: UbuntuB;
 }
 
+.stats__buttonlink {
+    width: 100%;
+}
+
 .platformbuttons--primary {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 40%;
+
 }
 
 .platformbuttons__epic, .platformbuttons__psn, .platformbuttons__xbox {
     outline: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 0px;
     cursor: pointer;
-    margin: 0px 15px;
+    width: 100%;
+
 }
 .platformbuttons__psn {
     padding: 10px 37.5px;
@@ -142,5 +159,21 @@ button, .stats__buttonlink {
         margin: 0px;
         border-radius: 0px;
 
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .timewindowbuttons--primary {
+        width: 100%;
+        padding: 15px 0px;
+        
+    }
+
+    .platformbuttons--primary {
+        width: 100%;
+    }
+
+    .stats__inputaccountname {
+        width: 75%;
     }
 }

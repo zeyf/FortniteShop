@@ -11,9 +11,8 @@ const Navbar = () => {
 
     return (
         <div className='navbar navbar--primary'>
-            <Link to='/' style={{margin: '8.75px 0px 0px 0px', padding: '0px', textDecoration: 'none'}}>
-                <span style={{fontFamily: 'Fortnite', color: 'white', fontSize: '2.25em',
-                        paddingLeft: '25px', margin: '0px'}}>FORTNITEBR</span>
+            <Link to='/' className='navbar__headtextlink'>
+                <span className='navbar__headtext'>FORTNITEBR</span>
             </Link>
             
             {showMenu && <div className='mobilepopupmenu mobilepopupmenu--primary'>
@@ -36,7 +35,14 @@ const Navbar = () => {
                                         // stats
                                         setShowMenu(false)
                                     }}>
-                                        ACCOUNT STATS
+                                        STATS LOOKUP
+                                    </Link>
+                                </li>
+                                <li className='mobilepopupmenu__option'>
+                                    <Link className='mobilepopupmenu__optionlink' to='/news' onClick={() => {
+                                        setShowMenu(false)
+                                    }}>
+                                        NEWS
                                     </Link>
                                 </li>
                             </ul>
@@ -45,6 +51,25 @@ const Navbar = () => {
                 <img className='mobilemenuicon' src={MobileMenuIcon} alt='mobile menu image' onClick={() =>
                     setShowMenu(true)
                 }/>
+            <div className='nonmobilemenu nonmobilemenu--primary'>
+                <ul className='nonmobilemenu__ul'>
+                    <li className='nonmobilemenu__option'>
+                        <Link to='/shop' className='nonmobilemenu__optionlink'>
+                            SHOP
+                        </Link>
+                    </li>
+                    <li className='nonmobilemenu__option'>
+                        <Link to='/stats' className='nonmobilemenu__optionlink'>
+                            STATS   
+                        </Link>
+                    </li>
+                    <li className='nonmobilemenu__option'>
+                        <Link to='/news' className='nonmobilemenu__optionlink'>
+                            NEWS
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }

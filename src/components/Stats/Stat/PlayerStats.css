@@ -51,6 +51,8 @@
     width: 75%;
 }
 
+
+
 /*                                                   */
 
 
@@ -68,6 +70,21 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .timewindowchange--primary {
+        border: 1px solid white;
+        width: 100%;
+    }
+
+    .playerstatsbuttons--primary {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .statcards {
         width: 100%;
     }
 }

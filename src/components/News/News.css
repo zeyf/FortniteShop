@@ -1,0 +1,13 @@
+.news--primary {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.newssection--primary {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

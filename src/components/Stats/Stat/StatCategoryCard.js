@@ -56,22 +56,6 @@ const StatCategoryCard = ({StatsByType, type}) => {
                 </div>
                 <div className='statgriddata statgriddata--primary'>
                     <span className='statgriddata__head'>
-                        KILLS PER MATCH
-                    </span>
-                    <span className='statgriddata__data'>
-                        {NumberFormatter(ReturnInfo(StatsByType, 'killsPerMatch')) || `-`}
-                    </span>
-                </div>
-                <div className='statgriddata statgriddata--primary'>
-                    <span className='statgriddata__head'>
-                        KILLS PER MINUTE
-                    </span>
-                    <span className='statgriddata__data'>
-                        {NumberFormatter(ReturnInfo(StatsByType, 'killsPerMin')) || `-`}
-                    </span>
-                </div>
-                <div className='statgriddata statgriddata--primary'>
-                    <span className='statgriddata__head'>
                         {type === 'SOLOS' && `TOP 10`}
                         {type === 'DUOS' && `TOP 5`}
                         {type === 'SQUADS' && `TOP 3`}
@@ -113,6 +97,46 @@ const StatCategoryCard = ({StatsByType, type}) => {
                     </span>
                     <span className='statgriddata__data'>
                         {AvgMatchTime(ReturnInfo(StatsByType, 'minutesPlayed'), ReturnInfo(StatsByType, 'matches')) || `-`}
+                    </span>
+                </div>
+                <div className='statgriddata statgriddata--primary'>
+                    <span className='statgriddata__head'>
+                        KILLS/MATCH
+                    </span>
+                    <span className='statgriddata__data'>
+                        {NumberFormatter(ReturnInfo(StatsByType, 'killsPerMatch'), 2) || `-`}
+                    </span>
+                </div>
+                <div className='statgriddata statgriddata--primary'>
+                    <span className='statgriddata__head'>
+                        KILLS/MINUTE
+                    </span>
+                    <span className='statgriddata__data'>
+                        {NumberFormatter(ReturnInfo(StatsByType, 'killsPerMin'), 2) || `-`}
+                    </span>
+                </div>
+                <div className='statgriddata statgriddata--primary'>
+                    <span className='statgriddata__head'>
+                        SCORE/MATCH
+                    </span>
+                    <span className='statgriddata__data'>
+                        {NumberFormatter(ReturnInfo(StatsByType, 'scorePerMatch'), 2) || `-`}
+                    </span>
+                </div>
+                <div className='statgriddata statgriddata--primary'>
+                    <span className='statgriddata__head'>
+                        SCORE/MINUTE
+                    </span>
+                    <span className='statgriddata__data'>
+                        {NumberFormatter(ReturnInfo(StatsByType, 'scorePerMin'), 2) || `-`}
+                    </span>
+                </div>
+                <div className='statgriddata statgriddata--primary'>
+                    <span className='statgriddata__head'>
+                        SCORE/MINUTE
+                    </span>
+                    <span className='statgriddata__data'>
+                        {NumberFormatter(ReturnInfo(StatsByType, 'score')) || `-`}
                     </span>
                 </div>
             </div>

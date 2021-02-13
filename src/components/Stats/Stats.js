@@ -7,12 +7,14 @@ import XboxIcon from '../../media/images/XboxIcon.svg'
 import EpicIcon from '../../media/images/EpicIcon.svg'
 import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
+import StatFunctions from '../../App Wide Functions/StatFunctions'
 
 const Stats = () => {
     const {
         LOADING, 
         PLAYERSTATS,
         ACCOUNTNAME,
+        ACCOUNTTYPE,
         TIMEWINDOW,
         GetPlayerStats,
         setAccountName,
@@ -20,6 +22,8 @@ const Stats = () => {
         setPlayerStats,
         setAccountType
     } = useContext(StatsContext);
+
+    const {setBackgroundType} = StatFunctions;
     
     useEffect(() => {
         setTimeWindow(null);
@@ -34,10 +38,6 @@ const Stats = () => {
 
     const onChange = (event) => {
         setAccountName(event.target.value)
-    }
-
-    const setBackgroundType = (timewindow) => {
-        if (TIMEWINDOW === timewindow) return {background: '#fdb827' ,transition: '1.25s'}
     }
 
     return (
@@ -56,14 +56,14 @@ const Stats = () => {
                         Select a timeframe
                     </span>
                     <div className='timewindowbuttons timewindowbuttons--primary'>
-                        <button style={setBackgroundType('season')} className='timewindowbuttons__button' type='button' onClick={() => {setTimeWindow('season')}}>SEASON</button>
-                        <button style={setBackgroundType('lifetime')} className='timewindowbuttons__button' type='button' onClick={() => {setTimeWindow('lifetime')}}>LIFETIME</button>
+                        <button style={setBackgroundType('season', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {setTimeWindow('season')}}>SEASON</button>
+                        <button style={setBackgroundType('lifetime', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {setTimeWindow('lifetime')}}>LIFETIME</button>
                     </div>
                 </div>
                 <div className='platformbuttons platformbuttons--primary'>
                     <Link to={`/stats/psn/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__psn' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) GetPlayerStats(); setAccountType('psn')
+                            if (TIMEWINDOW) setAccountType('psn'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon psnicon' src={PSNIcon} alt='Fornite Playstation search' />
@@ -71,7 +71,7 @@ const Stats = () => {
                     </Link>
                     <Link to={`/stats/epic/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__epic' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) GetPlayerStats(); setAccountType('epic')
+                            if (TIMEWINDOW) setAccountType('epic'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon epicicon' src={EpicIcon} alt='Fornite Playstation search' />
@@ -79,7 +79,7 @@ const Stats = () => {
                     </Link>
                     <Link to={`/stats/xbox/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__xbox' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) GetPlayerStats(); setAccountType('xb1')
+                            if (TIMEWINDOW) setAccountType('xb1'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon xboxicon' src={XboxIcon} alt='Fornite Playstation search' />

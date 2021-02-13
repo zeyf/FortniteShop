@@ -18,7 +18,7 @@
     font-family: 'Fortnite';
     font-size: 1.375em;
     letter-spacing: 0.5px;
-    color: rgb(37, 37, 37, 0.875);
+    color: rgba(48, 47, 47, 0.875);
 }
 
 .statdatasection--primary {
@@ -60,5 +60,12 @@
         height: 100%;
         width: 100%;
         margin: 15px 0px;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .statcard {
+        width: 40%;
     }
 }

@@ -1,0 +1,49 @@
+.newscards--primary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.newssection__head {
+    color: white;
+    font-family: Fortnite;
+    font-size: 2.5em;
+    margin-left: 15px;
+    padding: 15px 0px 0px 0px;
+}
+
+@media only screen and (max-width: 700px) {
+    .newscards--primary {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .newssection__head {
+        margin-left: 0px;
+    }
+    
+    .newssection--primary {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .newscards--primary {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .newssection--primary {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newssection__head {
+        font-size: 3.5em;
+        margin-left: 0px;
+    }
+}

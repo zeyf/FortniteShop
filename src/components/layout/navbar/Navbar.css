@@ -1,10 +1,24 @@
 .navbar--primary {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     height: 10vh;
     background: #6930c3;
+}
+
+
+.navbar__headtextlink {
+    margin: 10px 0px 0px 0px;
+    padding-left: 25px;
+    text-decoration: none;
+}
+
+.navbar__headtext {
+    font-family: Fortnite;
+    color: white;
+    font-size: 3em;
+    margin: 0px;
 }
 
 .navbarmenu--primary {
@@ -21,25 +35,71 @@
     font-family: 'Catamaran', sans-serif;
     font-weight: 700;
 }
-.navbarmenu__button {
-    color: white;
-    background-color: #64dfdf;
-    border-radius: 30px;
-    border: 1px solid transparent;
-    padding: 5px 15px;
-    outline: none;
-    margin: 0px 20px;
-    font-family: 'Catamaran', sans-serif;
-    font-weight: 700;
-    cursor: pointer;
+
+
+.mobilemenuicon {
+    display: none;
 }
 
+.nonmobilemenu--primary {
+    display: flex;
+    flex-direction: row;
+    padding-right: 25px;
+    width: 17.5%;
+}
+
+.nonmobilemenu__ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nonmobilemenu__optionlink {
+    color: white;
+    text-decoration: none;
+    font-size: 2.25em;
+    letter-spacing: 1px;
+    font-family: Fortnite;
+    
+}
+
+
+.nonmobilemenu__option {
+    padding: 10px 0px 0px 0px;
+}
 
 
 @media only screen and (max-width: 700px) {
 
+    .navbar--primary {
+        justify-content: space-between;
+    }
+
+    .nonmobilemenu--primary {
+        display: none;
+    }
+
+    .navbarmenu__button {
+        color: white;
+        background-color: #64dfdf;
+        border-radius: 30px;
+        border: 1px solid transparent;
+        padding: 5px 15px;
+        outline: none;
+        margin: 0px 20px;
+        font-family: 'Catamaran', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
     .mobilemenuicon {
         padding-right: 20px;
+        display:block;
     }
 
     .mobilepopupmenu--primary {
@@ -85,13 +145,13 @@
 
     .mobilepopupmenu__option {
         padding: 25px 0px 15px 0px;
-        border-bottom: 1px solid #252525;
+        border-bottom: 1px solid white;
         width: 100%;
         text-align: center;
     }
     
     .mobilepopupmenu__option:first-of-type {
-        border-top: 1px solid #252525;
+        border-top: 1px solid white;
     }
 
     .mobilepopupmenu__optionlink {
@@ -100,5 +160,23 @@
         font-family: 'Fortnite';
         font-size: 2.5em;
         letter-spacing: 1px;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .navbar__headtext {
+        font-size: 3.5em;
+    }
+
+    .nonmobilemenu--primary {
+        width: 30%;
+    }
+
+    .nonmobilemenu__optionlink {
+        font-size: 2.75em;
+    }
+
+    .navbar--primary {
+        justify-content: space-between;
     }
 }

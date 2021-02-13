@@ -14,11 +14,9 @@ const PlayerStats = ({match}) => {
         GetPlayerStats,
         setTimeWindow,
         setAccountType,
-        setAccountName,
-        ACCOUNTNAME,
-        ACCOUNTTYPE
+        setAccountName
     } = useContext(StatsContext);
-    const {ReturnInfo, AccName} = StatFunctions;
+    const {ReturnInfo, AccName, setBackgroundType} = StatFunctions;
 
     useEffect(() => {
         GetPlayerStats(match.params.username, match.params.platform, TIMEWINDOW)
@@ -44,18 +42,20 @@ const PlayerStats = ({match}) => {
                 <h1 className='playerstats__username'>
                     {AccName(ReturnStats('data'))}
                 </h1>
-                <button className='playerstatsbuttons__button' onClick={() => {
-                    setTimeWindow('lifetime')
-                    GetPlayerStats(match.params.username, match.params.platform, 'lifetime')
-                }}>
-                    LIFETIME
-                </button>
-                <button className='playerstatsbuttons__button' onClick={() => {
-                    setTimeWindow('season')
-                    GetPlayerStats(match.params.username, match.params.platform, 'season')
-                }}>
-                    SEASON
-                </button>
+                <div className='timewindowbuttons timewindowbuttons--primary'>
+                    <button style={setBackgroundType('season', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {
+                        setTimeWindow('season')
+                        GetPlayerStats(match.params.username, match.params.platform, 'season')
+                    }}>
+                        SEASON
+                    </button>
+                    <button style={setBackgroundType('lifetime', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {
+                        setTimeWindow('lifetime')
+                        GetPlayerStats(match.params.username, match.params.platform, 'lifetime')
+                    }}>
+                        LIFETIME
+                    </button>
+                </div>
             </div>
             {LOADING ? 'HI' :
                 <div className='statssection statssection--primary'>
