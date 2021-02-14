@@ -87,6 +87,55 @@ const Stats = () => {
                     </Link>
                 </div>
             </form>
+            <div className='instructionscont instructionscont--primary'>
+                <div className='instructions instructions--primary'>
+                    <span className='instructions__head'>
+                        LOOKUP GUIDE FOR CONSOLE PLAYERS
+                    </span>
+                    <div className='instructionstext instructionstext--primary'>
+                        <span className='instructions__questions'>
+                            How can I look up stats by GAMERTAG/PSN?
+                        </span>
+                        <span className='instructions__answers'>
+                            You can look up the stats for a console player by:
+                            <ol className='instructions__ol'>
+                                <li className='instructions__option'>
+                                    Entering the Gamertag or PSN in the input above.
+                                </li>
+                                <li className='instructions__option'>
+                                    Selecting a timeframe of the stats you would like to view, season or lifetime.
+                                    <em className='instruction__optionwarning'> NOTE: THIS IS REQUIRED.</em>
+                                </li>
+                                <li className='instructions__option'>
+                                    After entering the Gamertag or PSN and selecting a timeframe, click on the button for the console you are looking up.
+                                </li>
+                            </ol>
+                        </span>
+                    </div>
+                </div>
+                <div className='instructions instructions--primary'>
+                    <span className='instructions__head'>
+                        LOOKUP GUIDE FOR EPIC PLAYERS
+                    </span>
+                    <div className='instructionstext instructionstext--primary'>
+                        <span className='instructions__questions'>
+                            How can I look up stats by EPIC name?
+                        </span>
+                        <span className='instructions__answers'>
+                            You can look up the stats by an Epic name by:
+                            <ol className='instructions__ol'>
+                                <li className='instructions__option'>Entering the Epic name in the input above.</li>
+                                <li className='instructions__option'>Selecting a timeframe of the stats you would like to view, season or lifetime.
+                                    <em className='instruction__optionwarning'> NOTE: THIS IS REQUIRED.</em>
+                                </li>
+                                <li className='instructions__option'>After entering the Epic name 
+                                    
+                                and selecting a <br /> timeframe, click on the Epic button.</li>
+                            </ol>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

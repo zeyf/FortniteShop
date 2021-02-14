@@ -3,6 +3,7 @@ import StatFunctions from '../../../App Wide Functions/StatFunctions'
 import StatsContext from '../../context/Stats Context/StatsContext'
 import { SET_ACCOUNT_NAME } from '../../context/types'
 import './PlayerStats.css'
+import PlayerStatsSkeleton from './PlayerStatsSkeleton'
 import StatCategoryCard from './StatCategoryCard'
 
 const PlayerStats = ({match}) => {
@@ -37,53 +38,56 @@ const PlayerStats = ({match}) => {
     }
 
     return (
-        <div className='playerstats playerstats--primary'>
-            <div className='playerstatsbuttons playerstatsbuttons--primary'>
-                <h1 className='playerstats__username'>
-                    {AccName(ReturnStats('data'))}
-                </h1>
-                <div className='timewindowbuttons timewindowbuttons--primary'>
-                    <button style={setBackgroundType('season', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {
-                        setTimeWindow('season')
-                        GetPlayerStats(match.params.username, match.params.platform, 'season')
-                    }}>
-                        SEASON
-                    </button>
-                    <button style={setBackgroundType('lifetime', TIMEWINDOW)} className='timewindowbuttons__button' type='button' onClick={() => {
-                        setTimeWindow('lifetime')
-                        GetPlayerStats(match.params.username, match.params.platform, 'lifetime')
-                    }}>
-                        LIFETIME
-                    </button>
-                </div>
-            </div>
-            {LOADING ? 'HI' :
-                <div className='statssection statssection--primary'>
-                    <div className='overallstats overallstats--primary'>
-                        <h1 className='overallstats__head'>Overall Stats</h1>
-                        <div className='overallstatsheadsection'>
-                            <span className='overallstatsheadsection__headcategory'>
-                                OVERALL
-                            </span>
-                            <span className='overallstatsheadsection__headmatches'>
+        <>
+        {LOADING ? <PlayerStatsSkeleton/> :
+            <div className='playerstats playerstats--primary'>
+                    <h1 className='playerstats__username'>
+                        {AccName(ReturnStats('data'))}
+                    </h1>
+                
+                    <div className='statssection statssection--primary'>
+                        <div className='overallstats overallstats--primary'>
+                            <div className='playerstatsbuttons playerstatsbuttons--primary'>
+                                <h1 className='overallstats__head'>OVERALL STATS</h1>
+                                <div className='playerstatstimewindowbuttons playerstatstimewindowbuttons--primary'>
+                                    <button style={setBackgroundType('season', TIMEWINDOW)} className='playerstatstimewindowbuttons__button' type='button' onClick={() => {
+                                        setTimeWindow('season')
+                                        GetPlayerStats(match.params.username, match.params.platform, 'season')
+                                    }}>
+                                        SEASON
+                                    </button>
+                                    <button style={setBackgroundType('lifetime', TIMEWINDOW)} className='playerstatstimewindowbuttons__button' type='button' onClick={() => {
+                                        setTimeWindow('lifetime')
+                                        GetPlayerStats(match.params.username, match.params.platform, 'lifetime')
+                                    }}>
+                                        LIFETIME
+                                    </button>
+                                </div>
+                            </div>
+                            <div className='overallstatsheadsection'>
+                                <span className='overallstatsheadsection__headcategory'>
+                                    OVERALL
+                                </span>
+                                <span className='overallstatsheadsection__headmatches'>
 
-                            </span>
-                        </div>
-                            
+                                </span>
+                            </div>
+                                
                                 {ReturnInfo(ReturnStats('overall'), 'winRate')}
-                            {ReturnInfo(ReturnStats('overall'), 'wins')}
-                            {ReturnInfo(ReturnStats('overall'), 'kd')}
-                            {ReturnInfo(ReturnStats('overall'), 'matches')}
+                                {ReturnInfo(ReturnStats('overall'), 'wins')}
+                                {ReturnInfo(ReturnStats('overall'), 'kd')}
+                                {ReturnInfo(ReturnStats('overall'), 'matches')}
 
+                        </div>
+                        <div className='statcards statcards--primary'>
+                            <StatCategoryCard StatsByType={ReturnStats('solo')} type={'SOLOS'} />
+                            <StatCategoryCard StatsByType={ReturnStats('duo')} type={'DUOS'} />
+                            <StatCategoryCard StatsByType={ReturnStats('squad')} type={'SQUADS'} />
+                        </div>
                     </div>
-                    <div className='statcards statcards--primary'>
-                        <StatCategoryCard StatsByType={ReturnStats('solo')} type={'SOLOS'} />
-                        <StatCategoryCard StatsByType={ReturnStats('duo')} type={'DUOS'} />
-                        <StatCategoryCard StatsByType={ReturnStats('squad')} type={'SQUADS'} />
-                    </div>
-                </div>
-            }
-        </div>
+            </div>
+        }
+        </>
     )
 }
 

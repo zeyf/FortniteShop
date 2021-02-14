@@ -39,8 +39,8 @@ const StatFunctions = {
     setStatcardColor: (type) => {
         if (type === 'SOLOS') return {background: '#f05454'}
         if (type === 'DUOS') return {background: '#79d70f'}
-        if (type === 'TRIOS') return {background: '#f0a500'}
         if (type === 'SQUADS') return {background: '#00bcd4'}
+        // if (type === 'TRIOS') return {background: '#f0a500'}
     },
     NumberFormatter: (number, type) => {
         if (number) {

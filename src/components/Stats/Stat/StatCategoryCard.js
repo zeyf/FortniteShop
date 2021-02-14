@@ -133,7 +133,7 @@ const StatCategoryCard = ({StatsByType, type}) => {
                 </div>
                 <div className='statgriddata statgriddata--primary'>
                     <span className='statgriddata__head'>
-                        SCORE/MINUTE
+                        SCORE
                     </span>
                     <span className='statgriddata__data'>
                         {NumberFormatter(ReturnInfo(StatsByType, 'score')) || `-`}
