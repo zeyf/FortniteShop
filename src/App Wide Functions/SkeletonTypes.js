@@ -24,6 +24,10 @@ const SkeletonTypes = (component, type, VPwidth, VPHeight) => {
             return  <SkeletonTheme color='#cececf'>
                         <Skeleton width={100} height={25} />
                     </SkeletonTheme>
+        } else if (type === 'dynamicoveralldata') {
+            return  <SkeletonTheme color='#cececf'>
+                        <Skeleton width={100} height={35} />
+                    </SkeletonTheme>
         }
     }
 }

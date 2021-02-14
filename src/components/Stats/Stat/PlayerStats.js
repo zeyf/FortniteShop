@@ -17,7 +17,7 @@ const PlayerStats = ({match}) => {
         setAccountType,
         setAccountName
     } = useContext(StatsContext);
-    const {ReturnInfo, AccName, setBackgroundType} = StatFunctions;
+    const {ReturnInfo, NumberFormatter, AccName, setBackgroundType} = StatFunctions;
 
     useEffect(() => {
         GetPlayerStats(match.params.username, match.params.platform, TIMEWINDOW)
@@ -64,19 +64,40 @@ const PlayerStats = ({match}) => {
                                     </button>
                                 </div>
                             </div>
-                            <div className='overallstatsheadsection'>
-                                <span className='overallstatsheadsection__headcategory'>
-                                    OVERALL
-                                </span>
-                                <span className='overallstatsheadsection__headmatches'>
-
-                                </span>
+                            <div className='overallstatssection overallstatssection--primary'>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            WINS
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {NumberFormatter(ReturnInfo(ReturnStats('overall'), 'wins'))}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            WIN RATE
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {ReturnInfo(ReturnStats('overall'), 'winRate')}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            KILLS
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {NumberFormatter(ReturnInfo(ReturnStats('overall'), 'kills'))}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            K/D
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {NumberFormatter(ReturnInfo(ReturnStats('overall'), 'kd'), 2)}
+                                        </span>
+                                    </div>
                             </div>
-                                
-                                {ReturnInfo(ReturnStats('overall'), 'winRate')}
-                                {ReturnInfo(ReturnStats('overall'), 'wins')}
-                                {ReturnInfo(ReturnStats('overall'), 'kd')}
-                                {ReturnInfo(ReturnStats('overall'), 'matches')}
 
                         </div>
                         <div className='statcards statcards--primary'>

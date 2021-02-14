@@ -7,8 +7,7 @@
 }
 
 .playerstatsbuttons--primary {
-    border: 1px solid white;
-    width: 50%;
+    width: 100%;
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -23,6 +22,9 @@
     border: 1px solid green;
 
 }
+
+
+
 
 .playerstatstimewindowbuttons__button {
     width: 50%;
@@ -66,10 +68,35 @@
     background: #333333;
 }
 
-.overallstatsheadsection {
-    background: #ee6f57;
+.overallstatssection--primary {
+
     width: 100%;
-    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.overallstatsdata--primary {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+.overallstatsdata__head {
+    color: white;
+    font-family: UbuntuR;
+    width: 100%;
+    padding-left: 15px;
+    font-size: 1.15em;
+}
+
+.overallstatsdata__data {
+    color: white;
+    width: 100%;
+    font-family: UbuntuB;
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 1.75em;
 }
 
 .statssection--primary {

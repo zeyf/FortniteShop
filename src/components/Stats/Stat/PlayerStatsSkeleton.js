@@ -8,6 +8,7 @@ const PlayerStatsSkeleton = () => {
 
     const cardcount = ['SOLOS', 'DUOS', 'SQUADS'];
     const {setStatcardColor} = StatFunctions;
+    
 
     return (
         <>
@@ -28,16 +29,40 @@ const PlayerStatsSkeleton = () => {
                                 </button>
                             </div>
                         </div>
-                            <div className='overallstatsheadsection'>
-                                <span className='overallstatsheadsection__headcategory'>
-                                    OVERALL
-                                </span>
-                                <span className='overallstatsheadsection__headmatches'>
-
-                                </span>
+                        <div className='overallstatssection overallstatssection--primary'>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            WINS
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {SkeletonTypes('playerstats', 'dynamicoveralldata')}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            WIN RATE
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {SkeletonTypes('playerstats', 'dynamicoveralldata')}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            KILLS
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {SkeletonTypes('playerstats', 'dynamicoveralldata')}
+                                        </span>
+                                    </div>
+                                    <div className='overallstatsdata overallstatsdata--primary'>
+                                        <span className='overallstatsdata__head'>
+                                            K/D
+                                        </span>
+                                        <span className='overallstatsdata__data'>
+                                            {SkeletonTypes('playerstats', 'dynamicoveralldata')}
+                                        </span>
+                                    </div>
                             </div>
-                                
-                                    
 
                         </div>
                         <div className='statcards statcards--primary'>
