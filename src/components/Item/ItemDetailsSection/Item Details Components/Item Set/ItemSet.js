@@ -8,10 +8,9 @@ import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 
 const ItemSet = ({length}) => {
 
-    const {ItemsOfSameSet, GetItem, GetItemSet, item} = useContext(ItemContext);
+    const {ItemsOfSameSet, GetItem, item} = useContext(ItemContext);
     const {setCardRarityStyle, SetLinkByIDType} = FormatFunctions;
     const {
-        GetSet,
         SetName,
         SetItemSetLink,
         SetItemSetLength,
@@ -19,10 +18,6 @@ const ItemSet = ({length}) => {
         SetItemName
     } = ItemFunctions;
 
-    useEffect(() => {
-        GetSet(item, GetItemSet)
-        //eslint-disable-next-line
-    }, [])
 
     return (
         <div className='itemsetsection itemsetsection--primary'>

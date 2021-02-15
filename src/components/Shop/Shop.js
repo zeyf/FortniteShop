@@ -12,6 +12,7 @@ const Shop = () => {
 
     useEffect(() => {
         GetCurrentShop()
+        console.log(window.screen.width)
         // eslint-disable-next-line
     }, [])
 

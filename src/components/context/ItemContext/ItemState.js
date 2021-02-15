@@ -57,7 +57,6 @@ const ItemState = (props) => {
     }
 
     const GetItemSet = async (set) => {
-
         const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search/all?set=${set}`)
         dispatch({
             type: GET_ITEM_SET,

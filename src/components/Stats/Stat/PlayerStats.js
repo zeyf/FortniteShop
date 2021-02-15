@@ -46,7 +46,7 @@ const PlayerStats = ({match}) => {
                         <div className='overallstats overallstats--primary'>
                             <div className='playerstatsbuttons playerstatsbuttons--primary'>
                                 <div className='overallstatsheader overalstatsheader--primary'>
-                                    <h1 className='overallstats__head'>OVERALL STATS for</h1>
+                                    <h1 className='overallstats__head'>OVERALL STATS -</h1>
                                     <h1 className='overallstats__head'>{AccName(ReturnStats('data'))}</h1>
                                 </div>
                                 <div className='playerstatstimewindowbuttons playerstatstimewindowbuttons--primary'>

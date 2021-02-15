@@ -177,3 +177,15 @@
         width: 100%;
     }
 }
+
+
+@media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    .statcards {
+        width: 90%;
+    }
+    
+    .overallstats--primary {
+        width: 90%;
+    }
+    
+}

@@ -269,9 +269,19 @@ button, .stats__buttonlink {
     .instructionscont--primary {
         width: 90%;
     }
-
+    
     .instructions__head {
         font-size: 1.375em;
     }
+    
+}
 
+@media only screen and (min-width: 1024px) and (max-width: 1400px) {
+    .stats__form {
+        width: 90%;
+    }
+
+    .instructionscont--primary {
+        width: 75%;
+    }
 }

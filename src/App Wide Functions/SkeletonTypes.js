@@ -36,9 +36,13 @@ const SkeletonTypes = (component, type, screenW) => {
         if (type > 700 && type <= 1024) return  <SkeletonTheme color='#cececf'>
                         <Skeleton width={200} height={225} />
                     </SkeletonTheme>
-        if (type > 1024) return  <SkeletonTheme color='#cececf'>
+        if (type > 1600) return  <SkeletonTheme color='#cececf'>
                         <Skeleton width={200} height={225} />
                     </SkeletonTheme>
+        if (type > 1024 && type <= 1600) return  <SkeletonTheme color='#cececf'>
+                        <Skeleton width={180} height={235} />
+                    </SkeletonTheme>
+        
         
         
     } 
