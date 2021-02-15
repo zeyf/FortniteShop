@@ -5,19 +5,22 @@ const FormatFunctions = {
     SetLinkByIDType: (id) => {
         if (id) {
             const itemtype = id.split('_')[0];
-            
+
             if (itemtype === 'CID') return 'skins';
             if (itemtype === 'EID') return 'emotes';
-            if (itemtype === 'MusicPack') return 'musicpacks'; 
-            if (itemtype === 'Pickaxe') return 'pickaxes' 
-            if (itemtype === 'Wrap') return 'wraps' 
-            if (itemtype === 'Glider') return 'gliders';
             if (itemtype === 'BID') return 'backblings';
             if (itemtype === 'KID') return 'katanas'
-            if (itemtype === 'Emoji') return 'emojis'
             if (itemtype === 'SPID') return 'sprays'
             if (itemtype === 'LSID') return 'loadingscreens'
             if (itemtype === 'Trails') return 'contrails'
+            if (itemtype === 'MusicPack') return 'musicpacks'; 
+            if (itemtype === 'Pickaxe') return 'pickaxes' 
+            if (itemtype === 'Glider') return 'gliders';
+            if (itemtype === 'Emoji') return 'emojis'
+            if (itemtype === 'Wrap') return 'wraps'
+            if (itemtype === 'TOY') return 'toys'
+            if (itemtype === 'PetCarrier') return 'pets'
+            if (itemtype === 'BannerToken') return 'banners'
         }
     },
     NameCharacterHandler: (name) => {

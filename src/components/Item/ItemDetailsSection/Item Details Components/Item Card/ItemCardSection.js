@@ -27,7 +27,7 @@ const ItemCardSection = () => {
     
     return (
         <div className='mainitemsection mainitemsection--primary'>
-            <Helmet><title>{loading ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(item) && `${ItemPrice(item)} VBUCKS`} - FortniteBRShop`}</title></Helmet>
+            <Helmet><title>{loading ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(item) ? `${ItemPrice(item)} VBUCKS - FortniteBRShop` : `FortniteBRShop`}`}</title></Helmet>
             <div className='itemdetails itemdetails--primary'>
                 <div className='itemcarddetails itemcarddetails--primary'>
                     <div className='itemcard itemcard--primary' style={setCardRarityStyle(ItemRarity(item))} >

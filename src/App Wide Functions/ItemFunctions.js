@@ -15,7 +15,6 @@ export const ItemFunctions = {
         if (item) {
             const {images} = item;
             const {featured, icon, smallIcon} = images;
-            console.log(images)
             if (icon) return icon
             if (!icon && featured) return featured
             if (!icon && !featured) return smallIcon
@@ -45,8 +44,13 @@ export const ItemFunctions = {
     ItemIntroduction: (item, type) => {
         if (item) {   
             const {introduction} = item;
-            if (type === 'season') return introduction.season;
-            if (type === 'chapter') return introduction.chapter;
+            if (introduction) {
+                if (type === 'season') return introduction.season;
+                if (type === 'chapter') return introduction.chapter;
+            } else {
+                if (type === 'season') return '-'
+                if (type === 'chapter') return '-'
+            }
         }
     },
     ItemShopHistoryTable: (item, LocalStgPrice) => {
@@ -129,7 +133,8 @@ export const ItemFunctions = {
                 dailyItemItemsIDs,
                 dailyItemfinalPrices,
                 dailyItemBundleStatus,
-                dailyItemItemsImages
+                dailyItemItemsImages,
+                dailyItemSetNames
             } = data;
 
             if (type === 'names') return dailyItemItemsNames
@@ -138,6 +143,7 @@ export const ItemFunctions = {
             if (type === 'prices') return dailyItemfinalPrices
             if (type === 'bundlestatuses') return dailyItemBundleStatus
             if (type === 'images') return dailyItemItemsImages
+            if (type === 'setnames') return dailyItemSetNames
         }
     },
     ReturnFeatured: (data, type) => {
@@ -148,7 +154,8 @@ export const ItemFunctions = {
                 FeaturedItemfinalPrices,
                 FeaturedItemItemsIDs,
                 FeaturedItemItemsRarity,
-                FeaturedItemItemsNames
+                FeaturedItemItemsNames,
+                FeaturedItemSetNames
             } = data;
 
             if (type === 'names') return FeaturedItemItemsNames
@@ -157,6 +164,7 @@ export const ItemFunctions = {
             if (type === 'prices') return FeaturedItemfinalPrices
             if (type === 'bundlestatuses') return FeaturedItemBundleStatus
             if (type === 'images') return FeaturedItemItemsImages
+            if (type === 'setnames') return FeaturedItemSetNames
         }
     }
 }

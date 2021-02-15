@@ -72,13 +72,24 @@ const ShopState = (props) => {
             return item.bundle
         })
 
+        const FeaturedItemSetNames = FeaturedItemItemsArr.map((item, i) => {
+            
+            const setname = item.map((current, pos) => {
+                const {set} = current;
+                if (set)  return set.value
+                if (!set) return null
+            })
+            return setname
+        })
+
         const FeaturedItemsObj = {
             FeaturedItemfinalPrices,
             FeaturedItemItemsNames,
             FeaturedItemItemsImages,
             FeaturedItemItemsRarity,
             FeaturedItemItemsIDs,
-            FeaturedItemBundleStatus
+            FeaturedItemBundleStatus,
+            FeaturedItemSetNames
         }
 
         // DAILY ITEM SPECIFIC DATA FOR DAILYITEMOBJ //
@@ -124,6 +135,15 @@ const ShopState = (props) => {
             return item.bundle
         })
         
+        const dailyItemSetNames = dailyItemItemsArr.map((item, i) => {
+            
+            const setname = item.map((current, pos) => {
+                const {set} = current;
+                if (set)  return set.value
+                if (!set) return null
+            })
+            return setname
+        })
         
         const DailyItemsObj = {
             dailyItemfinalPrices,
@@ -131,7 +151,8 @@ const ShopState = (props) => {
             dailyItemItemsImages,
             dailyItemItemsRarity,
             dailyItemItemsIDs,
-            dailyItemBundleStatus
+            dailyItemBundleStatus,
+            dailyItemSetNames
         }
 
         dispatch({

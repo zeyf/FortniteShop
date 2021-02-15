@@ -5,19 +5,18 @@ import {Link} from 'react-router-dom';
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions'
 import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 import Skeleton from 'react-loading-skeleton'
+import NSItemCard from '../../../../NSItemCard/NSItemCard'
 
 
 const ItemSet = ({length}) => {
 
     const {ItemsOfSameSet, GetItem, GetItemSet, item} = useContext(ItemContext);
-    const {setCardRarityStyle, SetLinkByIDType} = FormatFunctions;
+    const {setCardRarityStyle, SetLinkByIDType, NameCharacterHandler} = FormatFunctions;
     const {
         GetSet,
         SetName,
         SetItemSetLink,
-        SetItemSetLength,
-        SetItemSetImages,
-        SetItemName
+        ItemImage,
     } = ItemFunctions;
 
     useEffect(() => {
@@ -36,13 +35,11 @@ const ItemSet = ({length}) => {
                     const {displayValue} = rarity;
                     if (i < length) {
 
-                        return  <Link style={{textDecoration: 'none'}} to={`/items/${SetLinkByIDType(id)}/${SetItemName(ItemsOfSameSet)[i]}`} onClick={() => {GetItem(SetItemName(ItemsOfSameSet)[i])}}> {/* // set item name as param */}
-                                    <div className='setitemcard setitemcard--primary' style={setCardRarityStyle(displayValue)}>
-                                        <img src={SetItemSetImages(ItemsOfSameSet)[i]} className='setitemcard__image' alt={`${SetItemName(ItemsOfSameSet)[i].replaceAll(/-/gi, ' ').replaceAll(/~/gi, '-').toUpperCase()} FROM ITEM SET ${SetName(item)}`} />
-                                        
-                                    </div>
-                                </Link>
-
+                        return  <NSItemCard category={SetLinkByIDType(id)}
+                                name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
+                                handledName={NameCharacterHandler(name)}
+                                imgSRC={ItemImage(item)}
+                                />
                     }
                 })}
             </div>

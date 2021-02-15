@@ -61,11 +61,17 @@ const DailyShopSection = () => {
                         const name = ReturnDaily(CurrentDaily, 'names').map((current, i) => {
                             return current[0];
                         });
+                        
+                        const setname = ReturnDaily(CurrentDaily, 'setnames').map((current, i) => {
+                            return current[0];
+                        });
 
                         if (item.length > 1) {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} 
+                            setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                         } else {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item} 
+                             setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                         }   
                     }) : dailysize.map((card, i) => {
                         return SkeletonTypes('shopitemcard', window.screen.width)

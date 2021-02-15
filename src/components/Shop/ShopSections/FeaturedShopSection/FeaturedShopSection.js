@@ -62,11 +62,17 @@ const FeaturedShopSection = () => {
                             const name = ReturnFeatured(CurrentFeatured, 'names').map((current, pos) => {
                                 return current[0];
                             });
+                            
+                            const setname = ReturnFeatured(CurrentFeatured, 'setnames').map((current, pos) => {
+                                return current[0];
+                            });
 
                             if (item.length > 1) {
-                                return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+                                return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} 
+                                setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                             } else {
-                                return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i]  : item} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+                                return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i]  : item} 
+                                setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                             }   
                         }) : featuredsize.map((card, i) => {
                             return SkeletonTypes('shopitemcard', window.screen.width)
