@@ -53,14 +53,19 @@
     }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1020px) {
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
     .shopview--primary {
         display: flex;
-        flex-direction: column;    
+        flex-direction: column;
+        width: 100%;   
     }
 
     .shop--primary {
         margin: 0px;
+    }
+
+    .featuredview--primary, .dailyview--primary {
+        width: 100%;
     }
 
 }

@@ -1,28 +1,17 @@
-import React from 'react'
-import {useContext} from 'react';
-import ShopContext from '../../../context/ShopContext/ShopContext'
-import './FeaturedShopSection.css';
-import ShopItemCard from '../../ShopItemCard/ShopItemCard';
-import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
-import ItemFunctions from '../../../../App Wide Functions/ItemFunctions';
-import Skeleton from 'react-loading-skeleton';
-import SkeletonTypes from '../../../../App Wide Functions/SkeletonTypes';
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+import SkeletonTypes from '../../../App Wide Functions/SkeletonTypes';
 
-const FeaturedShopSection = () => {
+const ShopItemCardSkeleton = () => {
 
-    const {CurrentFeatured} = useContext(ShopContext);
-    const {setCardRarityStyle} = FormatFunctions;
-    const {ReturnFeatured} = ItemFunctions;
-    
-    const featuredsize = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
-
+    const featured = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,24];
+    const daily = [1,2,3,4,5,6];
 
     return (
         <div className='featuredview featuredview--primary'>
             <p className='featuredview__head viewhead'>FEATURED</p>
             <div>
             <div className='featureditemsection featureditemsection--primary'>
-                {CurrentFeatured ? ReturnFeatured(CurrentFeatured, 'images').map((item, i) => {
+                {CurrentFeatured && ReturnFeatured(CurrentFeatured, 'images').map((item, i) => {
 
                             const BundleCheck = {
                                 BundleName: () => {
@@ -68,8 +57,6 @@ const FeaturedShopSection = () => {
                             } else {
                                 return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i]  : item} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                             }   
-                        }) : featuredsize.map((card, i) => {
-                            return SkeletonTypes('shopitemcard', window.screen.width)
                         })}
                 </div>
             </div>
@@ -77,4 +64,4 @@ const FeaturedShopSection = () => {
     )
 }
 
-export default FeaturedShopSection
+export default ShopItemCardSkeleton

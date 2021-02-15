@@ -1,6 +1,6 @@
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
-const SkeletonTypes = (component, type, VPwidth, VPHeight) => {
+const SkeletonTypes = (component, type, screenW) => {
     if (component === 'news') {
         if (type === 'newscard') {
             return  <SkeletonTheme color='#cececf'>
@@ -14,7 +14,7 @@ const SkeletonTypes = (component, type, VPwidth, VPHeight) => {
     } if (component === 'playerstats') {
         if (type === 'namehead') {
             return  <SkeletonTheme color='#cececf'>
-                        <Skeleton width={200} height={50} />
+                        <Skeleton width={150} height={25} />
                     </SkeletonTheme>
         } else if (type === 'headmatchcount') {
             return  <SkeletonTheme color='#cececf'>
@@ -26,10 +26,22 @@ const SkeletonTypes = (component, type, VPwidth, VPHeight) => {
                     </SkeletonTheme>
         } else if (type === 'dynamicoveralldata') {
             return  <SkeletonTheme color='#cececf'>
-                        <Skeleton width={100} height={35} />
+                        <Skeleton width={75} height={35} />
                     </SkeletonTheme>
         }
-    }
+    } if (component === 'shopitemcard') {
+        if (type <= 700) return  <SkeletonTheme color='#cececf'>
+                        <Skeleton width={150} height={225} />
+                    </SkeletonTheme>
+        if (type > 700 && type <= 1024) return  <SkeletonTheme color='#cececf'>
+                        <Skeleton width={200} height={225} />
+                    </SkeletonTheme>
+        if (type > 1024) return  <SkeletonTheme color='#cececf'>
+                        <Skeleton width={200} height={225} />
+                    </SkeletonTheme>
+        
+        
+    } 
 }
 
 export default SkeletonTypes

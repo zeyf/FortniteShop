@@ -1,9 +1,12 @@
+
 .playerstats--primary {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
-    border: 1px solid white;
+    margin: 15px 0px;
+    background: #252525;
 }
 
 .playerstatsbuttons--primary {
@@ -19,12 +22,9 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px solid green;
+
 
 }
-
-
-
 
 .playerstatstimewindowbuttons__button {
     width: 50%;
@@ -34,6 +34,11 @@
     outline: none;
     cursor: pointer;
     font-family: UbuntuB;
+    transition: 0.5s;
+}
+
+.playerstatstimewindowbuttons__button:hover {
+    opacity: 0.75;
 }
 
 
@@ -64,8 +69,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid;
     background: #333333;
+}
+
+.overalstatsheader--primary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
 }
 
 .overallstatssection--primary {
@@ -74,6 +85,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    border-bottom: 1px solid white;
 }
 
 .overallstatsdata--primary {
@@ -158,6 +170,10 @@
 
 @media only screen and (min-width: 700px) and (max-width: 1024px) {
     .statcards {
+        width: 100%;
+    }
+
+    .overallstats--primary {
         width: 100%;
     }
 }

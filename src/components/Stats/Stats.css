@@ -69,6 +69,7 @@
     cursor: pointer;
     margin: 15px 0px;
     font-family: UbuntuB;
+    transition: 0.5s;
 }
 
 .stats__buttonlink {
@@ -84,14 +85,24 @@
 
 }
 
+.timewindowbuttons__button:hover {
+    opacity: 0.75;
+}
+
 .platformbuttons__epic, .platformbuttons__psn, .platformbuttons__xbox {
     outline: none;
     border: none;
     border-radius: 0px;
     cursor: pointer;
     width: 100%;
-
+    transition: 0.5s;
 }
+
+
+.platformbuttons__epic:hover, .platformbuttons__psn:hover, .platformbuttons__xbox:hover {
+    opacity: 0.5;
+}
+
 .platformbuttons__psn {
     padding: 10px 37.5px;
     background: #006FCD;

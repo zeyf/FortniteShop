@@ -42,7 +42,12 @@ const FormatFunctions = {
         }
     },
     setCardRarityStyle: (type) => {
-
+        
+        if (type === 'Common') 
+            return {
+                background: "radial-gradient(rgb(190, 190, 190), rgb(100, 100, 100))",
+                border: "3px solid #b1b1b1"
+            }
         if (type === 'Uncommon') 
             return {
                 background: "radial-gradient(rgb(105, 187, 30), rgb(23, 81, 23))",
@@ -73,10 +78,45 @@ const FormatFunctions = {
                 background: 'radial-gradient(rgb(251, 34, 223), rgb(82, 12, 111))',
                 border: '3px solid rgb(255, 66, 231)'
             }
+        if (type === 'Shadow Series')
+            return {
+                background: 'radial-gradient(rgb(113, 113, 113), rgb(25, 25, 25))',
+                border: '3px solid #949494'
+            }
         if (type === 'Legendary')
             return {
                 background: 'radial-gradient(rgb(234, 141, 35), rgb(120, 55, 29))',
                 border: '3px solid rgb(233, 141, 75)'
+            }
+        if (type === 'Star Wars Series')
+            return {
+                background: 'radial-gradient(rgb(27, 54, 110), rgb(8, 23, 55))',
+                border: '3px solid white'
+            }
+        if (type === 'Gaming Legends Series') // FIX
+            return {
+                background: 'radial-gradient(#5447d4,#312497)',
+                border: '3px solid #8078ff'
+            }
+        if (type === 'DC SERIES') // FIX
+            return {
+                background: 'radial-gradient(#5475c7,#243461)',
+                border: '3px solid #6094ce'
+            }
+        if (type === 'MARVEL SERIES') // FIX
+            return {
+                background: 'radial-gradient(#c53333,#761b1b)',
+                border: '3px solid #ef3537'
+            }
+        if (type === 'Lava Series') // FIX
+            return {
+                background: 'radial-gradient(#ea8d23,#6a0a31)',
+                border: '3px solid #d19635'
+            }
+        if (type === 'Frozen Series') // FIX
+            return {
+                background: 'radial-gradient(#94dfff,#269ed6)',
+                border: '3px solid #c4dff7'
             }
     }
 }

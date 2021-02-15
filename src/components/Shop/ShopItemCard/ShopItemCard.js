@@ -5,7 +5,7 @@ import './ShopItemCard.css'
 import VBUCKS from '../../../media/images/VBUCKS.png';
 import FormatFunctions from '../../../App Wide Functions/FormatFunctions'
 
-const ShopItemCard = ({price, image, id, rarity, name, BundleName}) => {
+const ShopItemCard = ({price, image, id, rarity, name, BundleName, BundleStatus}) => {
 
     useEffect(()=> {
         localStorage.setItem(name.toUpperCase() || BundleName, price)
@@ -34,4 +34,3 @@ const ShopItemCard = ({price, image, id, rarity, name, BundleName}) => {
 }
 
 export default ShopItemCard;
-

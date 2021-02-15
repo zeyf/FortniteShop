@@ -40,15 +40,15 @@ const PlayerStats = ({match}) => {
     return (
         <>
         {LOADING ? <PlayerStatsSkeleton/> :
+
             <div className='playerstats playerstats--primary'>
-                    <h1 className='playerstats__username'>
-                        {AccName(ReturnStats('data'))}
-                    </h1>
-                
                     <div className='statssection statssection--primary'>
                         <div className='overallstats overallstats--primary'>
                             <div className='playerstatsbuttons playerstatsbuttons--primary'>
-                                <h1 className='overallstats__head'>OVERALL STATS</h1>
+                                <div className='overallstatsheader overalstatsheader--primary'>
+                                    <h1 className='overallstats__head'>OVERALL STATS for</h1>
+                                    <h1 className='overallstats__head'>{AccName(ReturnStats('data'))}</h1>
+                                </div>
                                 <div className='playerstatstimewindowbuttons playerstatstimewindowbuttons--primary'>
                                     <button style={setBackgroundType('season', TIMEWINDOW)} className='playerstatstimewindowbuttons__button' type='button' onClick={() => {
                                         setTimeWindow('season')
@@ -107,6 +107,7 @@ const PlayerStats = ({match}) => {
                         </div>
                     </div>
             </div>
+
         }
         </>
     )

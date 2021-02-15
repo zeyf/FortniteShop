@@ -19,12 +19,10 @@ const Shop = () => {
         <div className='shop shop--primary'>
         <Helmet><title>{loading && `FortniteBR: Item Shop, Item Data, and much more!`}</title></Helmet>
             <h1 className='shopview__head'>Today's Shop</h1>
-                {loading ? <Spinner /> :
                     <div className="shopview shopview--primary">
                         <FeaturedShopSection key='featuredshopsection' />
                         <DailyShopSection key='dailyshopsection' />
                     </div>
-                }
         </div>
     )
 }

@@ -5,18 +5,20 @@ import ShopItemCard from '../../ShopItemCard/ShopItemCard';
 import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
 import './DailyShopSection.css';
 import ItemFunctions from '../../../../App Wide Functions/ItemFunctions'
+import SkeletonTypes from '../../../../App Wide Functions/SkeletonTypes';
 
 const DailyShopSection = () => {
 
     const {CurrentDaily} = useContext(ShopContext);
     const {setCardRarityStyle} = FormatFunctions;
     const {ReturnDaily} = ItemFunctions;
+    const dailysize = [1,2,3,4,5,6];
 
     return (
         <div className='dailyview dailyview--primary'>
             <p className='dailyview__head viewhead'>DAILY</p>
             <div className='dailyitemsection dailyitemsection--primary'>
-                {CurrentDaily && ReturnDaily(CurrentDaily, 'images').map((item, i) => {
+                {CurrentDaily ? ReturnDaily(CurrentDaily, 'images').map((item, i) => {
 
                         const BundleCheck = {
                             BundleName: () => {
@@ -37,8 +39,17 @@ const DailyShopSection = () => {
                                         }
                                     })
                                 }
+                            },
+                            BundleStatus: () => {
+                                if (ReturnDaily(CurrentDaily, 'bundlestatuses')) {
+                                    return ReturnDaily(CurrentDaily, 'bundlestatuses').map((status, i) => {
+                                        return status
+                                    })
+                                }
                             }
                         }
+
+                        const {BundleStatus, BundleImage, BundleName} = BundleCheck;
                         
                         const id = ReturnDaily(CurrentDaily, 'IDs').map((current, i) => {
                             return String(current[0]);
@@ -52,10 +63,12 @@ const DailyShopSection = () => {
                         });
 
                         if (item.length > 1) {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item[0]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleCheck.BundleName()[i] && BundleCheck.BundleName()[i]} />
+                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                         } else {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleCheck.BundleImage()[i] ? BundleCheck.BundleImage()[i] : item} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleCheck.BundleName()[i] && BundleCheck.BundleName()[i]} />
+                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
                         }   
+                    }) : dailysize.map((card, i) => {
+                        return SkeletonTypes('shopitemcard', window.screen.width)
                     })}
             </div>
         </div>

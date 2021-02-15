@@ -13,13 +13,13 @@ const PlayerStatsSkeleton = () => {
     return (
         <>
             <div className='playerstats playerstats--primary'>
-                    <h1 className='playerstats__username'>
-                        {SkeletonTypes('playerstats', 'namehead')}
-                    </h1>
                     <div className='statssection statssection--primary'>
                         <div className='overallstats overallstats--primary'>
                         <div className='playerstatsbuttons playerstatsbuttons--primary'>
-                            <h1 className='overallstats__head'>OVERALL STATS</h1>
+                            <div className='overallstatsheader overalstatsheader--primary'>
+                                <h1 className='overallstats__head'>OVERALL STATS for</h1>
+                                <h1 className='overallstats__head'>{SkeletonTypes('playerstats', 'namehead')}</h1>
+                            </div>
                             <div className='playerstatstimewindowbuttons playerstatstimewindowbuttons--primary'>
                                 <button className='playerstatstimewindowbuttons__button' type='button'>
                                     SEASON

@@ -7,7 +7,7 @@
 
 .statcardheadsection {
     background: #f05454;
-    padding: 10px 10px 5px 10px;
+    padding: 20px 10px 15px 10px;
     display: flex;
     align-items: center;
     display: flex;
@@ -17,7 +17,7 @@
 
 .statcardheadsection__category, .statcardheadsection__matches {
     font-family: 'Fortnite';
-    font-size: 1.375em;
+    font-size: 1.5em;
     letter-spacing: 0.5px;
     color: rgba(48, 47, 47, 0.875);
 }
@@ -27,7 +27,7 @@
     grid-template-columns: 1fr 1fr;
     width: 100%;
     grid-column-gap: 25px;
-
+    background: #252525;
 }
 
 .statgriddata--primary {
@@ -37,6 +37,10 @@
     align-items: center;
     padding: 10px 0px;
     border-bottom: 1px solid #cececf;
+}
+
+.statgriddata--primary:last-of-type {
+    border-bottom: none;
 }
 
 .statgriddata__head {
