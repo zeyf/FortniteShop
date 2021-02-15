@@ -4,13 +4,15 @@ import {useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions'
 import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
+import Skeleton from 'react-loading-skeleton'
 
 
 const ItemSet = ({length}) => {
 
-    const {ItemsOfSameSet, GetItem, item} = useContext(ItemContext);
+    const {ItemsOfSameSet, GetItem, GetItemSet, item} = useContext(ItemContext);
     const {setCardRarityStyle, SetLinkByIDType} = FormatFunctions;
     const {
+        GetSet,
         SetName,
         SetItemSetLink,
         SetItemSetLength,
@@ -18,11 +20,15 @@ const ItemSet = ({length}) => {
         SetItemName
     } = ItemFunctions;
 
+    useEffect(() => {
+        GetSet(item, GetItemSet)
+        //eslint-disable-next-line
+    }, [])
 
     return (
         <div className='itemsetsection itemsetsection--primary'>
             <h2 className="itemsetsection__head">
-                PART OF THE <Link to={`/sets/${SetItemSetLink(SetName(item))}`} style={{textDecoration: 'none'}}><span style={{color: '#ffe227'}}>{SetName(item)} SET</span></Link> ({SetItemSetLength(ItemsOfSameSet)})
+                PART OF THE <Link to={`/sets/${SetItemSetLink(SetName(item))}`} style={{textDecoration: 'none'}}><span style={{color: '#ffe227'}}>{SetName(item)} SET</span></Link>
             </h2>
             <div className="itemset itemset--primary">
                 {ItemsOfSameSet && ItemsOfSameSet.map((item, i) => {

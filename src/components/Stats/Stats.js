@@ -11,8 +11,6 @@ import StatFunctions from '../../App Wide Functions/StatFunctions'
 
 const Stats = () => {
     const {
-        LOADING, 
-        PLAYERSTATS,
         ACCOUNTNAME,
         ACCOUNTTYPE,
         TIMEWINDOW,

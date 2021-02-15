@@ -4,8 +4,9 @@ import ItemSet from '../Item/ItemDetailsSection/Item Details Components/Item Set
 import Spinner from '../layout/spinner/Spinner';
 import ItemFunctions from '../../App Wide Functions/ItemFunctions'
 import FormatFunctions from '../../App Wide Functions/FormatFunctions'
-import {Link} from 'react-router-dom'
 import ItemContext from '../context/ItemContext/ItemContext';
+import NSItemCard from '../NSItemCard/NSItemCard';
+import './Set.css'
 
 const Set = ({match}) => {
 
@@ -24,21 +25,19 @@ const Set = ({match}) => {
         <div className='set set--primary'>
             {loading ? <Spinner /> :  <>
             <h2 className="set__head">
-                THE <span style={{color: '#ffe227'}}>{SetName} SET</span> ({SetInfo && SetInfo.length})
+                <h1 className='set__head'>THE {SetName} SET</h1>
             </h2>
-            <div className="setcontainer setcontainer--primary">
+            <div className="setcards setcards--primary">
                 {SetInfo && SetInfo.map((item, i) => {
                     
                     const {id, rarity, name} = item;
                     const {displayValue} = rarity
 
-                    return <Link to={`/items/${SetLinkByIDType(id)}/${NameCharacterHandler(name)}`} onClick={() => {
-                        GetItem(NameCharacterHandler(name))
-                    }}>
-                                <div className='setitemcard setitemcard--primary' style={setCardRarityStyle(displayValue)}>
-                                    <img src={ItemImage(item)} style={{height: '150px', width: '150px'}} />
-                                </div>
-                            </Link>
+                    return <NSItemCard category={SetLinkByIDType(id)}
+                        name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
+                        handledName={NameCharacterHandler(name)}
+                        imgSRC={ItemImage(item)}
+                    />
                 })}
             </div>
             </>

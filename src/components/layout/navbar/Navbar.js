@@ -17,7 +17,7 @@ const Navbar = () => {
             
             {showMenu && <div className='mobilepopupmenu mobilepopupmenu--primary'>
                             <div className='xcloseiconsection xcloseiconsection--primary'>
-                                <img className='xcloseiconsection__icon' src={XCloseIcon} onClick={() => {
+                                <img className='xcloseiconsection__icon' alt='close mobile menu icon' src={XCloseIcon} onClick={() => {
                                     setShowMenu(false)
                                 }} />
                             </div>

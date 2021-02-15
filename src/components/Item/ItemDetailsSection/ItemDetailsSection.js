@@ -7,7 +7,7 @@ import './ItemDetailsSection.css';
 
 const ItemDetailsSection = () => {
 
-    const {item} = useContext(ItemContext)
+    const {item} = useContext(ItemContext);
 
     const CheckForVariants = () => {
         if (item) {

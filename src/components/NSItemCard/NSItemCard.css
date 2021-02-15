@@ -1,0 +1,58 @@
+.nsitemcard--primary {
+    margin: 10px;
+    height: 150px;
+    width: 150px;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nsitemcard--primary:hover {
+    opacity: 0.625;
+}
+
+.nsitemcard__link {
+    height: 100%;
+    width: 100%;
+}
+
+.nsitemcardcontent--primary {
+    height: 155px;
+    position: absolute;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid white;
+}
+
+.nsitemcardcontent__image {
+    height: 150px;
+    width: 150px;
+}
+
+.nsitemcardcontenttext--primary {
+    height: 158px;
+    width: 155px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nsitemcardcontext__name {
+    color: white;
+    font-family: Fortnite;
+    font-size: 1.5em;
+    background-color: rgba(39, 38, 39, 0.375);
+    width: 140px;
+    padding: 10px 5px 5px 5px;
+    text-align: center;
+
+}
+

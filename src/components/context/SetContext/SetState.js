@@ -68,7 +68,7 @@ const SetState = (props) => {
                 return setname.toUpperCase();
             }
         }
-        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search/all?set=${NameCharacterHandler()}`)
+        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search/all?set=${encodeURIComponent(NameCharacterHandler())}`)
 
         dispatch({
             type: GET_SET,

@@ -14,9 +14,11 @@ export const ItemFunctions = {
     ItemImage: (item) => {
         if (item) {
             const {images} = item;
-            const {featured, icon} = images;
+            const {featured, icon, smallIcon} = images;
+            console.log(images)
             if (icon) return icon
-            if (!icon) return featured
+            if (!icon && featured) return featured
+            if (!icon && !featured) return smallIcon
         }
     },
     ItemPrice: (item) => {

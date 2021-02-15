@@ -41,34 +41,34 @@ const ItemCardSection = () => {
                                 </div>
                             </div>
                     </div>
-                    <div className='itemcardattributes itemcardattributes--primary' style={setCardRarityStyle(ItemRarity(item))}>
-                        <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
-                            <tbody>
-                            <tr className='itemcardattributestable__row'>
-                                <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
-                                <td className='itemcardattributestable__data'>{ItemLastSeenDate(item)}</td>
-                            </tr>
-                            <tr className='itemcardattributestable__row'>
-                                <th className='itemcardattributestable__datahead' scope='row'>Released</th>
-                                <td className='itemcardattributestable__data'>{ItemReleaseDate(item)}</td>
-                            </tr>
-                            <tr className='itemcardattributestable__row'>
-                                <th className='itemcardattributestable__datahead' scope='row'>Season</th>
-                                <td className='itemcardattributestable__data'>{ItemIntroduction(item, 'season')}</td>
-                            </tr>
-                            <tr className='itemcardattributestable__row'>
-                                <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
-                                <td className='itemcardattributestable__data'>{ItemIntroduction(item, 'chapter')}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
                 <div className='itemtextdetails itemtextdetails--primary'>
                     <div className='itemdescription itemdescription--primary' style={setCardRarityStyle(ItemRarity(item))}>
                         <h2 className='itemdescription__head'>DESCRIPTION</h2>
                         <p className='itemdescription__text'>{ItemDescription(item)}</p>
                     </div>
+                        <div className='itemcardattributes itemcardattributes--primary' style={setCardRarityStyle(ItemRarity(item))}>
+                            <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
+                                <tbody>
+                                <tr className='itemcardattributestable__row'>
+                                    <th className='itemcardattributestable__datahead' scope='row'>Last Seen</th>
+                                    <td className='itemcardattributestable__data'>{ItemLastSeenDate(item)}</td>
+                                </tr>
+                                <tr className='itemcardattributestable__row'>
+                                    <th className='itemcardattributestable__datahead' scope='row'>Released</th>
+                                    <td className='itemcardattributestable__data'>{ItemReleaseDate(item)}</td>
+                                </tr>
+                                <tr className='itemcardattributestable__row'>
+                                    <th className='itemcardattributestable__datahead' scope='row'>Season</th>
+                                    <td className='itemcardattributestable__data'>{ItemIntroduction(item, 'season')}</td>
+                                </tr>
+                                <tr className='itemcardattributestable__row'>
+                                    <th className='itemcardattributestable__datahead' scope='row'>Chapter</th>
+                                    <td className='itemcardattributestable__data'>{ItemIntroduction(item, 'chapter')}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                 </div>
             </div>

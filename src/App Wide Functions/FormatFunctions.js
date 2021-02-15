@@ -4,7 +4,6 @@ const FormatFunctions = {
 
     SetLinkByIDType: (id) => {
         if (id) {
-
             const itemtype = id.split('_')[0];
             
             if (itemtype === 'CID') return 'skins';
@@ -15,6 +14,10 @@ const FormatFunctions = {
             if (itemtype === 'Glider') return 'gliders';
             if (itemtype === 'BID') return 'backblings';
             if (itemtype === 'KID') return 'katanas'
+            if (itemtype === 'Emoji') return 'emojis'
+            if (itemtype === 'SPID') return 'sprays'
+            if (itemtype === 'LSID') return 'loadingscreens'
+            if (itemtype === 'Trails') return 'contrails'
         }
     },
     NameCharacterHandler: (name) => {
