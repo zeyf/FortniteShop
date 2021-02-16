@@ -49,6 +49,18 @@ const SearchState = ({children}) => {
         dispatch({type: SET_ITEMTYPE, payload: itemtype})
     }
 
+    const setSlice = (bodyheight, currentScrollY) => {
+        const initialSlice = [0, 48];
+        console.log(initialSlice)
+        console.log(bodyheight, currentScrollY)
+        if (currentScrollY >= (bodyheight * 0.6)) {
+            initialSlice[1] += 48;
+            console.log(initialSlice)
+        }
+        
+
+    }
+
     return <SearchContext.Provider value={{
                 LOADING: state.LOADING,
                 INPUT: state.INPUT,
@@ -58,7 +70,8 @@ const SearchState = ({children}) => {
                 setInput,
                 setRarity,
                 setItemType,
-                getSearch
+                getSearch,
+                setSlice
             }}>
                 {children}
             </SearchContext.Provider>
