@@ -1,4 +1,4 @@
-import {SET_LOADING, GET_SEARCH, SET_INPUT, SET_RARITY, SET_ITEMTYPE} from '../types'
+import {SET_LOADING, GET_SEARCH, SET_INPUT, SET_RARITY, SET_ITEMTYPE, SET_SLICE} from '../types'
 
 const SearchReducer = (state, action) => {
     switch(action.type) {
@@ -29,6 +29,11 @@ const SearchReducer = (state, action) => {
             return {
                 ...state,
                 ITEMTYPE: action.payload
+            }
+        case SET_SLICE:
+            return {
+                ...state,
+                CURRENTSLICE: action.payload
             }
     }
 }

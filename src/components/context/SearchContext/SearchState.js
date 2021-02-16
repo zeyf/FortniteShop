@@ -7,7 +7,8 @@ import {
      GET_SEARCH,
       SET_INPUT,
       SET_ITEMTYPE,
-      SET_RARITY
+      SET_RARITY,
+      SET_SLICE
     } from '../types'
 
 const SearchState = ({children}) => {
@@ -17,7 +18,8 @@ const SearchState = ({children}) => {
         INPUT: '',
         RARITY: null,
         ITEMTYPE: null,
-        RESULTS: null
+        RESULTS: null,
+        CURRENTSLICE: 60
     }
 
     const [state, dispatch] = useReducer(SearchReducer, InitialState);
@@ -30,7 +32,6 @@ const SearchState = ({children}) => {
         setLoading();
         const response = await axios.get(endpoint)
 
-        console.log(response)
         dispatch({
             type: GET_SEARCH,
             payload: response.data.data
@@ -49,16 +50,11 @@ const SearchState = ({children}) => {
         dispatch({type: SET_ITEMTYPE, payload: itemtype})
     }
 
-    const setSlice = (bodyheight, currentScrollY) => {
-        const initialSlice = [0, 48];
-        console.log(initialSlice)
-        console.log(bodyheight, currentScrollY)
-        if (currentScrollY >= (bodyheight * 0.6)) {
-            initialSlice[1] += 48;
-            console.log(initialSlice)
-        }
-        
-
+    const setnewSlice = (CURRENTSLICE) => {
+        dispatch({
+            type: SET_SLICE,
+            payload: (CURRENTSLICE + 48)
+        })
     }
 
     return <SearchContext.Provider value={{
@@ -67,11 +63,12 @@ const SearchState = ({children}) => {
                 RARITY: state.RARITY,
                 RESULTS: state.RESULTS,
                 ITEMTYPE: state.ITEMTYPE,
+                CURRENTSLICE: state.CURRENTSLICE,
                 setInput,
                 setRarity,
                 setItemType,
                 getSearch,
-                setSlice
+                setnewSlice
             }}>
                 {children}
             </SearchContext.Provider>

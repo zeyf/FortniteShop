@@ -13,7 +13,7 @@ const SearchFunctions = {
         }
     },
     resultsLength: (results) => {
-        return results.length
+        if (results) return results.length
     },
     filteringBy: (input, itemtype, rarity) => {
         if (input !== '') {

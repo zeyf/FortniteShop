@@ -6,17 +6,18 @@ import NSItemCard from '../NSItemCard/NSItemCard'
 import ItemFunctions from '../../App Wide Functions/ItemFunctions'
 import FormatFunctions from '../../App Wide Functions/FormatFunctions'
 import Select from 'react-select'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import './Search.css'
 
 const Search = () => {
 
 
     const {
-        setInput, setRarity, setItemType, setSlice, getSearch,
-        LOADING, INPUT, RARITY, ITEMTYPE, RESULTS,
+        setInput, setRarity, setItemType, setnewSlice, getSearch,
+        INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE
     } = useContext(SearchContext);
 
-    const {setSearchEndpoint, rarityOptions, itemtypeOptions} = SearchFunctions;
+    const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength} = SearchFunctions;
     const {ItemImage, ItemName, ItemRarity} = ItemFunctions;
     const {SetLinkByIDType, setCardRarityStyle, NameCharacterHandler} = FormatFunctions;
     
@@ -44,7 +45,9 @@ const Search = () => {
         const {value} = event;
         setItemType(value)
     }
-    
+
+   
+    console.log(resultsLength(RESULTS))
     return (
         <div className='search search--primary'>
             <form className='search__form' onSubmit={onSubmit}>
@@ -55,19 +58,30 @@ const Search = () => {
                 <button type='submit' onClick={() => {
                     getSearch(setSearchEndpoint(INPUT, ITEMTYPE, RARITY))
                 }}>
+                    click me bih
                 </button>
             </form>
             <div className='searchresults searchresults--primary'>
-                {RESULTS ? RESULTS.map((item, i) => {
-                    const {id, name} = item
-                    
+                <InfiniteScroll 
+                scrollableTarget='searchresults--primary'
+                dataLength={() => {return resultsLength(RESULTS)}}
+                next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
+                scrollThreshold={0.95} hasMore={()=> {
+                    if (resultsLength(RESULTS) > CURRENTSLICE) return true
+                    if (!(resultsLength(RESULTS) > CURRENTSLICE)) return false
+                }}>
+                    {RESULTS ? RESULTS.map((item, i) => {
+                        const {id, name} = item
+                        if (i < CURRENTSLICE) {
+                            return <NSItemCard category={SetLinkByIDType(id)} name={name.toUpperCase()} 
+                            cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={NameCharacterHandler(name)}
+                            imgSRC={ItemImage(item)}
+                            />
+                        }
+                        
+                    }) : 'HI'}
 
-                        return <NSItemCard category={SetLinkByIDType(id)} name={name.toUpperCase()} 
-                        cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={NameCharacterHandler(name)}
-                        imgSRC={ItemImage(item)}
-                        />
-                    
-                }) : 'HI'}
+                </InfiniteScroll>
             </div>
         </div>
     )
