@@ -45,6 +45,13 @@ const Navbar = () => {
                                         NEWS
                                     </Link>
                                 </li>
+                                <li className='mobilepopupmenu__option'>
+                                    <Link className='mobilepopupmenu__optionlink' to='/search' onClick={() => {
+                                        setShowMenu(false)
+                                    }}>
+                                        SEARCH
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
             }
@@ -66,6 +73,11 @@ const Navbar = () => {
                     <li className='nonmobilemenu__option'>
                         <Link to='/news' className='nonmobilemenu__optionlink'>
                             NEWS
+                        </Link>
+                    </li>
+                    <li className='nonmobilemenu__option'>
+                        <Link to='/search' className='nonmobilemenu__optionlink'>
+                            SEARCH
                         </Link>
                     </li>
                 </ul>

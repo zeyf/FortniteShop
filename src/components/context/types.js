@@ -13,3 +13,7 @@ export const SET_TIME_WINDOW = 'SET_TIME_WINDOW';
 export const SET_PLAYER_STATS = 'SET_PLAYER_STATS';
 export const SET_ACCOUNT_TYPE = 'SET_ACCOUNT_TYPE';
 export const GET_NEWS = 'GET_NEWS';
+export const GET_SEARCH = 'GET_SEARCH';
+export const SET_INPUT = 'SET_INPUT';
+export const SET_RARITY = 'SET_RARITY';
+export const SET_ITEMTYPE = 'SET_ITEMTYPE';

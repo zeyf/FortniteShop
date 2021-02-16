@@ -12,6 +12,8 @@ import StatsState from './components/context/Stats Context/StatsState'
 import NewsState from './components/context/NewsContext/NewsState'
 import News from './components/News/News'
 import PlayerStats from './components/Stats/Stat/PlayerStats';
+import SearchState from './components/context/SearchContext/SearchState'
+import Search from './components/Search/Search';
 
 const App = () => {
   return (
@@ -20,19 +22,22 @@ const App = () => {
         <SetState>
           <StatsState>
             <NewsState>
-              <Router>
-                <div className="App">
-                  <Navbar />
-                  <Switch>
-                      <Route exact path='/shop' component={Shop} />
-                      <Route exact path='/items/:itemtype/:itemname' component={Item} />
-                      <Route exact path='/sets/:setname' component={Set} />
-                      <Route exact path='/stats' component={Stats} />
-                      <Route exact path='/news' component={News} />
-                      <Route exact path='/stats/:platform/:username' component={PlayerStats} />
-                  </Switch>
-                </div>
-              </Router>
+              <SearchState>
+                <Router>
+                  <div className="App">
+                    <Navbar />
+                    <Switch>
+                        <Route exact path='/shop' component={Shop} />
+                        <Route exact path='/items/:itemtype/:itemname' component={Item} />
+                        <Route exact path='/sets/:setname' component={Set} />
+                        <Route exact path='/stats' component={Stats} />
+                        <Route exact path='/news' component={News} />
+                        <Route exact path='/stats/:platform/:username' component={PlayerStats} />
+                        <Route exact path='/search' component={Search} />
+                    </Switch>
+                  </div>
+                </Router>
+              </SearchState>
             </NewsState>
           </StatsState>
         </SetState>
