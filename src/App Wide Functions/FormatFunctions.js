@@ -43,7 +43,7 @@ const FormatFunctions = {
             const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
             const ReplaceSpacesToo = DashReplaceResult.replaceAll(spaceregex, '-')
             return ReplaceSpacesToo
-        } else if (!dashregex.test(name) && !spaceregex.test(name)) {
+        } else if (!dashregex.test(name) && !spaceregex.test(name) && name !== null) {
             return name.toLowerCase();
         }
     },

@@ -62,13 +62,11 @@ const Search = () => {
                 </button>
             </form>
             <div className='searchresults searchresults--primary'>
-                <InfiniteScroll 
-                scrollableTarget='searchresults--primary'
+                <InfiniteScroll className='scroller'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
                 scrollThreshold={0.95} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
-                    if (!(resultsLength(RESULTS) > CURRENTSLICE)) return false
                 }}>
                     {RESULTS ? RESULTS.map((item, i) => {
                         const {id, name} = item

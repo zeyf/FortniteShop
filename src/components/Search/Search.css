@@ -1,6 +1,6 @@
 
 
-.searchresults--primary {
+.scroller {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

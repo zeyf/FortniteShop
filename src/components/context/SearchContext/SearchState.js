@@ -53,7 +53,7 @@ const SearchState = ({children}) => {
     const setnewSlice = (CURRENTSLICE) => {
         dispatch({
             type: SET_SLICE,
-            payload: (CURRENTSLICE + 48)
+            payload: (CURRENTSLICE + 60)
         })
     }
 
