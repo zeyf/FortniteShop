@@ -56,3 +56,18 @@
 
 }
 
+.nsitemcardcontext__price {
+    width: 140px;
+    padding: 10px 5px 5px 5px;
+    text-align: center;
+    background-color: rgba(39, 38, 39, 0.375);
+    font-family: Fortnite;
+    color: white;
+    font-size: 0.75em;
+}
+
+.nsitemcardcontext__icon {
+    height: 25px;
+    width: 25px;
+    margin: 0px 5px;
+}

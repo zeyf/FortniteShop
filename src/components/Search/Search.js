@@ -46,8 +46,6 @@ const Search = () => {
         setItemType(value)
     }
 
-   
-    console.log(resultsLength(RESULTS))
     return (
         <div className='search search--primary'>
             <form className='search__form' onSubmit={onSubmit}>

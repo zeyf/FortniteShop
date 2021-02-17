@@ -6,11 +6,13 @@ import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
 import './DailyShopSection.css';
 import ItemFunctions from '../../../../App Wide Functions/ItemFunctions'
 import SkeletonTypes from '../../../../App Wide Functions/SkeletonTypes';
+import NSItemCard from '../../../NSItemCard/NSItemCard';
 
 const DailyShopSection = () => {
 
     const {CurrentDaily} = useContext(ShopContext);
-    const {setCardRarityStyle} = FormatFunctions;
+    const {setCardRarityStyle, NameCharacterHandler} = FormatFunctions;
+    const {SetLinkByIDType} = FormatFunctions;
     const {ReturnDaily} = ItemFunctions;
     const dailysize = [1,2,3,4,5,6];
 
@@ -66,13 +68,13 @@ const DailyShopSection = () => {
                             return current[0];
                         });
 
-                        if (item.length > 1) {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} 
-                            setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
-                        } else {
-                            return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item} 
-                             setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
-                        }   
+                        if (!/locker/gi.test(BundleName()[i])) {
+                                return <NSItemCard category={SetLinkByIDType(id[i])} name={name[i]} cardStyle={rarity[i]} 
+                                handledName={NameCharacterHandler(name[i])} imgSRC={BundleImage()[i] ? BundleImage()[i] : item[0]}
+                                 BundleName={BundleName()[i] && BundleName()[i]}
+                                BundleStatus={BundleStatus()[i]} setname={setname[i]}
+                                />
+                        }
                     }) : dailysize.map((card, i) => {
                         return SkeletonTypes('shopitemcard', window.screen.width)
                     })}
@@ -82,3 +84,13 @@ const DailyShopSection = () => {
 }
 
 export default DailyShopSection
+
+
+
+//  if (item.length > 1) {
+//     return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} 
+//     setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+// } else {
+//     return <ShopItemCard price={ReturnDaily(CurrentDaily, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item} 
+//     setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
+// }   

@@ -7,11 +7,13 @@ import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
 import ItemFunctions from '../../../../App Wide Functions/ItemFunctions';
 import Skeleton from 'react-loading-skeleton';
 import SkeletonTypes from '../../../../App Wide Functions/SkeletonTypes';
+import NSItemCard from '../../../NSItemCard/NSItemCard'
+
 
 const FeaturedShopSection = () => {
 
     const {CurrentFeatured} = useContext(ShopContext);
-    const {setCardRarityStyle} = FormatFunctions;
+    const {setCardRarityStyle, NameCharacterHandler, SetLinkByIDType} = FormatFunctions;
     const {ReturnFeatured} = ItemFunctions;
     
     const featuredsize = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
@@ -68,14 +70,11 @@ const FeaturedShopSection = () => {
                             });
 
                             if (!/locker/gi.test(BundleName()[i])) {
-
-                                if (item.length > 1) {
-                                    return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i] : item[0]} 
-                                    setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
-                                } else {
-                                    return <ShopItemCard price={ReturnFeatured(CurrentFeatured, 'prices')[i]} image={BundleImage()[i] ? BundleImage()[i]  : item} 
-                                    setname={setname[i]} id={id[i]} rarity={rarity[i]} name={name[i]} BundleName={BundleName()[i] && BundleName()[i]} BundleStatus={BundleStatus()[i]} />
-                                }   
+                                    return <NSItemCard category={SetLinkByIDType(id[i])} name={name[i]} cardStyle={rarity[i]} 
+                                    handledName={NameCharacterHandler(name[i])} imgSRC={BundleImage()[i] ? BundleImage()[i] : item[0]}
+                                     BundleName={BundleName()[i] && BundleName()[i]}
+                                    BundleStatus={BundleStatus()[i]} setname={setname[i]}
+                                    />
                             }
                         }) : featuredsize.map((card, i) => {
                             return SkeletonTypes('shopitemcard', window.screen.width)
