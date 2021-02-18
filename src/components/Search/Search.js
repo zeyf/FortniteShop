@@ -8,7 +8,7 @@ import FormatFunctions from '../../App Wide Functions/FormatFunctions'
 import Select from 'react-select'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import './Search.css'
-
+import LOADER from '../../media/images/InfinityTeal.svg'
 const Search = () => {
 
 
@@ -17,7 +17,7 @@ const Search = () => {
         INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE
     } = useContext(SearchContext);
 
-    const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength} = SearchFunctions;
+    const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength, filteringBy} = SearchFunctions;
     const {ItemImage, ItemName, ItemRarity} = ItemFunctions;
     const {SetLinkByIDType, setCardRarityStyle, NameCharacterHandler} = FormatFunctions;
     
@@ -48,34 +48,48 @@ const Search = () => {
 
     return (
         <div className='search search--primary'>
+            <div className='searchheading searchheading--primary'>
+                <h1 className='searchheading__head'>
+                    COSMETICS SEARCH
+                </h1>
+                <p className='searchheading__text'>
+                    Search any fortnite item! Enter keywords below. You can use the Item Type and Rarity filters to refine your search.
+                </p>
+            </div>
             <form className='search__form' onSubmit={onSubmit}>
-                <input className='search__input' placeholder='Search by cosmetic item name' onChange={inputOnChange} />
-                <Select options={rarityOptions.options} onChange={rarityOnChange} />
-                <Select options={itemtypeOptions.options} onChange={itemtypeOnChange} />
-        
-                <button type='submit' onClick={() => {
-                    getSearch(setSearchEndpoint(INPUT, ITEMTYPE, RARITY))
-                }}>
-                    click me bih
-                </button>
+                <input className='search__input' placeholder='Enter any item name...' onChange={inputOnChange} />
+                <div className='filters filters--primary'>
+                    <Select className='filters__select' options={rarityOptions.options} label={rarityOptions.label} onChange={rarityOnChange} />
+                    <Select className='filters__select' options={itemtypeOptions.options} label={rarityOptions.label} onChange={itemtypeOnChange} />
+            
+                </div>
+                    <button className='search__button' type='submit' onClick={() => {
+                        if (INPUT !== '' || ITEMTYPE !== null || RARITY !== null) getSearch(setSearchEndpoint(INPUT, ITEMTYPE, RARITY))
+                    }}>
+                        APPLY
+                    </button>
             </form>
+            <div className='showing showing--primary'>
+                <p className='showing__text'>{RESULTS && filteringBy(INPUT, ITEMTYPE, RARITY)}</p>
+            </div>
             <div className='searchresults searchresults--primary'>
-                <InfiniteScroll className='scroller'
+                <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
-                scrollThreshold={0.95} hasMore={()=> {
+                scrollThreshold={1.00} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
-                }}>
-                    {RESULTS ? RESULTS.map((item, i) => {
+                }}
+                >
+                    {RESULTS && RESULTS.map((item, i) => {
                         const {id, name} = item
-                        if (i < CURRENTSLICE) {
+                        if (i < CURRENTSLICE && name !== 'null' && name !== 'tbd') {
                             return <NSItemCard category={SetLinkByIDType(id)} name={name.toUpperCase()} 
                             cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={NameCharacterHandler(name)}
-                            imgSRC={ItemImage(item)}
+                            imgSRC={ItemImage(item)} islink={true} height={250} width={250}
                             />
                         }
                         
-                    }) : 'HI'}
+                    })}
 
                 </InfiniteScroll>
             </div>

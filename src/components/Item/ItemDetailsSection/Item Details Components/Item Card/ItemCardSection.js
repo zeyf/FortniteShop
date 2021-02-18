@@ -6,10 +6,12 @@ import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions';
 import ItemShopHistory from '../Item Shop History/ItemShopHistory';
 import {Helmet} from 'react-helmet'
+import NSItemCard from '../../../../NSItemCard/NSItemCard';
 
 const ItemCardSection = () => {
 
     const {item, loading} = useContext(ItemContext);
+    const {setCardRarityStyle, NameCharacterHandler, SetLinkByIDType} = FormatFunctions;
 
     const {
         ItemName, 
@@ -20,33 +22,22 @@ const ItemCardSection = () => {
         ItemLastSeenDate,
         ItemIntroduction,
         ItemShopHistoryTable,
-        ItemRarity
+        ItemRarity,
+        ItemID
     } = ItemFunctions;
-
-    const {setCardRarityStyle} = FormatFunctions;
     
     return (
         <div className='mainitemsection mainitemsection--primary'>
-            <Helmet><title>{loading ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(item) ? `${ItemPrice(item)} VBUCKS - FortniteBRShop` : `FortniteBRShop`}`}</title></Helmet>
+            <Helmet><title>{loading ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(ItemName(item, 'card')) ? `${ItemName(item, 'card')} VBUCKS - FortniteBRShop` : `FortniteBRShop`}`}</title></Helmet>
             <div className='itemdetails itemdetails--primary'>
-                <div className='itemcarddetails itemcarddetails--primary'>
-                    <div className='itemcard itemcard--primary' style={setCardRarityStyle(ItemRarity(item))} >
-                            <div className='itemcardimage itemcardimage--primary'>
-                                <img src={ItemImage(item)} alt={`${ItemName(item, 'card')}'s ITEM CARD`} style={{height: '200px', width: '200px', margin: '0px', padding: '0px'}} />
-                            </div>
-                            <div className="itemcardinfo itemcardinfo--primary">
-                                <p className='itemcardinfo__name'>{ItemName(item, 'card')}</p>
-                                <div className='itemcardprice itemcardprice--primary'>
-                                    <p className='itemcardprice__text'>{ItemPrice(item)}</p>
-                                </div>
-                            </div>
-                    </div>
-                </div>
+                <NSItemCard category={SetLinkByIDType(ItemID(item))} name={item && ItemName(item, 'card')} imgSRC={ItemImage(item)}
+                    islink={false} cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={item && NameCharacterHandler(ItemName(item, 'card'))}
+                    price={ItemPrice(ItemName(item, 'card'))} height={225} width={225} margin={25}
+                />
                 <div className='itemtextdetails itemtextdetails--primary'>
                     <div className='itemdescription itemdescription--primary' style={setCardRarityStyle(ItemRarity(item))}>
                         <h2 className='itemdescription__head'>DESCRIPTION</h2>
                         <p className='itemdescription__text'>{ItemDescription(item)}</p>
-                    </div>
                         <div className='itemcardattributes itemcardattributes--primary' style={setCardRarityStyle(ItemRarity(item))}>
                             <table className='itemcardattributestable itemcardattributestable--primary' style={{color: 'white'}}>
                                 <tbody>
@@ -69,12 +60,13 @@ const ItemCardSection = () => {
                                 </tbody>
                             </table>
                         </div>
+                    </div>
 
                 </div>
             </div>
-            <div className='shophis shophis--primary'>
-                {ItemShopHistoryTable(item, ItemPrice(item))}
-            </div>
+
+                {ItemShopHistoryTable(item, ItemPrice(ItemName(item, 'card')))}
+
         </div>
     )
 }

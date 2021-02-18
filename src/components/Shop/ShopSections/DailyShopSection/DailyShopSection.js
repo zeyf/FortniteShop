@@ -68,11 +68,19 @@ const DailyShopSection = () => {
                             return current[0];
                         });
 
+                        const items = ReturnDaily(CurrentDaily, 'items').map((current, pos) => {
+                            return current
+                        })
+                        
+                        const prices = ReturnDaily(CurrentDaily, 'prices').map((current, pos) => {
+                            return current
+                        })
+
                         if (!/locker/gi.test(BundleName()[i])) {
                                 return <NSItemCard category={SetLinkByIDType(id[i])} name={name[i]} cardStyle={rarity[i]} 
                                 handledName={NameCharacterHandler(name[i])} imgSRC={BundleImage()[i] ? BundleImage()[i] : item[0]}
-                                 BundleName={BundleName()[i] && BundleName()[i]}
-                                BundleStatus={BundleStatus()[i]} setname={setname[i]}
+                                 BundleName={BundleName()[i] && BundleName()[i]} price={prices[i]} item={items[i]}
+                                BundleStatus={BundleStatus()[i]} setname={setname[i]} islink={true}
                                 />
                         }
                     }) : dailysize.map((card, i) => {

@@ -1,8 +1,191 @@
 
 
-.scroller {
+.search--primary {
+    width: 100%;
+    padding: 25px 0px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.searchheading--primary {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    width: 75%;
+}
+
+.searchheading__head {
+    color: white;
+    font-family: Fortnite;
+    letter-spacing: 1px;
+    font-size: 2.25em;
+    padding: 0px;
+    margin: 0px;
+}
+.searchheading__text {
+    color: white;
+}
+
+.search__form {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #333333;
+    width: 75%;
+    padding: 15px 0px;
+}
+
+.search__input {
+    width: 50%;
+    height: 100%;
+    padding: 11.5px 10px 11.5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+
+}
+
+.search__button {
+    height: 100%;
+    padding: 8px 15px;
+    border: 2px solid #6930c3;
+    color: #6930c3;
+    font-size: 1.00em;
+    background: white;
+    border-radius: 5px;
+    width: 10%;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.search__button:hover {
+    border: 2px solid white;
+    background: #6930c3;
+    color: white;
+}
+
+.filters--primary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25%;
+}
+
+.filters__select {
+    margin: 0px 5px;
+}
+
+
+
+.showing--primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.showing__text {
+    color: white;
+    text-align: center;
+}
+
+.searchresults--primary {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultsinfinitescroll--primary {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    padding: 10pxll 0px;
+    margin: 0px;
+    background: #333333;
 }
+
+.filters__select {
+    width: 50%;
+    outline: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .search__form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search__input {
+        width: 90%;
+        margin: 10px 0px;
+    }
+
+    .filters--primary {
+        width: 100%;
+    }
+    .filters__select {
+        width: 50%;
+    }
+    
+    .search__button {
+        margin: 15px 0px 10px 0px;
+        width: 50%;
+    }
+    
+    .searchheading--primary {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .searchheading__text {
+        font-size: 0.85em;
+        text-align: center;
+    }
+    
+    .searchresults--primary {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .search__form {
+        width: 100%;
+    }
+
+    .searchresults--primary {
+        width: 100%;
+    }
+    
+    .search__input {
+        width: 35%;
+        margin: 10px 0px;
+    }
+
+    .filters--primary {
+        width: 40%;
+    }
+
+    .filters__select {
+        width: 100%;
+    }
+    
+    .resultsinfinitescroll--primary {
+        width: 100%;
+    }
+    
+    .search__button {
+        width: 15%;
+    }
+    .searchheading--primary {
+        width: 100%;
+        align-items: center;
+    }
+
+} 

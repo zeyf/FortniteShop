@@ -1,80 +1,16 @@
 .itemdetails--primary {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     width: 100%;
 }
 
 .itemcarddetails--primary {
     display: flex;
-    flex-direction: column;
-}
-
-.itemcard--primary {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.itemcard__link {
-    text-decoration: none;
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-}
-
-.itemcardimage--primary {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5px;
-}
-
-.itemcardinfo--primary {
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(207, 206, 207, 0.25);
-    width: 100%;
-    align-items: center;
-}
-
-.itemcardinfo__name {
-    padding: 10px 3px 5px 3px;
-    margin: 0px;
-    font-family: 'Fortnite', sans-serif;
-    font-size: 2em;
-    color: white;
-    border-bottom: 1px solid rgba(206, 207, 207, 0.45);
-    border-top: 1px solid rgba(206, 207, 207, 0.45);
-    width: 100%;
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.itemcardprice--primary {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.itemcardprice__image {
-    height: 25px;
-    width: 25px;
-    margin: 0px 2.5px;
-}
-.itemcardprice__text {
-    font-family: 'Fortnite', sans-serif;
-    padding: 10px 0px 5px 0px;
-    margin: 0px 2.5px;
-    text-align: center;
-    font-size: 2em;
-    color: white;
 }
 
 .itemcardattributestable--primary {
+    margin: 0px;
 
     width: 100%;
     border-collapse: collapse;
@@ -111,27 +47,34 @@
     padding: 0px;
     margin: 0px;
     letter-spacing: 1px;
+    width: 100%;
     text-align: center;
 }
 .itemdescription__text {
 
     font-style: italic;
-    font-size: 1.5em;
+    font-size: 0.85em;
     text-align: center;
-    font-family: 'Fortnite', sans-serif;
+    font-family: sans-serif;
     letter-spacing: 1px;
+    margin: 13.5px 0px;
+    padding: 0px;
+    display: flex;
 }
 
 .itemdescription--primary {
     padding: 10px;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+
 
 }
 
 .itemtextdetails--primary {
 
     display: flex;
-    flex-direction: column;
+    flex-direction: columln;
     padding: 0px 10px;
     color: white;
 }
@@ -141,22 +84,27 @@
     flex-direction: column;
 }
 
+
 .mainitemsection--primary {
     display: flex;
-    width: 60%;
+    width: 75%;
     background: rgba(37, 37, 37, 0.50);
     padding: 25px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .shophis--primary {
     width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .itemdetails--primary {
         display: flex;
         flex-direction: column;
+        align-items: center;
         background: rgba(37, 37, 37, 0.01);
+        width: 100%;
         
     }
     .mainitemsection--primary {
@@ -175,4 +123,24 @@
         padding: 15px 0px;
         margin: 15px 0px;
     }
+
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .mainitemsection--primary {
+        width: 100%;
+        flex-direction: column;
+    }
+    .itemdetails--primary {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+    .itemdescription--primary {
+        width: 100%;
+        padding: 15px 0px;
+        margin: 15px 0px 15px 7.5px;
+    }
+
 }

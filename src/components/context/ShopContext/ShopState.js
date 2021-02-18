@@ -81,6 +81,7 @@ const ShopState = (props) => {
             })
             return setname
         })
+        const FeaturedItems = response.data.data.featured.entries
 
         const FeaturedItemsObj = {
             FeaturedItemfinalPrices,
@@ -89,7 +90,8 @@ const ShopState = (props) => {
             FeaturedItemItemsRarity,
             FeaturedItemItemsIDs,
             FeaturedItemBundleStatus,
-            FeaturedItemSetNames
+            FeaturedItemSetNames,
+            FeaturedItems
         }
 
         // DAILY ITEM SPECIFIC DATA FOR DAILYITEMOBJ //
@@ -145,6 +147,7 @@ const ShopState = (props) => {
             return setname
         })
         
+        const dailyItems = response.data.data.featured.entries
         const DailyItemsObj = {
             dailyItemfinalPrices,
             dailyItemItemsNames,
@@ -152,7 +155,9 @@ const ShopState = (props) => {
             dailyItemItemsRarity,
             dailyItemItemsIDs,
             dailyItemBundleStatus,
-            dailyItemSetNames
+            dailyItemSetNames,
+            dailyItems
+            
         }
 
         dispatch({

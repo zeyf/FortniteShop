@@ -18,7 +18,6 @@ const FeaturedShopSection = () => {
     
     const featuredsize = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 
-
     return (
         <div className='featuredview featuredview--primary'>
             <p className='featuredview__head viewhead'>FEATURED</p>
@@ -69,11 +68,21 @@ const FeaturedShopSection = () => {
                                 return current[0];
                             });
 
+                            const items = ReturnFeatured(CurrentFeatured, 'items').map((current, pos) => {
+                                return current
+                            })
+                            
+                            const prices = ReturnFeatured(CurrentFeatured, 'prices').map((current, pos) => {
+                                return current
+                            })
+
+
+
                             if (!/locker/gi.test(BundleName()[i])) {
                                     return <NSItemCard category={SetLinkByIDType(id[i])} name={name[i]} cardStyle={rarity[i]} 
                                     handledName={NameCharacterHandler(name[i])} imgSRC={BundleImage()[i] ? BundleImage()[i] : item[0]}
-                                     BundleName={BundleName()[i] && BundleName()[i]}
-                                    BundleStatus={BundleStatus()[i]} setname={setname[i]}
+                                    BundleName={BundleName()[i] && BundleName()[i]} price={prices[i]} item={items[i]}
+                                    BundleStatus={BundleStatus()[i]} setname={setname[i]} islink={true}
                                     />
                             }
                         }) : featuredsize.map((card, i) => {

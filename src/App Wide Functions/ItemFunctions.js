@@ -5,6 +5,9 @@ export const ItemFunctions = {
         if (item && type === 'title') {const {name} = item; return name;}
         if (item && type === 'card') {const {name} = item; return name.toUpperCase();}
     },
+    ItemID: (item) => {
+        if (item) {const {id} = item; return id;}
+    },
     ItemRarity: (item) => {
         if (item) {const {rarity} = item; const {displayValue} = rarity; return displayValue;}
     },
@@ -20,10 +23,9 @@ export const ItemFunctions = {
             if (!icon && !featured) return smallIcon
         }
     },
-    ItemPrice: (item) => {
-        if (item) {
-            const {name} = item;
-            const IndexOfNameKey = Object.keys(localStorage).indexOf(name.toUpperCase());
+    ItemPrice: (Name) => {
+        if (Name) {
+            const IndexOfNameKey = Object.keys(localStorage).indexOf(Name.toUpperCase());
             return Object.values(localStorage)[IndexOfNameKey]
         }
     },
@@ -134,7 +136,8 @@ export const ItemFunctions = {
                 dailyItemfinalPrices,
                 dailyItemBundleStatus,
                 dailyItemItemsImages,
-                dailyItemSetNames
+                dailyItemSetNames,
+                dailyItems
             } = data;
 
             if (type === 'names') return dailyItemItemsNames
@@ -144,6 +147,7 @@ export const ItemFunctions = {
             if (type === 'bundlestatuses') return dailyItemBundleStatus
             if (type === 'images') return dailyItemItemsImages
             if (type === 'setnames') return dailyItemSetNames
+            if (type === 'items') return dailyItems
         }
     },
     ReturnFeatured: (data, type) => {
@@ -155,7 +159,8 @@ export const ItemFunctions = {
                 FeaturedItemItemsIDs,
                 FeaturedItemItemsRarity,
                 FeaturedItemItemsNames,
-                FeaturedItemSetNames
+                FeaturedItemSetNames,
+                FeaturedItems
             } = data;
 
             if (type === 'names') return FeaturedItemItemsNames
@@ -165,6 +170,7 @@ export const ItemFunctions = {
             if (type === 'bundlestatuses') return FeaturedItemBundleStatus
             if (type === 'images') return FeaturedItemItemsImages
             if (type === 'setnames') return FeaturedItemSetNames
+            if (type === 'items') return FeaturedItems
         }
     }
 }

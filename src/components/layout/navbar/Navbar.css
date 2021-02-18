@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: row;
     padding-right: 25px;
-    width: 17.5%;
+    width: 25%;
 }
 
 .nonmobilemenu__ul {
@@ -169,11 +169,11 @@
     }
 
     .nonmobilemenu--primary {
-        width: 35%;
+        width: 45%;
     }
     
     .nonmobilemenu__optionlink {
-        font-size: 2.5em;
+        font-size: 2em;
     }
     
     .navbar--primary {
@@ -187,11 +187,11 @@
     }
 
     .nonmobilemenu--primary {
-        width: 30%;
+        width: 45%;
     }
     
     .nonmobilemenu__optionlink {
-        font-size: 2.75em;
+        font-size: 2.5em;
     }
     
     .navbar--primary {

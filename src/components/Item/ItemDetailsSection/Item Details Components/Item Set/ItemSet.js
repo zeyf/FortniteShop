@@ -38,7 +38,7 @@ const ItemSet = ({length}) => {
                         return  <NSItemCard category={SetLinkByIDType(id)}
                                 name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
                                 handledName={NameCharacterHandler(name)}
-                                imgSRC={ItemImage(item)}
+                                imgSRC={ItemImage(item)} islink={true}
                                 />
                     }
                 })}
