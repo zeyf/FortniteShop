@@ -6,7 +6,7 @@
     align-items: center;
     margin: 25px 25px;
     height: 100%;
-    padding: 25px;
+    padding: 25px 0px;
     flex-grow: 1;
 }
 
@@ -21,7 +21,7 @@
 .shopview--primary {
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
+    align-items: center;
     width: 75%;
     /* border: 1px solid white; */
 }

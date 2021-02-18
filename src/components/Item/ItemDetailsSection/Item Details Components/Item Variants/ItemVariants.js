@@ -13,11 +13,11 @@ const ItemVariants = () => {
     return (
         <div className='itemvariantssection itemvariantssection--primary'>
             <h2 className="itemvariantssection__head">
-                VARIANTS {item.variants && `(${item.variants[0].options.length})`}
+                VARIANTS
             </h2>
             <div className="itemvariants itemvariants--primary">
                     {item.variants && item.variants.map((variant, i) => {
-                        const {id, rarity} = item;
+                        const {rarity} = item;
                         const {displayValue} = rarity;
                         const {options} = variant
                         return options.map((option, i) => {

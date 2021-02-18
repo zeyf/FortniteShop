@@ -36,7 +36,7 @@ const Set = ({match}) => {
                     return <NSItemCard category={SetLinkByIDType(id)}
                         name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
                         handledName={NameCharacterHandler(name)}
-                        imgSRC={ItemImage(item)}
+                        imgSRC={ItemImage(item)} height={200} width={200}
                     />
                 })}
             </div>

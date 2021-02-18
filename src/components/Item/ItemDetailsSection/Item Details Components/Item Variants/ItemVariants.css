@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 75%;
     background: rgba(37, 37, 37, 0.50);
     padding: 25px;
     margin: 10px 0px 0px 0px;
@@ -22,6 +22,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: 10px 0px;
+    justify-content: space-evenly;
 }
 
 
@@ -45,6 +46,13 @@
         flex-direction: column;
     }
 
+    .itemvariantssection--primary {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
     .itemvariantssection--primary {
         width: 100%;
     }

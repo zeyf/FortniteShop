@@ -30,37 +30,36 @@ const SearchFunctions = {
     rarityOptions: {
         label: 'Rarity',
         options: [
-        {value: 'common', label:'Common'},
-        {value: 'uncommon', label:'Uncommon'},
-        {value: 'epic', label:'Epic'},
-        {value: 'rare', label:'Rare'},
-        {value: 'legendary', label:'Legendary'},
-        {value: 'icon', label:'Icon Series'},
-        {value: 'slurp', label:'Slurp Series'},
-        {value: 'dark', label:'DARK SERIES'},
-        {value: 'shadow', label:'Shadow Series'},
-        {value: 'starwars', label:'Star Wars Series'},
-        {value: 'gaminglegends', label:'Gaming Legends Series'},
-        {value: 'dc', label:'DC SERIES'},
-        {value: 'marvel', label:'MARVEL SERIES'},
-        {value: 'lava', label:'Lava Series'},
-        {value: 'frozen', label:'frozen'}
+            {value: 'Legendary', label:'Legendary'},
+            {value: 'Epic', label:'Epic'},
+            {value: 'Rare', label:'Rare'},
+            {value: 'Uncommon', label:'Uncommon'},
+            {value: 'Common', label:'Common'},
+            {value: 'Frozen', label:'Frozen Series'},
+            {value: 'Lava', label:'Lava Series'},
+            {value: 'Marvel', label:'Marvel Series'},
+            {value: 'GamingLegends', label:'Gaming Legends Series'},
+            {value: 'Slurp', label:'Slurp Series'},
+            {value: 'Starwars', label:'Star Wars Series'},
+            {value: 'Shadow', label:'Shadow Series'},
+            {value: 'Icon', label:'Icon Series'},
+            {value: 'DC', label:'DC Series'},
+            {value: 'Dark', label:'Dark Series'},
         ]
     },
     itemtypeOptions: {
         label: 'Item Type',
         options: [
-        {value: 'outfit', label:'Outfit'},
-        {value: 'pickaxe', label:'Pickaxe'},
-        {value: 'backpack', label:'Back Bling'},
-        {value: 'emote', label:'Emote'},
-        {value: 'contrail', label:'Contrail'},
-        {value: 'spray', label:'Spray'},
-        {value: 'toy', label:'Toy'},
-        {value: 'petcarrier', label:'Pet'},
-        {value: 'loadingscreen', label:'Loading Screen'},
-        {value: 'wrap', label:'Wrap'},
-        {value: 'banner', label:'Banner'}
+        {value: 'Outfit', label:'Outfit'},
+        {value: 'Backpack', label:'Back Bling'},
+        {value: 'Emote', label:'Emote'},
+        {value: 'Contrail', label:'Contrail'},
+        {value: 'Spray', label:'Spray'},
+        {value: 'Toy', label:'Toy'},
+        {value: 'PetCarrier', label:'Pet'},
+        {value: 'Loadingscreen', label:'Loading Screen'},
+        {value: 'Wrap', label:'Wrap'},
+        {value: 'Banner', label:'Banner'}
         ]
     }
 }

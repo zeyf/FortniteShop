@@ -1,7 +1,7 @@
 .nsitemcard--primary {
     margin: 10px;
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     transition: 0.5s;
     display: flex;
     flex-direction: column;
@@ -20,24 +20,25 @@
 }
 
 .nsitemcardcontent--primary {
-    height: 155px;
+    height: 205px;
     position: absolute;
-    width: 150px;
+    width: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     border: 1px solid white;
+    cursor:default;
 }
 
 .nsitemcardcontent__image {
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
 }
 
 .nsitemcardcontenttext--primary {
-    height: 158px;
-    width: 155px;
+    height: 208px;
+    width: 206px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -49,25 +50,61 @@
     color: white;
     font-family: Fortnite;
     font-size: 1.5em;
-    background-color: rgba(39, 38, 39, 0.375);
-    width: 140px;
+    background-color: rgba(39, 38, 39, 0.5);
+    width: 189px;
     padding: 10px 5px 5px 5px;
     text-align: center;
+    letter-spacing: 1px;
 
 }
 
 .nsitemcardcontext__price {
-    width: 140px;
-    padding: 10px 5px 5px 5px;
+    width: 189px;
+    padding: 0px 5px 0px 5px;
+    margin: 0px 0px 0px 0px;
     text-align: center;
-    background-color: rgba(39, 38, 39, 0.375);
+    background-color: rgba(39, 38, 39, 0.5);
     font-family: Fortnite;
     color: white;
-    font-size: 0.75em;
+    font-size: 1.25em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: center;
+    letter-spacing: 1px;
 }
 
 .nsitemcardcontext__icon {
-    height: 25px;
-    width: 25px;
-    margin: 0px 5px;
+    height: 20px;
+    width: 20px;
+    margin: 0px 5px 5px 0px;
+}
+
+@media only screen and (max-width: 700px) {
+ 
+    
+    .nsitemcard--primary {
+        width: 150px;
+        height: 150px;
+    }
+
+    .nsitemcardcontent--primary {
+        height: 155px;
+        width: 150px;
+    }
+
+    .nsitemcardcontent__image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .nsitemcardcontenttext--primary {
+        width: 157px;
+        height: 158px;
+    }
+
+    .nsitemcardcontext__name, .nsitemcardcontext__price {
+        width: 140px;
+    }
 }

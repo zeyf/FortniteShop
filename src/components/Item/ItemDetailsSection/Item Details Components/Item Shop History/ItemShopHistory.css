@@ -1,5 +1,5 @@
 .itemshophistory--primary {
-    width: 100%;
+    width: 40%;
     border: 2px solid #6930c3;
     
 }
@@ -74,3 +74,8 @@
     color: white;
 }
 
+@media only screen and (max-width: 700px) {
+    .itemshophistory--primary {
+        width: 100%
+    }
+}
