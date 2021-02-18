@@ -18,3 +18,4 @@ export const SET_INPUT = 'SET_INPUT';
 export const SET_RARITY = 'SET_RARITY';
 export const SET_ITEMTYPE = 'SET_ITEMTYPE';
 export const SET_SLICE = 'SET_SLICE';
+export const SET_RESULTS = 'SET_RESULTS';

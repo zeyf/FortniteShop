@@ -8,7 +8,8 @@ import {
       SET_INPUT,
       SET_ITEMTYPE,
       SET_RARITY,
-      SET_SLICE
+      SET_SLICE,
+      SET_RESULTS
     } from '../types'
 
 const SearchState = ({children}) => {
@@ -28,34 +29,24 @@ const SearchState = ({children}) => {
         dispatch({type: SET_LOADING})
     }
 
-    const getSearch = async (endpoint) => {
+    const getSearch = async (searchedEndpoint, allEndpoint) => {
         setLoading();
-        const response = await axios.get(endpoint)
-
-        dispatch({
-            type: GET_SEARCH,
-            payload: response.data.data
-        })
+        if (searchedEndpoint) {
+            const response = await axios.get(searchedEndpoint);
+            dispatch({type: GET_SEARCH, payload: response.data.data})
+        } else if (allEndpoint) {
+            const response = await axios.get('https://fortnite-api.com/v2/cosmetics/br');
+            dispatch({type: GET_SEARCH, payload: response.data.data})
+        }
     }
 
-    const setInput = (input) => {
-        dispatch({type: SET_INPUT, payload: input})
-    }
 
-    const setRarity = (rarity) => {
-        dispatch({type: SET_RARITY, payload: rarity})
-    }
 
-    const setItemType = (itemtype) => {
-        dispatch({type: SET_ITEMTYPE, payload: itemtype})
-    }
-
-    const setnewSlice = (CURRENTSLICE) => {
-        dispatch({
-            type: SET_SLICE,
-            payload: (CURRENTSLICE + 60)
-        })
-    }
+    const setResults = (boolean) => {dispatch({type: SET_RESULTS, payload: boolean})}
+    const setInput = (input) => {dispatch({type: SET_INPUT, payload: input})}
+    const setRarity = (rarity) => {dispatch({type: SET_RARITY, payload: rarity})}
+    const setItemType = (itemtype) => {dispatch({type: SET_ITEMTYPE, payload: itemtype})}
+    const setnewSlice = (CURRENTSLICE) => {dispatch({type: SET_SLICE, payload: (CURRENTSLICE + 60)})}
 
     return <SearchContext.Provider value={{
                 LOADING: state.LOADING,
@@ -68,7 +59,8 @@ const SearchState = ({children}) => {
                 setRarity,
                 setItemType,
                 getSearch,
-                setnewSlice
+                setnewSlice,
+                setResults
             }}>
                 {children}
             </SearchContext.Provider>

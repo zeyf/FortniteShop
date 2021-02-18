@@ -13,7 +13,7 @@ const Search = () => {
 
 
     const {
-        setInput, setRarity, setItemType, setnewSlice, getSearch,
+        setInput, setRarity, setItemType, setnewSlice, getSearch, setResults,
         INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE
     } = useContext(SearchContext);
 
@@ -22,6 +22,8 @@ const Search = () => {
     const {SetLinkByIDType, setCardRarityStyle, NameCharacterHandler} = FormatFunctions;
     
     useEffect(() => {
+        setResults(null)
+        getSearch(undefined, true)
         setInput('');
         setRarity(null);
         setItemType(null);
@@ -76,7 +78,7 @@ const Search = () => {
                 <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
-                scrollThreshold={1.00} hasMore={()=> {
+                scrollThreshold={0.95} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
                 }}
                 >

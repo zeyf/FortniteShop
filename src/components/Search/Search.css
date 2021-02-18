@@ -61,6 +61,7 @@
     transition: 0.5s;
     cursor: pointer;
     text-align: center;
+    outline: none;
 }
 
 .search__button:hover {
