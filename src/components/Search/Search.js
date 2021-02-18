@@ -18,7 +18,7 @@ const Search = () => {
     } = useContext(SearchContext);
 
     const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength, filteringBy} = SearchFunctions;
-    const {ItemImage, ItemName, ItemRarity} = ItemFunctions;
+    const {ItemImage, ItemRarity} = ItemFunctions;
     const {SetLinkByIDType, setCardRarityStyle, NameCharacterHandler} = FormatFunctions;
     
     useEffect(() => {
@@ -31,6 +31,7 @@ const Search = () => {
 
     
     const inputOnChange = (event) => {
+        setResults(null)
         setInput(event.target.value);
     }
 
@@ -39,11 +40,13 @@ const Search = () => {
     }
 
     const rarityOnChange = (event) => {
+        setResults(null)
         const {value} = event;
         setRarity(value)
     }
 
     const itemtypeOnChange = (event) => {
+        setResults(null)
         const {value} = event;
         setItemType(value)
     }
@@ -61,8 +64,8 @@ const Search = () => {
             <form className='search__form' onSubmit={onSubmit}>
                 <input className='search__input' placeholder='Enter any item name...' onChange={inputOnChange} />
                 <div className='filters filters--primary'>
-                    <Select className='filters__select' options={rarityOptions.options} label={rarityOptions.label} onChange={rarityOnChange} />
-                    <Select className='filters__select' options={itemtypeOptions.options} label={rarityOptions.label} onChange={itemtypeOnChange} />
+                    <Select className='filters__select' placeholder={rarityOptions.label} options={rarityOptions.options} label={rarityOptions.label} onChange={rarityOnChange} />
+                    <Select className='filters__select' placeholder={itemtypeOptions.label} options={itemtypeOptions.options} label={rarityOptions.label} onChange={itemtypeOnChange} />
             
                 </div>
                     <button className='search__button' type='submit' onClick={() => {
@@ -72,6 +75,7 @@ const Search = () => {
                     </button>
             </form>
             <div className='showing showing--primary'>
+                <p className='showing__text'>{RESULTS && `Currently showing ${resultsLength(RESULTS)} items.`}</p>
                 <p className='showing__text'>{RESULTS && filteringBy(INPUT, ITEMTYPE, RARITY)}</p>
             </div>
             <div className='searchresults searchresults--primary'>

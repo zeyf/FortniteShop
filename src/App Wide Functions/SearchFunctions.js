@@ -17,7 +17,7 @@ const SearchFunctions = {
     },
     filteringBy: (input, itemtype, rarity) => {
         if (input !== '') {
-            if (itemtype && rarity) return `Results for: ${input} | Filtering by - Item Type:${itemtype} and Rarity: ${rarity}`
+            if (itemtype && rarity) return `Results for: ${input} | Filtering by - Item Type: ${itemtype} and Rarity: ${rarity}`
             if (!itemtype && rarity) return `Results for: ${input} | Filtering by - Rarity: ${rarity}`
             if (itemtype && !rarity) return `Results for: ${input} | Filtering by - Item Type: ${itemtype}`
             if (!itemtype && !rarity) return `Results for: ${input}`
