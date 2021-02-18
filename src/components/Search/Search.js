@@ -78,7 +78,7 @@ const Search = () => {
                 <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
-                scrollThreshold={0.95} hasMore={()=> {
+                scrollThreshold={1.00} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
                 }}
                 >
