@@ -45,7 +45,7 @@
     width: 150px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .itemset--primary {
         flex-direction: column;
     }
@@ -63,3 +63,10 @@
         letter-spacing: 1px;
     }
 }
+
+
+@media only screen and (min-width: 700px) and (max-width: 1024px) {
+    .itemsetsection--primary {
+        width: 100%;
+    }
+} 

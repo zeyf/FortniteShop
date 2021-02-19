@@ -43,9 +43,9 @@
 .itemdescription__head {
     
     font-family: 'Fortnite', sans-serif;
-    font-size: 2.5em;
+    font-size: 2.25em;
     padding: 0px;
-    margin: 0px;
+    margin: 10px 0px 0px 0px;
     letter-spacing: 1px;
     width: 100%;
     text-align: center;
@@ -53,17 +53,17 @@
 .itemdescription__text {
 
     font-style: italic;
-    font-size: 0.85em;
+    font-size: 0.95em;
     text-align: center;
-    font-family: sans-serif;
-    letter-spacing: 1px;
+    width: 100%;
+    font-family: Catamaran;
+    letter-spacing: 0px;
     margin: 13.5px 0px;
     padding: 0px;
-    display: flex;
 }
 
 .itemdescription--primary {
-    padding: 10px;
+
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -74,7 +74,7 @@
 .itemtextdetails--primary {
 
     display: flex;
-    flex-direction: columln;
+    flex-direction: column;
     padding: 0px 10px;
     color: white;
 }
@@ -120,7 +120,6 @@
 
     .itemdescription--primary {
         width: 100%;
-        padding: 15px 0px;
         margin: 15px 0px;
     }
 
@@ -139,7 +138,6 @@
     }
     .itemdescription--primary {
         width: 100%;
-        padding: 15px 0px;
         margin: 15px 0px 15px 7.5px;
     }
 
