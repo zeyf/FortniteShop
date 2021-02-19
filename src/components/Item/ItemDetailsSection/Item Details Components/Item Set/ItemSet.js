@@ -4,13 +4,12 @@ import {useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom';
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions'
 import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
-import Skeleton from 'react-loading-skeleton'
 import NSItemCard from '../../../../NSItemCard/NSItemCard'
 
 
 const ItemSet = ({length}) => {
 
-    const {ItemsOfSameSet, GetItem, GetItemSet, item} = useContext(ItemContext);
+    const {ItemsOfSameSet, GetItemSet, item} = useContext(ItemContext);
     const {setCardRarityStyle, SetLinkByIDType, NameCharacterHandler} = FormatFunctions;
     const {
         GetSet,
@@ -37,8 +36,8 @@ const ItemSet = ({length}) => {
 
                         return  <NSItemCard category={SetLinkByIDType(id)}
                                 name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
-                                handledName={NameCharacterHandler(name)}
-                                imgSRC={ItemImage(item)} islink={true}
+                                handledName={NameCharacterHandler(name)}imgSRC={ItemImage(item)}
+                                setname={SetName(item)}
                                 />
                     }
                 })}

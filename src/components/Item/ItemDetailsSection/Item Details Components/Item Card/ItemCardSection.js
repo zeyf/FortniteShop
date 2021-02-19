@@ -1,10 +1,8 @@
 import React, {useContext} from 'react'
 import ItemContext from '../../../../context/ItemContext/ItemContext'
 import './ItemCard.css';
-import ShopHistory from '../Item Shop History/ItemShopHistory';
 import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions';
-import ItemShopHistory from '../Item Shop History/ItemShopHistory';
 import {Helmet} from 'react-helmet'
 import NSItemCard from '../../../../NSItemCard/NSItemCard';
 
@@ -23,16 +21,17 @@ const ItemCardSection = () => {
         ItemIntroduction,
         ItemShopHistoryTable,
         ItemRarity,
-        ItemID
+        ItemID,
+        SetName
     } = ItemFunctions;
     
     return (
         <div className='mainitemsection mainitemsection--primary'>
-            <Helmet><title>{loading ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(ItemName(item, 'card')) ? `${ItemName(item, 'card')} VBUCKS - FortniteBRShop` : `FortniteBRShop`}`}</title></Helmet>
+            <Helmet><title>{!loading && !item ? `LOADING... FORTNITEBRSHOP` : `${ItemName(item, 'title')} | ${ItemPrice(ItemName(item, 'card')) ? `${ItemPrice(ItemName(item, 'card'))} VBUCKS - FortniteBRShop` : `FortniteBRShop`}`}</title></Helmet>
             <div className='itemdetails itemdetails--primary'>
                 <NSItemCard category={SetLinkByIDType(ItemID(item))} name={item && ItemName(item, 'card')} imgSRC={ItemImage(item)}
-                    islink={false} cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={item && NameCharacterHandler(ItemName(item, 'card'))}
-                    price={ItemPrice(ItemName(item, 'card'))} height={225} width={225} margin={25}
+                cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={item && NameCharacterHandler(ItemName(item, 'card'))}
+                price={ItemPrice(ItemName(item, 'card'))} height={225} width={225} margin={25} setname={SetName(item)}
                 />
                 <div className='itemtextdetails itemtextdetails--primary'>
                     <div className='itemdescription itemdescription--primary' style={setCardRarityStyle(ItemRarity(item))}>

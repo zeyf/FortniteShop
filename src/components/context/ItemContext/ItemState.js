@@ -22,33 +22,15 @@ const ItemState = (props) => {
 
     const GetItem = async (name) => {
         SetLoading();
-
-
-        const NameCharacterHandler = () => {
-            
+        
+        const NameCharacterHandler = (name) => {
             const dashregex = /-/gi;
-            
-            // handles names with dashes (which are passed in with ~ instead)
             const tilderegex = /~/gi;
-
-
-            if (dashregex.test(name) === true && tilderegex.test(name) === false) {
-                const NameDashResult = name.replaceAll(dashregex, ' ')
-                return NameDashResult
-            } else if (tilderegex.test(name) === true && dashregex.test(name) === false) {
-                const NameTildeResult = name.replaceAll(tilderegex, '-')
-                return NameTildeResult
-            } else if (tilderegex.test(name) === true && dashregex.test(name) === true) {
-                const replacedash = name.replaceAll(dashregex, ' ');
-                const replacetilde = replacedash.replaceAll(tilderegex, '-');
-                console.log(replacetilde)
-                return replacetilde
-            } else {
-                return name
-            }
+            
+            return name.replaceAll(dashregex, ' ').replaceAll(tilderegex, '-')
         }
 
-        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${NameCharacterHandler()}`);
+        const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search?name=${NameCharacterHandler(name)}`);
 
         dispatch({
             type: GET_ITEM,

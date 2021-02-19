@@ -24,28 +24,10 @@ const FormatFunctions = {
         }
     },
     NameCharacterHandler: (name) => {
-
         const spaceregex = /\s/gi;
         const dashregex = /-/gi;
-        
-        if (spaceregex.test(name) && !dashregex.test(name)) {
 
-            const SpaceReplaceResult = name.replaceAll(spaceregex, '-').toLowerCase()
-            return SpaceReplaceResult;
-
-        } else if (dashregex.test(name) && !spaceregex.test(name)) { 
-
-            const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
-            return DashReplaceResult
-
-        } else if(dashregex.test(name) && spaceregex.test(name)) {
-
-            const DashReplaceResult = name.replaceAll(dashregex, '~').toLowerCase()
-            const ReplaceSpacesToo = DashReplaceResult.replaceAll(spaceregex, '-')
-            return ReplaceSpacesToo
-        } else if (!dashregex.test(name) && !spaceregex.test(name) && name !== null) {
-            return name.toLowerCase();
-        }
+        return name.toLowerCase().replaceAll(dashregex, '~').replaceAll(spaceregex, '-')
     },
     setCardRarityStyle: (type) => {
         

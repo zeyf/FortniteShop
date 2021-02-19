@@ -9,16 +9,16 @@ import {Link} from 'react-router-dom';
 import {Helmet} from 'react-helmet';
 import StatFunctions from '../../App Wide Functions/StatFunctions'
 
+
 const Stats = () => {
     const {
         ACCOUNTNAME,
-        ACCOUNTTYPE,
         TIMEWINDOW,
-        GetPlayerStats,
         setAccountName,
         setTimeWindow,
         setPlayerStats,
-        setAccountType
+        setAccountType,
+        setAlert
     } = useContext(StatsContext);
 
     const {setBackgroundType} = StatFunctions;
@@ -26,8 +26,9 @@ const Stats = () => {
     useEffect(() => {
         setTimeWindow(null);
         setAccountName(null);
-        setAccountType(null)
-        setPlayerStats();
+        setAccountType(null);
+        setPlayerStats(null);
+        setAlert(null)
     }, [])
 
     const onSubmit = (event) => {
@@ -61,7 +62,7 @@ const Stats = () => {
                 <div className='platformbuttons platformbuttons--primary'>
                     <Link to={`/stats/psn/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__psn' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) setAccountType('psn'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
+                            if (TIMEWINDOW) setAccountType('psn');  
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon psnicon' src={PSNIcon} alt='Fornite Playstation search' />
@@ -69,7 +70,7 @@ const Stats = () => {
                     </Link>
                     <Link to={`/stats/epic/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__epic' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) setAccountType('epic'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
+                            if (TIMEWINDOW) setAccountType('epic'); 
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon epicicon' src={EpicIcon} alt='Fornite Playstation search' />
@@ -77,7 +78,7 @@ const Stats = () => {
                     </Link>
                     <Link to={`/stats/xbox/${ACCOUNTNAME}`} className='stats__buttonlink'>
                         <button className='platformbuttons__xbox' type='submit' onClick={(event) => {
-                            if (TIMEWINDOW) setAccountType('xb1'); GetPlayerStats(ACCOUNTNAME, ACCOUNTTYPE, TIMEWINDOW); 
+                            if (TIMEWINDOW) setAccountType('xb1'); 
                             if (!TIMEWINDOW) event.preventDefault();
                         }}>
                             <img className='platformbuttons__icon xboxicon' src={XboxIcon} alt='Fornite Playstation search' />

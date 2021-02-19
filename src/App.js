@@ -27,7 +27,7 @@ const App = () => {
                   <div className="App">
                     <Navbar />
                     <Switch>
-                        <Route exact path='/shop' component={Shop} />
+                        <Route exact path='/' component={Shop} />
                         <Route exact path='/items/:itemtype/:itemname' component={Item} />
                         <Route exact path='/sets/:setname' component={Set} />
                         <Route exact path='/stats' component={Stats} />

@@ -23,11 +23,11 @@ const Navbar = () => {
                             </div>
                             <ul className='mobilepopupmenu__ul'>
                                 <li className='mobilepopupmenu__option'>
-                                    <Link className='mobilepopupmenu__optionlink' to='/shop' onClick={() => {
+                                    <Link className='mobilepopupmenu__optionlink' to='/' onClick={() => {
                                         GetCurrentShop();
                                         setShowMenu(false)
                                     }}>
-                                        TODAY'S ITEM SHOP
+                                        HOME
                                     </Link>
                                 </li>
                                 <li className='mobilepopupmenu__option'>
@@ -61,8 +61,8 @@ const Navbar = () => {
             <div className='nonmobilemenu nonmobilemenu--primary'>
                 <ul className='nonmobilemenu__ul'>
                     <li className='nonmobilemenu__option'>
-                        <Link to='/shop' className='nonmobilemenu__optionlink'>
-                            SHOP
+                        <Link to='/' className='nonmobilemenu__optionlink'>
+                            HOME
                         </Link>
                     </li>
                     <li className='nonmobilemenu__option'>

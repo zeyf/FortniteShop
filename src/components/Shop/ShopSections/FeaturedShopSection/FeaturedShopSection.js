@@ -2,10 +2,8 @@ import React from 'react'
 import {useContext} from 'react';
 import ShopContext from '../../../context/ShopContext/ShopContext'
 import './FeaturedShopSection.css';
-import ShopItemCard from '../../ShopItemCard/ShopItemCard';
 import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
 import ItemFunctions from '../../../../App Wide Functions/ItemFunctions';
-import Skeleton from 'react-loading-skeleton';
 import SkeletonTypes from '../../../../App Wide Functions/SkeletonTypes';
 import NSItemCard from '../../../NSItemCard/NSItemCard'
 
@@ -16,7 +14,7 @@ const FeaturedShopSection = () => {
     const {setCardRarityStyle, NameCharacterHandler, SetLinkByIDType} = FormatFunctions;
     const {ReturnFeatured} = ItemFunctions;
     
-    const featuredsize = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+    const featuredsize = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
     return (
         <div className='featuredview featuredview--primary'>

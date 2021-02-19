@@ -24,19 +24,7 @@ const SetState = (props) => {
             // handles names with dashes (which are passed in with ~ instead)
             const dashregex = /-/gi;
             const tilderegex = /~/gi;
-            if (dashregex.test(setname) === true && tilderegex.test(setname) === false) {
-                const NameDashResult = setname.replaceAll(dashregex, ' ')
-                return NameDashResult.toUpperCase();
-            } else if (tilderegex.test(setname) === true && dashregex.test(setname) === false) {
-                const NameTildeResult = setname.replaceAll(tilderegex, '-')
-                return NameTildeResult.toUpperCase();
-            } else if (tilderegex.test(setname) === true && dashregex.test(setname) === true) {
-                const replacedash = setname.replaceAll(dashregex, ' ')
-                const replacetilde = replacedash.replaceAll(tilderegex, '-');
-                return replacetilde.toUpperCase();
-            } else if (tilderegex.test(setname) === false && dashregex.test(setname) === false) {
-                return setname.toUpperCase();
-            }
+            return setname.replaceAll(dashregex, ' ').replaceAll(tilderegex, '-')
         }
         const response = await axios.get(`https://fortnite-api.com/v2/cosmetics/br/search/all?set=${encodeURIComponent(NameCharacterHandler())}`)
 

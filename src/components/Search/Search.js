@@ -9,12 +9,14 @@ import Select from 'react-select'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import './Search.css'
 import LOADER from '../../media/images/InfinityTeal.svg'
+import {Helmet} from 'react-helmet';
+
 const Search = () => {
 
 
     const {
         setInput, setRarity, setItemType, setnewSlice, getSearch, setResults,
-        INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE
+        INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE, ALERT, LOADING
     } = useContext(SearchContext);
 
     const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength, filteringBy} = SearchFunctions;
@@ -41,18 +43,27 @@ const Search = () => {
 
     const rarityOnChange = (event) => {
         setResults(null)
-        const {value} = event;
-        setRarity(value)
+        if (event) {
+            const {value} = event;
+            setRarity(value);
+        } else {
+            setRarity(null);
+        }
     }
 
     const itemtypeOnChange = (event) => {
         setResults(null)
-        const {value} = event;
-        setItemType(value)
+        if (event) {
+            const {value} = event;
+            setItemType(value)
+        } else {
+            setItemType(null)
+        }
     }
 
     return (
         <div className='search search--primary'>
+            <Helmet><title>Item Search - ForniteBRShop</title></Helmet>
             <div className='searchheading searchheading--primary'>
                 <h1 className='searchheading__head'>
                     COSMETICS SEARCH
@@ -64,8 +75,10 @@ const Search = () => {
             <form className='search__form' onSubmit={onSubmit}>
                 <input className='search__input' placeholder='Enter any item name...' onChange={inputOnChange} />
                 <div className='filters filters--primary'>
-                    <Select className='filters__select' placeholder={rarityOptions.label} options={rarityOptions.options} label={rarityOptions.label} onChange={rarityOnChange} />
-                    <Select className='filters__select' placeholder={itemtypeOptions.label} options={itemtypeOptions.options} label={rarityOptions.label} onChange={itemtypeOnChange} />
+                    <Select className='filters__select' placeholder={rarityOptions.label} options={rarityOptions.options} 
+                    label={rarityOptions.label} onChange={rarityOnChange} isClearable={true} />
+                    <Select className='filters__select' placeholder={itemtypeOptions.label} options={itemtypeOptions.options} 
+                    label={rarityOptions.label} onChange={itemtypeOnChange} isClearable={true} />
             
                 </div>
                     <button className='search__button' type='submit' onClick={() => {
@@ -75,30 +88,32 @@ const Search = () => {
                     </button>
             </form>
             <div className='showing showing--primary'>
-                <p className='showing__text'>{RESULTS && `Currently showing ${resultsLength(RESULTS)} items.`}</p>
+                <p className='showing__text'>{RESULTS && `Currently showing ${resultsLength(RESULTS) > 4000 ? `ALL ${resultsLength(RESULTS)}` : `${resultsLength(RESULTS)}`} items.`}</p>
                 <p className='showing__text'>{RESULTS && filteringBy(INPUT, ITEMTYPE, RARITY)}</p>
             </div>
-            <div className='searchresults searchresults--primary'>
+            {LOADING ? <img src={LOADER} alt='fortnite battle royale item search loader' /> : <div className='searchresults searchresults--primary'>
+                {ALERT ? <p className='showing__text'>{ALERT}</p> :
                 <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
-                scrollThreshold={1.00} hasMore={()=> {
+                scrollThreshold={0.95} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
                 }}
                 >
                     {RESULTS && RESULTS.map((item, i) => {
-                        const {id, name} = item
-                        if (i < CURRENTSLICE && name !== 'null' && name !== 'tbd') {
+                        const {id, name, set} = item
+                        if (i < CURRENTSLICE && name !== 'null' && name !== 'TBD') {
                             return <NSItemCard category={SetLinkByIDType(id)} name={name.toUpperCase()} 
                             cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={NameCharacterHandler(name)}
-                            imgSRC={ItemImage(item)} islink={true} height={250} width={250}
+                            imgSRC={ItemImage(item)} height={250} width={250} setname={set ? set.value : ''}
                             />
                         }
                         
                     })}
 
                 </InfiniteScroll>
-            </div>
+                }
+            </div>}
         </div>
     )
 }

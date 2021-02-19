@@ -5,7 +5,7 @@ import ItemDetailsSection from '../Item/ItemDetailsSection/ItemDetailsSection'
 import './Item.css';
 
 const Item = ({match}) => {
-    const {GetItem, GetItemSet, loading, item} = useContext(ItemContext);
+    const {GetItem, loading} = useContext(ItemContext);
     
     useEffect(() => {
         GetItem(match.params.itemname);

@@ -1,4 +1,43 @@
 
+
+
+.alert--primary {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.alert__text {
+    color: white;
+    font-size: 1.75em;
+}
+
+.alert__buttonlink {
+    text-decoration: none;
+}
+
+.alert__button {
+    height: 100%;
+    padding: 20px 50px;
+    border: 2px solid white;
+    color: white;
+    font-size: 1.5em;
+    background: #6930c3;
+    border-radius: 5px;
+    width: 100%;
+    transition: 0.5s;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+}
+
+.alert__button:hover {
+    border: 2px solid #6930c3;
+    background: white;
+    color: #6930c3;
+}
+
 .playerstats--primary {
     display: flex;
     flex-direction: column;
@@ -165,6 +204,20 @@
     .overallstats__head {
         font-size: 1.5em;
         margin: 0px;
+    }
+
+    .alert__text {
+        text-align: center;
+        font-size: 1.75em;
+    }
+    
+    .alert__buttonlink {
+        width: 90%;
+    }
+    
+    .alert__button {
+        width: 100%;
+        font-size: 1.25em;
     }
 }
 

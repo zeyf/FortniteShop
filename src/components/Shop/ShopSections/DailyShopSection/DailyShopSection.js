@@ -1,7 +1,6 @@
 import React from 'react'
 import {useContext} from 'react';
 import ShopContext from '../../../context/ShopContext/ShopContext'
-import ShopItemCard from '../../ShopItemCard/ShopItemCard';
 import FormatFunctions from '../../../../App Wide Functions/FormatFunctions'
 import './DailyShopSection.css';
 import ItemFunctions from '../../../../App Wide Functions/ItemFunctions'

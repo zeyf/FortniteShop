@@ -1,6 +1,6 @@
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
-const SkeletonTypes = (component, type, screenW) => {
+const SkeletonTypes = (component, type) => {
     if (component === 'news') {
         if (type === 'newscard') {
             return  <SkeletonTheme color='#cececf'>

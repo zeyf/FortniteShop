@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
 import FormatFunctions from '../../../../../App Wide Functions/FormatFunctions';
-import ItemFunctions from '../../../../../App Wide Functions/ItemFunctions';
 import ItemContext from '../../../../context/ItemContext/ItemContext';
 import './ItemVariants.css';
 
@@ -21,9 +20,11 @@ const ItemVariants = () => {
                         const {displayValue} = rarity;
                         const {options} = variant
                         return options.map((option, i) => {
-                            const {image} = option;
+                            const {image, name} = option;
+
                             return  <div className='variantcard variantcard--primary'>
-                                        <img src={image} className='variantcard__image' style={setCardRarityStyle(displayValue)} />
+                                        <img src={image} className='variantcard__image' style={setCardRarityStyle(displayValue)} 
+                                        alt={`Variant #${++i} ${name ? name : 'a variant'}`}/>
                                     </div>
                         })
                     })}

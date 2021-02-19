@@ -1,13 +1,9 @@
 import React from 'react'
 import './NewsSection.css'
-import NewsFunctions from '../../../App Wide Functions/NewsFunctions'
 import NewsCard from './NewsCard/NewsCard'
-import SkeletonTypes from '../../../App Wide Functions/SkeletonTypes'
 import Skeleton from 'react-loading-skeleton'
 
 const NewsSection = ({data, type}) => {
-
-    const {ReturnInfo} = NewsFunctions;
 
     return (
         <div className='newssection newssection--primary'>

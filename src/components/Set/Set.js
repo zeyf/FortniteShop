@@ -1,24 +1,22 @@
 import React, {useContext, useEffect} from 'react'
 import SetContext from '../context/SetContext/SetContext';
-import ItemSet from '../Item/ItemDetailsSection/Item Details Components/Item Set/ItemSet'
 import Spinner from '../layout/spinner/Spinner';
 import ItemFunctions from '../../App Wide Functions/ItemFunctions'
 import FormatFunctions from '../../App Wide Functions/FormatFunctions'
-import ItemContext from '../context/ItemContext/ItemContext';
 import NSItemCard from '../NSItemCard/NSItemCard';
 import './Set.css'
 
 const Set = ({match}) => {
 
     const {SetName, SetInfo, loading, GetSet} = useContext(SetContext);
-    const {GetItem} = useContext(ItemContext)
     useEffect(() => {
        GetSet(match.params.setname)
         //eslint-disable-next-line
     }, [])
+    console.log(SetName)
 
     const {setCardRarityStyle, SetLinkByIDType, NameCharacterHandler} = FormatFunctions;
-    const {ItemImage, SetItemName} = ItemFunctions;
+    const {ItemImage} = ItemFunctions;
 
     return (
 
@@ -35,7 +33,7 @@ const Set = ({match}) => {
 
                     return <NSItemCard category={SetLinkByIDType(id)}
                         name={name.toUpperCase()} cardStyle={setCardRarityStyle(displayValue)}
-                        handledName={NameCharacterHandler(name)}
+                        handledName={NameCharacterHandler(name)} setname={SetName}
                         imgSRC={ItemImage(item)} height={200} width={200}
                     />
                 })}

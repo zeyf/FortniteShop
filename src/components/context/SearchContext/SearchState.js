@@ -9,18 +9,15 @@ import {
       SET_ITEMTYPE,
       SET_RARITY,
       SET_SLICE,
-      SET_RESULTS
+      SET_RESULTS,
+      SET_ALERT
     } from '../types'
 
 const SearchState = ({children}) => {
     
     const InitialState  = {
-        LOADING: false,
-        INPUT: '',
-        RARITY: null,
-        ITEMTYPE: null,
-        RESULTS: null,
-        CURRENTSLICE: 60
+        LOADING: false, INPUT: '', RARITY: null, ITEMTYPE: null,
+        RESULTS: null, CURRENTSLICE: 60, ALERT: null
     }
 
     const [state, dispatch] = useReducer(SearchReducer, InitialState);
@@ -32,15 +29,20 @@ const SearchState = ({children}) => {
     const getSearch = async (searchedEndpoint, allEndpoint) => {
         setLoading();
         if (searchedEndpoint) {
-            const response = await axios.get(searchedEndpoint);
-            dispatch({type: GET_SEARCH, payload: response.data.data})
+            //eslint-disable-next-line
+            const response = await axios.get(searchedEndpoint)
+            .then((resp) => {
+                dispatch({type: GET_SEARCH, payload: resp.data.data})
+                dispatch({type: SET_ALERT, payload: null})
+            })
+            .catch(() => {
+                    dispatch({type: SET_ALERT, payload: 'There are no search results.'})
+            })
         } else if (allEndpoint) {
-            const response = await axios.get('https://fortnite-api.com/v2/cosmetics/br');
-            dispatch({type: GET_SEARCH, payload: response.data.data})
+            const response = await axios.get('https://fortnite-api.com/v2/cosmetics/br')
+            .then((resp) => {const allreversed = [...resp.data.data].reverse(); dispatch({type: GET_SEARCH, payload: allreversed})})
         }
     }
-
-
 
     const setResults = (boolean) => {dispatch({type: SET_RESULTS, payload: boolean})}
     const setInput = (input) => {dispatch({type: SET_INPUT, payload: input})}
@@ -49,18 +51,9 @@ const SearchState = ({children}) => {
     const setnewSlice = (CURRENTSLICE) => {dispatch({type: SET_SLICE, payload: (CURRENTSLICE + 60)})}
 
     return <SearchContext.Provider value={{
-                LOADING: state.LOADING,
-                INPUT: state.INPUT,
-                RARITY: state.RARITY,
-                RESULTS: state.RESULTS,
-                ITEMTYPE: state.ITEMTYPE,
-                CURRENTSLICE: state.CURRENTSLICE,
-                setInput,
-                setRarity,
-                setItemType,
-                getSearch,
-                setnewSlice,
-                setResults
+            LOADING: state.LOADING, INPUT: state.INPUT, RARITY: state.RARITY, RESULTS: state.RESULTS,
+            ITEMTYPE: state.ITEMTYPE, CURRENTSLICE: state.CURRENTSLICE, ALERT: state.ALERT,
+            setInput, setRarity, setItemType, getSearch, setnewSlice, setResults
             }}>
                 {children}
             </SearchContext.Provider>

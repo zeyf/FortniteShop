@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import ItemContext from '../../../../context/ItemContext/ItemContext';
 import './ItemShopHistory.css';
 import VBUCKS from '../../../../../media/images/VBUCKS.png'
@@ -37,10 +37,12 @@ const ItemShopHistory = ({price}) => {
                             return <tr className='historytable__bodyrow'>
                                     <td className='historytable__bodydata'>{date}</td>
                                     <td className='historytable__bodydata'>
-                                        <span className='historytable__span'>
-                                            <img className='historytable__priceimage' src={VBUCKS}/>
+                                        {price ? <span className='historytable__span'>
+                                            <img className='historytable__priceimage' src={VBUCKS} alt='vbucks'/>
                                         {price}
                                         </span>
+                                        
+                                        : '?'}
                                     </td>
                                    </tr>;
                         })}

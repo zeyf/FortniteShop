@@ -5,7 +5,8 @@ import {
     SET_RARITY,
     SET_ITEMTYPE,
     SET_SLICE,
-    SET_RESULTS
+    SET_RESULTS,
+    SET_ALERT
 } from '../types'
 
 const SearchReducer = (state, action) => {
@@ -47,6 +48,11 @@ const SearchReducer = (state, action) => {
             return {
                 ...state,
                 RESULTS: action.payload
+            }
+        case SET_ALERT:
+            return {
+                ...state,
+                ALERT: action.payload
             }
     }
 }

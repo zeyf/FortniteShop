@@ -4,7 +4,8 @@ import {
     SET_ACCOUNT_NAME,
     SET_TIME_WINDOW,
     SET_PLAYER_STATS,
-    SET_ACCOUNT_TYPE
+    SET_ACCOUNT_TYPE,
+    SET_ALERT
 } from '../types';
 
 const StatsReducer = (state, action) => {
@@ -35,12 +36,17 @@ const StatsReducer = (state, action) => {
         case SET_PLAYER_STATS:
             return {
                 ...state,
-                PLAYERSTATS: null
+                PLAYERSTATS: action.payload
             }
         case SET_ACCOUNT_TYPE:
             return {
                 ...state,
                 ACCOUNTTYPE: action.payload
+            }
+        case SET_ALERT:
+            return {
+                ...state,
+                ALERT: action.payload
             }
     }
 }

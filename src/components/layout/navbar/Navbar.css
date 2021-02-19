@@ -205,3 +205,16 @@
         width: 22.5%;
     }
 }
+
+@media only screen and (max-height: 400px) {
+    .nonmobilemenu__optionlink {
+        font-size: 1.75em;
+    }
+    .navbar--primary {
+        height: 15vh;
+    }
+    .navbar__headtext {
+        font-size: 2.75em;
+    }
+    
+}

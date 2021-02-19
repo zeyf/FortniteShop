@@ -1,28 +1,32 @@
 import {useContext, useEffect} from 'react'
 import StatFunctions from '../../../App Wide Functions/StatFunctions'
 import StatsContext from '../../context/Stats Context/StatsContext'
-import { SET_ACCOUNT_NAME } from '../../context/types'
 import './PlayerStats.css'
 import PlayerStatsSkeleton from './PlayerStatsSkeleton'
 import StatCategoryCard from './StatCategoryCard'
+import {Link} from 'react-router-dom'
+import {Helmet} from 'react-helmet'
 
 const PlayerStats = ({match}) => {
 
     const {
-        LOADING, 
         PLAYERSTATS,
         TIMEWINDOW,
         GetPlayerStats,
         setTimeWindow,
         setAccountType,
-        setAccountName
+        setAccountName,
+        setAlert,
+        ALERT,
+        LOADING
     } = useContext(StatsContext);
     const {ReturnInfo, NumberFormatter, AccName, setBackgroundType} = StatFunctions;
 
     useEffect(() => {
-        GetPlayerStats(match.params.username, match.params.platform, TIMEWINDOW)
+        setAlert(null)
+        GetPlayerStats(match.params.username, match.params.platform, TIMEWINDOW);
         setAccountName(match.params.username);
-        setAccountType(match.params.platform)
+        setAccountType(match.params.platform);
     }, [])
     const ReturnStats = (type) => {
         if (PLAYERSTATS) {
@@ -37,9 +41,20 @@ const PlayerStats = ({match}) => {
         }
     }
 
+    const showSkeletonOrAlert = (alert, Skeleton) => {
+        if (ALERT) return <div className='alert alert--primary'>
+                        <p className='alert__text'>{alert}</p>
+                        <Link to='/stats' className='alert__buttonlink'>
+                            <button className='alert__button'>GO BACK TO LOOKUP</button>
+                        </Link>
+                    </div>
+        if (!ALERT) return <Skeleton />
+    }
+
     return (
         <>
-        {LOADING ? <PlayerStatsSkeleton/> :
+        <Helmet><title>{PLAYERSTATS ? `${match.params.username}'s stats on ${match.params.platform} - FORTNITEBR` : `Loading ${match.params.username}'s stats... - FORTNITEBR`}</title></Helmet>
+        {!ALERT && !LOADING ?
 
             <div className='playerstats playerstats--primary'>
                     <div className='statssection statssection--primary'>
@@ -98,7 +113,6 @@ const PlayerStats = ({match}) => {
                                         </span>
                                     </div>
                             </div>
-
                         </div>
                         <div className='statcards statcards--primary'>
                             <StatCategoryCard StatsByType={ReturnStats('solo')} type={'SOLOS'} />
@@ -108,6 +122,7 @@ const PlayerStats = ({match}) => {
                     </div>
             </div>
 
+        : showSkeletonOrAlert(ALERT, PlayerStatsSkeleton)
         }
         </>
     )

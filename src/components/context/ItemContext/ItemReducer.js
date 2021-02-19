@@ -1,4 +1,4 @@
-import {GET_ITEM, GET_ITEM_SET, SET_LOADING, RELOAD_COMPONENT} from '../types';
+import {GET_ITEM, GET_ITEM_SET, SET_LOADING} from '../types';
 
 const ItemReducer = (state, action) => {
     switch(action.type) {

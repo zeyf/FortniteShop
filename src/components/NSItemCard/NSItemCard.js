@@ -8,10 +8,10 @@ import SetContext from '../context/SetContext/SetContext';
 import FormatFunctions from '../../App Wide Functions/FormatFunctions';
 
 const NSItemCard = ({
-    category, name, cardStyle, handledName, imgSRC,
-    price, BundleName, BundleStatus, setname,
-    width, height, margin
-    }) => {
+category, name, cardStyle, handledName, imgSRC,
+price, BundleName, BundleStatus, setname,
+width, height, margin
+}) => {
 
     const {GetItem} = useContext(ItemContext);
     const {GetSet} = useContext(SetContext);
@@ -70,7 +70,8 @@ const NSItemCard = ({
                         if (BundleStatus) GetSet(CheckBundleSetName(setname))
             }}>
                 <div className='nsitemcardcontent nsitemcardcontent--primary' style={{...cardStyle, ...setSize(width, height, 'nsitemcardcontent')}}>
-                    <img className='nsitemcardcontent__image' src={imgSRC} style={{...setSize(width, height, 'image')}}/>
+                    <img className='nsitemcardcontent__image' src={imgSRC} style={{...setSize(width, height, 'image')}}
+                    alt={`${BundleName ? BundleName : name} item in FORTNITE BATTLE ROYALE from the ${setname ? `${setname} set` : 'set'} ${price ? `for ${price} vbucks` : 'for some vbucks'} - FORTNITEBR`}/>
                 </div>
                     <div className='nsitemcardcontenttext nsitemcardcontenttext--primary' style={{...setSize(width, height, 'nsitemcardcontenttext')}}>
                         <span className='nsitemcardcontext__name' style={{...setSize(width, height, 'name')}}>

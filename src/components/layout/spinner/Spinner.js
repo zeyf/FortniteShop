@@ -4,7 +4,7 @@ import InfinitySpinner from '../../../media/images/InfinityTeal.svg';
 const Spinner = () => {
     return (
        <>
-        <img src={InfinitySpinner} />
+        <img src={InfinitySpinner} alt='loading spinner' />
        </>
     )
     

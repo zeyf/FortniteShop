@@ -9,14 +9,14 @@ const ItemDetailsSection = () => {
 
     const {item} = useContext(ItemContext);
 
-    const CheckForVariants = () => {
+    const CheckForVariants = (item) => {
         if (item) {
             const {variants} = item;
             if (variants) return <ItemVariants />
         }
     }
 
-    const CheckForSet = () => {
+    const CheckForSet = (item) => {
         if (item) {
             const {set} = item;
             if (set) return <ItemSet length={5} />
@@ -26,8 +26,8 @@ const ItemDetailsSection = () => {
     return (
         <div className='itemdetailssection itemdetailssection--primary'>
             <ItemCardSection />
-            {CheckForVariants()}
-            {CheckForSet()}
+            {CheckForVariants(item)}
+            {CheckForSet(item)}
         </div>
     )
 }
