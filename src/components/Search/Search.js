@@ -64,8 +64,6 @@ const Search = () => {
         }
     }
 
-    console.log(ALERT)
-
     return (
         <div className='search search--primary'>
             <Helmet><title>Item Search - ForniteBRShop</title></Helmet>

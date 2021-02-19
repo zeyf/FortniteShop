@@ -80,7 +80,7 @@ const FeaturedShopSection = () => {
                                     return <NSItemCard category={SetLinkByIDType(id[i])} name={name[i]} cardStyle={rarity[i]} 
                                     handledName={NameCharacterHandler(name[i])} imgSRC={BundleImage()[i] ? BundleImage()[i] : item[0]}
                                     BundleName={BundleName()[i] && BundleName()[i]} price={prices[i]} item={items[i]}
-                                    BundleStatus={BundleStatus()[i]} setname={setname[i]} islink={true}
+                                    BundleStatus={BundleStatus()[i]} setname={setname[i]}
                                     />
                             }
                         }) : featuredsize.map((card, i) => {

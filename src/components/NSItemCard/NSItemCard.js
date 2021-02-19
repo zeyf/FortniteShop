@@ -15,7 +15,6 @@ width, height, margin
 
     const {GetItem} = useContext(ItemContext);
     const {GetSet} = useContext(SetContext);
-    const {ItemPrice} = ItemFunctions;
     const {NameCharacterHandler} = FormatFunctions;
 
     useEffect(()=> {
@@ -78,7 +77,7 @@ width, height, margin
                             {setNameIfBundle(name, BundleStatus, BundleName)}
                         </span>
                         {price && <div className='nsitemcardcontext__price' style={{...setSize(width, height, 'price')}}>
-                                    <img src={VBUCKS} className='nsitemcardcontext__icon' alt='vbucks' />{ItemPrice(name)}
+                                    <img src={VBUCKS} className='nsitemcardcontext__icon' alt='vbucks' />{price}
                                   </div> 
                         }
                     </div>
