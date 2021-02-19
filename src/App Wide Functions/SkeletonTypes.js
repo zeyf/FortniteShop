@@ -31,7 +31,7 @@ const SkeletonTypes = (component, type) => {
         }
     } if (component === 'shopitemcard') {
         if (type <= 700) return  <SkeletonTheme color='#cececf'>
-                        <Skeleton width={150} height={225} />
+                        <Skeleton width={150} height={150} />
                     </SkeletonTheme>
         if (type > 700 && type <= 1024) return  <SkeletonTheme color='#cececf'>
                         <Skeleton width={200} height={225} />

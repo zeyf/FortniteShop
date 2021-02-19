@@ -192,4 +192,21 @@
         align-items: center;
     }
 
-} 
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1400px) {
+    .dailyitemsection--primary {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .search__form {
+        width: 90%;
+    }
+
+    .searchresults--primary {
+        width: 90%;
+    }
+    .searchheading--primary {
+        width: 9l0%;
+    }
+}

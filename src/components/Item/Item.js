@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react';
 import ItemContext from '../context/ItemContext/ItemContext'
-import Spinner from '../layout/spinner/Spinner';
+import LOADER from '../../media/images/InfinityWhite.svg'
 import ItemDetailsSection from '../Item/ItemDetailsSection/ItemDetailsSection'
 import './Item.css';
 
@@ -14,7 +14,7 @@ const Item = ({match}) => {
 
     return (
         <div className='item item--primary'>
-            { loading ? <Spinner /> : <ItemDetailsSection /> }
+            { loading ? <img src={LOADER} alt='loader' /> : <ItemDetailsSection /> }
         </div>
     )
 }

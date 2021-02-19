@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 11px;
+        fill: #fff;
+        font-family: EmojiOneColor, EmojiOne;
+      }
+    </style>
+  </defs>
+  <image id="Background" width="16" height="16" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIUlEQVQ4jWPMNDj8n4ECwESJZoZRA0YNGDVgsBjAwMAAANA5AnuUEKCMAAAAAElFTkSuQmCC"/>
+  <text id="_" data-name="🎮" class="cls-1" x="0.46" y="11.26">🎮</text>
+</svg>

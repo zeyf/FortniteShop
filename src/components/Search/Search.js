@@ -8,7 +8,7 @@ import FormatFunctions from '../../App Wide Functions/FormatFunctions'
 import Select from 'react-select'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import './Search.css'
-import LOADER from '../../media/images/InfinityTeal.svg'
+import LOADER from '../../media/images/InfinityWhite.svg'
 import {Helmet} from 'react-helmet';
 
 const Search = () => {
@@ -96,13 +96,13 @@ const Search = () => {
                 <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}
                 next={() =>{if (resultsLength(RESULTS) > CURRENTSLICE) setnewSlice(CURRENTSLICE)}}
-                scrollThreshold={0.95} hasMore={()=> {
+                scrollThreshold={0.85} hasMore={()=> {
                     if (resultsLength(RESULTS) > CURRENTSLICE) return true
                 }}
                 >
                     {RESULTS && RESULTS.map((item, i) => {
                         const {id, name, set} = item
-                        if (i < CURRENTSLICE && name !== 'null' && name !== 'TBD') {
+                        if (i < CURRENTSLICE && name !== 'null' && name !== 'TBD' && name !== 'RANDOM') {
                             return <NSItemCard category={SetLinkByIDType(id)} name={name.toUpperCase()} 
                             cardStyle={setCardRarityStyle(ItemRarity(item))} handledName={NameCharacterHandler(name)}
                             imgSRC={ItemImage(item)} height={250} width={250} setname={set ? set.value : ''}

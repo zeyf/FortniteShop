@@ -202,7 +202,10 @@
 
 @media only screen and (min-width: 1025px) and (max-width: 1400px) {
     .nonmobilemenu--primary {
-        width: 22.5%;
+        width: 30%;
+    }
+    .nonmobilemenu__optionlink {
+        font-size: 2em;
     }
 }
 
