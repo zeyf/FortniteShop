@@ -16,7 +16,7 @@ const SearchReducer = (state, action) => {
         case SET_LOADING:
             return {
                 ...state,
-                LOADING: true
+                LOADING: action.payload
             }
         case GET_SEARCH:
             return {

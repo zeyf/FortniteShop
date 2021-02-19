@@ -15,8 +15,8 @@ const Search = () => {
 
 
     const {
-        setInput, setRarity, setItemType, setnewSlice, getSearch, setResults,
-        INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE, ALERT, LOADING
+        setInput, setRarity, setItemType, setnewSlice, getSearch, setResults, setAlert,
+        INPUT, RARITY, ITEMTYPE, RESULTS, CURRENTSLICE, ALERT, LOADING,
     } = useContext(SearchContext);
 
     const {setSearchEndpoint, rarityOptions, itemtypeOptions, resultsLength, filteringBy} = SearchFunctions;
@@ -35,14 +35,16 @@ const Search = () => {
     const inputOnChange = (event) => {
         setResults(null)
         setInput(event.target.value);
+        setAlert(null)
     }
-
+    
     const onSubmit = (event) => {
         event.preventDefault();
     }
-
+    
     const rarityOnChange = (event) => {
         setResults(null)
+        setAlert(null)
         if (event) {
             const {value} = event;
             setRarity(value);
@@ -50,9 +52,10 @@ const Search = () => {
             setRarity(null);
         }
     }
-
+    
     const itemtypeOnChange = (event) => {
         setResults(null)
+        setAlert(null)
         if (event) {
             const {value} = event;
             setItemType(value)
@@ -60,6 +63,8 @@ const Search = () => {
             setItemType(null)
         }
     }
+
+    console.log(ALERT)
 
     return (
         <div className='search search--primary'>
@@ -91,7 +96,7 @@ const Search = () => {
                 <p className='showing__text'>{RESULTS && `Currently showing ${resultsLength(RESULTS) > 4000 ? `ALL ${resultsLength(RESULTS)}` : `${resultsLength(RESULTS)}`} items.`}</p>
                 <p className='showing__text'>{RESULTS && filteringBy(INPUT, ITEMTYPE, RARITY)}</p>
             </div>
-            {LOADING ? <img src={LOADER} alt='fortnite battle royale item search loader' /> : <div className='searchresults searchresults--primary'>
+            {LOADING && !ALERT  ? <img src={LOADER} alt='fortnite battle royale item search loader' /> : <div className='searchresults searchresults--primary'>
                 {ALERT ? <p className='showing__text'>{ALERT}</p> :
                 <InfiniteScroll className='resultsinfinitescroll resultsinfinitescroll--primary'
                 dataLength={() => {return resultsLength(RESULTS)}}

@@ -22,12 +22,12 @@ const SearchState = ({children}) => {
 
     const [state, dispatch] = useReducer(SearchReducer, InitialState);
 
-    const setLoading = () => {
-        dispatch({type: SET_LOADING})
+    const setLoading = (type) => {
+        dispatch({type: SET_LOADING, payload: type})
     }
 
     const getSearch = async (searchedEndpoint, allEndpoint) => {
-        setLoading();
+        setLoading(true);
         if (searchedEndpoint) {
             //eslint-disable-next-line
             const response = await axios.get(searchedEndpoint)
@@ -37,6 +37,7 @@ const SearchState = ({children}) => {
             })
             .catch(() => {
                     dispatch({type: SET_ALERT, payload: 'There are no search results.'})
+                    dispatch({type: SET_LOADING, payload: false})
             })
         } else if (allEndpoint) {
             const response = await axios.get('https://fortnite-api.com/v2/cosmetics/br')
@@ -49,11 +50,12 @@ const SearchState = ({children}) => {
     const setRarity = (rarity) => {dispatch({type: SET_RARITY, payload: rarity})}
     const setItemType = (itemtype) => {dispatch({type: SET_ITEMTYPE, payload: itemtype})}
     const setnewSlice = (CURRENTSLICE) => {dispatch({type: SET_SLICE, payload: (CURRENTSLICE + 60)})}
+    const setAlert = (boolean) => {dispatch({type: SET_ALERT, payload: boolean})}
 
     return <SearchContext.Provider value={{
             LOADING: state.LOADING, INPUT: state.INPUT, RARITY: state.RARITY, RESULTS: state.RESULTS,
             ITEMTYPE: state.ITEMTYPE, CURRENTSLICE: state.CURRENTSLICE, ALERT: state.ALERT,
-            setInput, setRarity, setItemType, getSearch, setnewSlice, setResults
+            setInput, setRarity, setItemType, getSearch, setnewSlice, setResults, setAlert
             }}>
                 {children}
             </SearchContext.Provider>
