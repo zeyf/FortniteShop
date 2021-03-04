@@ -1,3 +1,7 @@
+SEE THE PROJECT:
+
+https://fortnitebr.shop/
+
 Description:
 
 FortniteBR was built to aggregate all data from the popular online videogame Fortnite Battle Royale. FortniteBR allows you to view the current day's item shop (rotates daily), search all items with integrated search refining through multiple filters and/or keywords, look up a player's in-game statistics across different timeframes and 3 separate platforms, and see in-game news.
